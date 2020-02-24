@@ -6,6 +6,12 @@ node_modules
 .quasar
 /dist
 
+# Keys
+.keys
+blockvid-debug-key.jks
+blockvid-release-key.jks
+build.cordova.json
+
 # Cordova related directories and files
 /src-cordova/node_modules
 /src-cordova/platforms

@@ -1,8 +1,8 @@
 {
-  "name": "org.matness.blockvid",
+  "name": "it.matness.blockvid",
   "displayName": "Blockvid",
-  "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "version": "0.0.2",
+  "description": "COVID-19 Blockchain",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

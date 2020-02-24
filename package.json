@@ -1,14 +1,16 @@
 {
   "name": "blockvid19",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "COVID-19 Blockchain",
   "productName": "Blockvid",
-  "cordovaId": "org.matness.blockvid",
+  "cordovaId": "it.matness.blockvid",
   "capacitorId": "",
   "author": "mateonunez <mateonunez@protonmail.com>",
   "private": true,
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "cordova:dev": "quasar dev -m cordova -T android -- --buildConfig=\"../build.cordova.json\" --packageType=bundle",
+    "cordova:build": "quasar build -m cordova -T android -- --buildConfig=\"../build.cordova.json\" --packageType=bundle"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
