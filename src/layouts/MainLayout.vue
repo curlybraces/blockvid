@@ -15,7 +15,7 @@
           Blockvid
         </q-toolbar-title>
 
-        <div>Blockvid [v0.0.1]</div>
+        <div>Blockvid {{ version }}</div>
       </q-toolbar>
     </q-header>
 
@@ -35,6 +35,12 @@
           v-bind="link"
         />
       </q-list>
+      <q-separator />
+      <q-item class="absolute-bottom-right">
+        <div>
+          <q-btn to="https://github.com/mateonunez" label="@mateonunez" flat color="red-9" />
+        </div>
+      </q-item>
     </q-drawer>
 
     <q-page-container>
@@ -45,6 +51,7 @@
 
 <script>
 import EssentialLink from "components/EssentialLink";
+import { version } from "../../package.json";
 
 export default {
   name: "MainLayout",
@@ -52,9 +59,9 @@ export default {
   components: {
     EssentialLink
   },
-
   data() {
     return {
+      version: version,
       essentialLinks: [
         {
           title: "Ministero della salute",
