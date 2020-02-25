@@ -21,7 +21,12 @@
 
         <q-card-section class="q-pt-none">
           <div class="text-subtitle">
-            <b>{{ totalInfectedItaly }}</b> INFETTI IN ITALIA
+            <b>{{
+              totalInfectedItalyExploded.reduce((a, b) => {
+                return Number(a) + Number(b.total);
+              }, 0)
+            }}</b>
+            INFETTI IN ITALIA
           </div>
           <div class="text-caption text-grey">
             Il corona virus ha infettato circa
@@ -45,8 +50,7 @@
                 debounce="300"
                 v-model="filterItaly"
                 placeholder="Ricerca..."
-              >
-              </q-input>
+              />
             </template>
 
             <template v-slot:bottom>
@@ -60,6 +64,14 @@
                   }}
                 </b>
               </div>
+              <q-btn
+                type="a"
+                :href="fontTotalInfectedItalyExploded"
+                target="_blank"
+                label="Visualizza fonte"
+                flat
+                color="red-9"
+              />
             </template>
           </q-table>
         </div>
@@ -294,26 +306,40 @@ export default {
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
         }
       ],
+      fontTotalInfectedItalyExploded:
+        "https://www.ilfattoquotidiano.it/2020/02/25/coronavirus-diretta-oltre-280-contagi-ce-il-primo-al-sud-e-donna-bergamasca-in-vacanza-a-palermo-borrelli-conferma-due-casi-in-toscana-positivi-due-studenti-del-medico-contagiato-a-milano/5716419/",
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 172
+          total: 212
         },
         {
           region: "Veneto",
-          total: 32
+          total: 38
         },
         {
           region: "Emilia Romagna",
-          total: 18
+          total: 23
         },
         {
           region: "Piemonte",
-          total: 4
+          total: 3
         },
         {
           region: "Lazio",
           total: 3
+        },
+        {
+          region: "Toscana",
+          total: 2
+        },
+        {
+          region: "Alto Adige",
+          total: 1
+        },
+        {
+          region: "Sicilia",
+          total: 1
         }
       ]
     };
