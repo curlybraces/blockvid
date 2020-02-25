@@ -38,7 +38,7 @@
       <q-separator />
       <q-item class="absolute-bottom-right">
         <div>
-          <q-btn to="https://github.com/mateonunez/blockvid" label="@blockvid" flat color="red-9" />
+          <q-btn type="a" href="https://github.com/mateonunez/blockvid" target="_blank" label="@blockvid" flat color="red-9" />
         </div>
       </q-item>
     </q-drawer>

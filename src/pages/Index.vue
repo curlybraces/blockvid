@@ -80,6 +80,18 @@
       <div class="text-body1">
         {{ questions[rand].a }}
       </div>
+      <q-item class="absolute-bottom-right">
+        <div>
+          <q-btn
+            type="a"
+            href="http://www.salute.gov.it/nuovocoronavirus"
+            target="_blank"
+            label="Ministero della salute"
+            flat
+            color="red-9"
+          />
+        </div>
+      </q-item>
     </div>
   </q-page>
 </template>
