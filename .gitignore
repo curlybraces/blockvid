@@ -12,6 +12,9 @@ blockvid-debug-key.jks
 blockvid-release-key.jks
 build.cordova.json
 
+# Static files
+/src/statics
+
 # Cordova related directories and files
 /src-cordova/node_modules
 /src-cordova/platforms

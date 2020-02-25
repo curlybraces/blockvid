@@ -231,7 +231,7 @@ export default {
           label: "Paese/Stato",
           field: row => row[1],
           format: (val, row) => `${val}` + (row[0] ? ` [${row[0]}]` : ``),
-          sortable: true,
+          // sortable: true,
           align: "left"
         },
         // {
@@ -246,28 +246,28 @@ export default {
           name: "confirmed",
           label: "Confermati",
           field: row => row[3],
-          sortable: true,
+          // sortable: true,
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
         },
         {
           name: "deaths",
           label: "Morti",
           field: row => row[4],
-          sortable: true,
+          // sortable: true,
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
         },
         {
           name: "recovered",
           label: "Ricoverati",
           field: row => row[5],
-          sortable: true,
+          // sortable: true,
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
         },
         {
           name: "lastUpdate",
           label: "Ultimo aggiornamento",
           field: row => row[2],
-          sortable: true
+          // sortable: true
         }
       ],
       filter: "",
