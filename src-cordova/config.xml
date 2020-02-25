@@ -2,7 +2,7 @@
 <widget id="it.matness.blockvid" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Blockvid</name>
     <description>COVID-19 Blockchain</description>
-    <author email="mateonunez@protonmail.com" href="http://matness.it/">
+    <author email="mateonunez95@gmail.com" href="http://matness.it/">
         Mateo Nunez
     </author>
     <content src="index.html" />
