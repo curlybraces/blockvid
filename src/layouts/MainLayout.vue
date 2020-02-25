@@ -29,6 +29,18 @@
         <q-item-label header class="text-grey-8">
           Link utili
         </q-item-label>
+        <q-item clickable to="/blockchain">
+          <q-item-section avatar>
+            <q-icon name="person" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>Blockchain</q-item-label>
+            <q-item-label caption>
+              Access to the blockchain
+            </q-item-label>
+          </q-item-section>
+        </q-item>
         <EssentialLink
           v-for="link in essentialLinks"
           :key="link.title"
@@ -38,7 +50,14 @@
       <q-separator />
       <q-item class="absolute-bottom-right">
         <div>
-          <q-btn type="a" href="https://github.com/mateonunez/blockvid" target="_blank" label="@blockvid" flat color="red-9" />
+          <q-btn
+            type="a"
+            href="https://github.com/mateonunez/blockvid"
+            target="_blank"
+            label="@blockvid"
+            flat
+            color="red-9"
+          />
         </div>
       </q-item>
     </q-drawer>
