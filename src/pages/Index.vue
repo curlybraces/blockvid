@@ -31,6 +31,44 @@
 
         <div class="q-pb-md">
           <q-table
+            title="In italia"
+            :data="totalInfectedItalyExploded"
+            :columns="columnsItalyExploded"
+            :filter="filterItalyExploded"
+            :pagination.sync="paginationItalyExploded"
+            row-key="name"
+          >
+            <template v-slot:top-right>
+              <q-input
+                borderless
+                dense
+                debounce="300"
+                v-model="filterItaly"
+                placeholder="Search"
+              >
+                <template v-slot:append>
+                  <q-icon name="search" />
+                </template>
+              </q-input>
+            </template>
+
+            <template v-slot:bottom>
+              Totale
+              <div class="text-body1 q-ml-lg">
+                <b>
+                  {{
+                    totalInfectedItalyExploded.reduce((a, b) => {
+                      return Number(a) + Number(b.total);
+                    }, 0)
+                  }}
+                </b>
+              </div>
+            </template>
+          </q-table>
+        </div>
+
+        <div class="q-pb-md">
+          <q-table
             title="Nel mondo"
             :data="covidData"
             :columns="columns"
@@ -56,6 +94,14 @@
         <q-card-section class="q-pt-none">
           <div class="text-caption">
             I dati sono aggiornati al {{ lastUpdate.format("DD-MM-YYYY") }}
+            <q-btn
+              type="a"
+              :href="endpoint"
+              target="_blank"
+              label="Visualizza report"
+              flat
+              color="red-9"
+            />
           </div>
         </q-card-section>
 
@@ -80,18 +126,20 @@
       <div class="text-body1">
         {{ questions[rand].a }}
       </div>
-      <q-item class="absolute-bottom-right">
-        <div>
-          <q-btn
-            type="a"
-            href="http://www.salute.gov.it/nuovocoronavirus"
-            target="_blank"
-            label="Ministero della salute"
-            flat
-            color="red-9"
-          />
-        </div>
-      </q-item>
+      <div class="q-pt-md">
+        <q-item class="absolute-bottom-right">
+          <div>
+            <q-btn
+              type="a"
+              href="http://www.salute.gov.it/nuovocoronavirus"
+              target="_blank"
+              label="Ministero della salute"
+              flat
+              color="red-9"
+            />
+          </div>
+        </q-item>
+      </div>
     </div>
   </q-page>
 </template>
@@ -222,7 +270,50 @@ export default {
           sortable: true
         }
       ],
-      filter: ""
+      filter: "",
+      paginationItalyExploded: {
+        rowsPerPage: 0
+      },
+      filterItalyExploded: "",
+      columnsItalyExploded: [
+        {
+          name: "region",
+          label: "Regione",
+          field: row => row.region,
+          align: "left",
+          sortable: true
+        },
+        {
+          name: "total",
+          label: "Totale",
+          field: row => row.total,
+          align: "left",
+          sortable: true,
+          sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
+        }
+      ],
+      totalInfectedItalyExploded: [
+        {
+          region: "Lombardia",
+          total: 172
+        },
+        {
+          region: "Veneto",
+          total: 32
+        },
+        {
+          region: "Emilia Romagna",
+          total: 18
+        },
+        {
+          region: "Piemonte",
+          total: 4
+        },
+        {
+          region: "Lazio",
+          total: 3
+        }
+      ]
     };
   },
   mounted() {
@@ -251,6 +342,7 @@ export default {
         this.$axios
           .get(finalEndpoint)
           .then(response => {
+            this.endpoint = finalEndpoint;
             let covidData = response.data.split("\n").map(row => {
               return row.split(",").length > 6
                 ? row.split(",").unshift()
