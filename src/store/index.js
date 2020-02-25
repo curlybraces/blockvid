@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axiosClient from "src/core/axios";
 
 // import example from './module-example'
 
@@ -20,6 +21,7 @@ export default function(/* { ssrContext } */) {
       leftDrawerOpen: false,
       totalInfected: 0,
       totalInfectedItaly: 0,
+      newsLinks: {}
     },
     mutations: {
       leftDrawerOpen(state, value) {
@@ -30,6 +32,9 @@ export default function(/* { ssrContext } */) {
       },
       setTotalInfectedItaly(state, value) {
         state.totalInfectedItaly = value;
+      },
+      setNewsLinks(state, value) {
+        state.newsLinks = value;
       }
     },
     actions: {
@@ -41,6 +46,12 @@ export default function(/* { ssrContext } */) {
       },
       setTotalInfectedItaly({ commit }, value) {
         commit("setTotalInfectedItaly", value);
+      },
+      getNewsLinks({ commit }) {
+        axiosClient.get('/news-links')
+          .then(data => {
+            commit('setNewsLinks', data.data)
+          })
       }
     },
 
