@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <div class="full-width q-gutter-md q-pt-md">
+    <div class="q-gutter-md q-pt-md">
       <q-card>
         <q-img
           height="250px"
@@ -30,6 +30,32 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
+          <div class="q-pa-md">
+            <q-table
+              title="Nel mondo"
+              :data="covidData"
+              :columns="columns"
+              :filter="filter"
+              row-key="name"
+            >
+              <template v-slot:top-right>
+                <q-input
+                  borderless
+                  dense
+                  debounce="300"
+                  v-model="filter"
+                  placeholder="Search"
+                >
+                  <template v-slot:append>
+                    <q-icon name="search" />
+                  </template>
+                </q-input>
+              </template>
+            </q-table>
+          </div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
           <div class="text-caption">
             I dati sono aggiornati al {{ lastUpdate.format("DD-MM-YYYY") }}
           </div>
@@ -45,7 +71,7 @@
         </q-card-actions>
       </q-card>
     </div>
-    <div class="full-width q-pt-md q-pb-md">
+    <div class="q-pt-md q-pb-md">
       <h4
         class="text-weight-bold text-center"
         style="margin-top: 5px; margin-bottom: 15px"
@@ -140,12 +166,58 @@ export default {
             "Studi sono in corso per comprendere meglio le modalità di trasmissione del virus."
         }
       ],
-      rand: Math.floor(Math.random() * 10)
+      rand: Math.floor(Math.random() * 10),
+      columns: [
+        {
+          name: "country",
+          label: "Paese/Stato",
+          field: row => row[1],
+          format: (val, row) => `${val}` + (row[0] ? ` [${row[0]}]` : ``),
+          sortable: true
+        },
+        // {
+        //   name: "province",
+        //   required: true,
+        //   label: "Provincia/Regione",
+        //   align: "left",
+        //   field: row => row[0],
+        //   sortable: true
+        // },
+        {
+          name: "confirmed",
+          label: "Confermati",
+          field: row => row[3],
+          sortable: true,
+          sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
+        },
+        {
+          name: "deaths",
+          label: "Morti",
+          field: row => row[4],
+          sortable: true,
+          sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
+        },
+        {
+          name: "recovered",
+          label: "Ricoverati",
+          field: row => row[5],
+          sortable: true,
+          sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
+        },
+        {
+          name: "lastUpdate",
+          label: "Ultimo aggiornamento",
+          field: row => row[2],
+          sortable: true
+        }
+      ],
+      filter: ""
     };
   },
   mounted() {
     this.prepareData(this.endpoint, this.today)
       .then(response => {
+        this.covidData = response;
         this.formalize(response);
         this.lastUpdate = data;
       })
@@ -154,6 +226,8 @@ export default {
         let data = this.today.subtract(1, "days");
 
         this.prepareData(endpoint, data).then(response => {
+          this.covidData = response;
+
           this.formalize(response);
           this.lastUpdate = data;
         });
@@ -167,9 +241,12 @@ export default {
           .get(finalEndpoint)
           .then(response => {
             let covidData = response.data.split("\n").map(row => {
-              return row.split(",");
+              return row.split(",").length > 6
+                ? row.split(",").unshift()
+                : row.split(",");
             });
             covidData.shift();
+
             resolve(covidData);
           })
           .catch(error => {
@@ -177,11 +254,15 @@ export default {
           });
       });
     },
-    async formalize(data) {
+    formalize(data) {
       let totalInfected = 0;
       let totalInfectedItaly = 0;
 
       data.forEach(row => {
+        if (!row[3]) {
+          row.shift();
+        }
+
         if (row.length == 7) {
           totalInfected += Number(row[4]);
         }

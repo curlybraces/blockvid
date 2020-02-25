@@ -15,7 +15,7 @@
           Blockvid
         </q-toolbar-title>
 
-        <div>Blockvid {{ version }}</div>
+        <div>v-{{ version }}</div>
       </q-toolbar>
     </q-header>
 
@@ -38,7 +38,7 @@
       <q-separator />
       <q-item class="absolute-bottom-right">
         <div>
-          <q-btn to="https://github.com/mateonunez" label="@mateonunez" flat color="red-9" />
+          <q-btn to="https://github.com/mateonunez/blockvid" label="@blockvid" flat color="red-9" />
         </div>
       </q-item>
     </q-drawer>
