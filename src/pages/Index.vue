@@ -29,31 +29,29 @@
           </div>
         </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          <div class="q-pa-md">
-            <q-table
-              title="Nel mondo"
-              :data="covidData"
-              :columns="columns"
-              :filter="filter"
-              row-key="name"
-            >
-              <template v-slot:top-right>
-                <q-input
-                  borderless
-                  dense
-                  debounce="300"
-                  v-model="filter"
-                  placeholder="Search"
-                >
-                  <template v-slot:append>
-                    <q-icon name="search" />
-                  </template>
-                </q-input>
-              </template>
-            </q-table>
-          </div>
-        </q-card-section>
+        <div class="q-pb-md">
+          <q-table
+            title="Nel mondo"
+            :data="covidData"
+            :columns="columns"
+            :filter="filter"
+            row-key="name"
+          >
+            <template v-slot:top-right>
+              <q-input
+                borderless
+                dense
+                debounce="300"
+                v-model="filter"
+                placeholder="Search"
+              >
+                <template v-slot:append>
+                  <q-icon name="search" />
+                </template>
+              </q-input>
+            </template>
+          </q-table>
+        </div>
 
         <q-card-section class="q-pt-none">
           <div class="text-caption">
@@ -173,7 +171,8 @@ export default {
           label: "Paese/Stato",
           field: row => row[1],
           format: (val, row) => `${val}` + (row[0] ? ` [${row[0]}]` : ``),
-          sortable: true
+          sortable: true,
+          align: "left"
         },
         // {
         //   name: "province",
@@ -259,10 +258,6 @@ export default {
       let totalInfectedItaly = 0;
 
       data.forEach(row => {
-        if (!row[3]) {
-          row.shift();
-        }
-
         if (row.length == 7) {
           totalInfected += Number(row[4]);
         }
