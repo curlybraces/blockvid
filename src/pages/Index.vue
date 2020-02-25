@@ -48,7 +48,7 @@
                 dense
                 borderless
                 debounce="300"
-                v-model="filterItaly"
+                v-model="filterItalyExploded"
                 placeholder="Ricerca..."
               />
             </template>
@@ -65,15 +65,47 @@
                 </b>
               </div>
               <q-btn
-                type="a"
-                :href="fontTotalInfectedItalyExploded"
-                target="_blank"
+                v-if="!showSource"
+                @click.stop="showSource = !showSource"
                 label="Visualizza fonte"
+                flat
+                color="red-9"
+              />
+              <q-btn
+                v-if="showSource"
+                @click.stop="showSource = !showSource"
+                label="Nascondi fonte"
                 flat
                 color="red-9"
               />
             </template>
           </q-table>
+        </div>
+
+        <div class="q-pb-md" v-if="showSource">
+          <link-prevue :url="sourceTotalInfectedItalyExploded">
+            <template slot-scope="props">
+              <q-card class="my-card">
+                <q-parallax :src="props.img" :alt="props.title" :height="250" />
+
+                <q-card-section>
+                  <div class="text-h6">{{ props.title }}</div>
+                  <div class="text-subtitle2">{{ props.description }}</div>
+                </q-card-section>
+
+                <q-card-section>
+                  <q-btn
+                    type="a"
+                    :href="props.url"
+                    target="_blank"
+                    label="Leggi altro"
+                    flat
+                    color="red-9"
+                  />
+                </q-card-section>
+              </q-card>
+            </template>
+          </link-prevue>
         </div>
 
         <div class="q-pb-md">
@@ -160,9 +192,13 @@
 
 <script>
 import moment from "./../boot/moment";
+import LinkPrevue from "link-prevue";
 
 export default {
   name: "PageIndex",
+  components: {
+    LinkPrevue
+  },
   data() {
     return {
       endpoint:
@@ -306,7 +342,8 @@ export default {
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
         }
       ],
-      fontTotalInfectedItalyExploded:
+      showSource: false,
+      sourceTotalInfectedItalyExploded:
         "https://www.ilfattoquotidiano.it/2020/02/25/coronavirus-diretta-oltre-280-contagi-ce-il-primo-al-sud-e-donna-bergamasca-in-vacanza-a-palermo-borrelli-conferma-due-casi-in-toscana-positivi-due-studenti-del-medico-contagiato-a-milano/5716419/",
       totalInfectedItalyExploded: [
         {

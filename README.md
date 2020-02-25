@@ -1,15 +1,15 @@
-# Blockvid (blockvid19)
+# Blockvid
 
-Coronavirus Blockchain (coming very soon)
+COVID-19's blockchain (coming very soon)
 
-[Blockvid WebApp]([Blockvid](https://matness.it/blockvid#/))
+[Blockvid WebApp](https://matness.it/blockvid#/)
 
 ## Install the dependencies
 ```bash
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Start the app in development mode
 ```bash
 quasar dev
 ```

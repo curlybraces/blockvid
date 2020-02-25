@@ -132,7 +132,7 @@ module.exports = function (ctx) {
     // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
     cordova: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
-      id: 'org.matness.blockvid'
+      id: 'it.matness.blockvid'
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
@@ -160,7 +160,7 @@ module.exports = function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'blockvid19'
+        appId: 'blockvid'
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
