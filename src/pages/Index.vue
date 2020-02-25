@@ -40,15 +40,12 @@
           >
             <template v-slot:top-right>
               <q-input
-                borderless
                 dense
+                borderless
                 debounce="300"
                 v-model="filterItaly"
-                placeholder="Search"
+                placeholder="Ricerca..."
               >
-                <template v-slot:append>
-                  <q-icon name="search" />
-                </template>
               </q-input>
             </template>
 
@@ -68,6 +65,14 @@
         </div>
 
         <div class="q-pb-md">
+          <iframe
+            src="https://www.google.com/maps/d/embed?mid=17CmSRmkYLU2Zi0XQ0X1sO3ljqJTGEq0x"
+            height="480"
+            class="full-width"
+          ></iframe>
+        </div>
+
+        <div class="q-pb-md">
           <q-table
             title="Nel mondo"
             :data="covidData"
@@ -77,15 +82,12 @@
           >
             <template v-slot:top-right>
               <q-input
-                borderless
                 dense
+                borderless
                 debounce="300"
                 v-model="filter"
-                placeholder="Search"
+                placeholder="Ricerca..."
               >
-                <template v-slot:append>
-                  <q-icon name="search" />
-                </template>
               </q-input>
             </template>
           </q-table>
@@ -127,7 +129,7 @@
         {{ questions[rand].a }}
       </div>
       <div class="q-pt-md">
-        <q-item class="absolute-bottom-right">
+        <q-item class="right-align">
           <div>
             <q-btn
               type="a"
@@ -266,7 +268,7 @@ export default {
         {
           name: "lastUpdate",
           label: "Ultimo aggiornamento",
-          field: row => row[2],
+          field: row => row[2]
           // sortable: true
         }
       ],
