@@ -18,8 +18,12 @@
             ></div>
           </div>
         </q-card-section>
+      </q-card>
+    </div>
 
-        <q-card-section class="q-pt-none">
+    <div class="q-gutter-md q-pt-md">
+      <q-card>
+        <q-card-section class="q-pt-md">
           <div class="text-subtitle">
             <b>{{
               totalInfectedItalyExploded.reduce((a, b) => {
@@ -33,7 +37,11 @@
             <b>{{ totalInfected }}</b> persone nel mondo. <br />
           </div>
         </q-card-section>
+      </q-card>
+    </div>
 
+    <div class="q-gutter-md q-pt-md">
+      <q-card>
         <div class="q-pb-md">
           <q-table
             title="In italia"
@@ -74,15 +82,19 @@
             </template>
           </q-table>
         </div>
+      </q-card>
+    </div>
 
-        <div class="q-pb-md">
-          <iframe
-            src="https://www.google.com/maps/d/embed?mid=17CmSRmkYLU2Zi0XQ0X1sO3ljqJTGEq0x"
-            height="480"
-            class="full-width"
-          ></iframe>
-        </div>
+    <div class="q-pb-md">
+      <iframe
+        src="https://www.google.com/maps/d/embed?mid=17CmSRmkYLU2Zi0XQ0X1sO3ljqJTGEq0x"
+        height="480"
+        class="full-width"
+      ></iframe>
+    </div>
 
+    <div class="q-gutter-md q-pt-md">
+      <q-card>
         <div class="q-pb-md">
           <q-table
             title="Nel mondo"
@@ -128,31 +140,34 @@
         </q-card-actions>
       </q-card>
     </div>
-    <div class="q-pt-md q-pb-md">
-      <h4
-        class="text-weight-bold text-center"
-        style="margin-top: 5px; margin-bottom: 15px"
-      >
-        Consigliato per te
-      </h4>
-      <div class="text-h5">{{ questions[rand].q }}</div>
-      <div class="text-body1">
-        {{ questions[rand].a }}
-      </div>
-      <div class="q-pt-md">
-        <q-item class="right-align">
-          <div>
-            <q-btn
-              type="a"
-              href="http://www.salute.gov.it/nuovocoronavirus"
-              target="_blank"
-              label="Ministero della salute"
-              flat
-              color="red-9"
-            />
-          </div>
-        </q-item>
-      </div>
+
+    <div class="q-gutter-md q-pt-md">
+      <q-card>
+        <h4
+          class="text-weight-bold text-center q-pt-sm"
+          style="margin-top: 5px; margin-bottom: 15px"
+        >
+          Consigliato per te
+        </h4>
+        <div class="text-h5 q-pa-md">{{ questions[rand].q }}</div>
+        <div class="text-body1 q-pa-md">
+          {{ questions[rand].a }}
+        </div>
+        <div class="q-pt-md">
+          <q-item class="right-align">
+            <div>
+              <q-btn
+                type="a"
+                href="http://www.salute.gov.it/nuovocoronavirus"
+                target="_blank"
+                label="Ministero della salute"
+                flat
+                color="red-9"
+              />
+            </div>
+          </q-item>
+        </div>
+      </q-card>
     </div>
   </q-page>
 </template>
@@ -243,15 +258,15 @@ export default {
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 212
+          total: 240
         },
         {
           region: "Veneto",
-          total: 38
+          total: 43
         },
         {
           region: "Emilia Romagna",
-          total: 23
+          total: 26
         },
         {
           region: "Piemonte",
@@ -262,15 +277,19 @@ export default {
           total: 3
         },
         {
+          region: "Sicilia",
+          total: 3
+        },
+        {
+          region: "Liguria",
+          total: 2
+        },
+        {
           region: "Toscana",
           total: 2
         },
         {
           region: "Alto Adige",
-          total: 1
-        },
-        {
-          region: "Sicilia",
           total: 1
         }
       ]
