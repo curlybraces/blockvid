@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { Blockvid } from "./../core/blockchain";
+import Blockvid, { addBlock } from "./../core/blockchain";
 export default {
   data() {
     return {
@@ -56,18 +56,30 @@ export default {
         {
           name: "prevHash",
           label: "prevHash",
-          field: row => row.prevHash
+          field: row => row.previousHash
         },
         {
           name: "currentHash",
           label: "currentHash",
-          field: row => row.currentHash
+          field: row => row.hash
         }
       ]
     };
   },
-  async mounted() {
-    this.blockchain = await Blockvid.createBlockchain(10);
+  mounted() {
+    let chain = [Blockvid.createGenesisBlock()];
+    // let newChain = [];
+    for (let i = 0; i < 4; i++) {
+      let newBlockData = {
+        lat: "45.586845" + i,
+        lng: "8.9162949" + i
+      };
+      chain = Blockvid.addBlock(chain, newBlockData);
+    }
+
+    if (Blockvid.validateChain(chain)) {
+      this.blockchain = chain;
+    }
   }
 };
 </script>
