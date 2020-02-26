@@ -41,55 +41,51 @@
     </div>
 
     <div class="q-gutter-md q-pt-md">
-      <q-card>
-        <div class="q-pb-md">
-          <q-table
-            title="In italia"
-            :data="totalInfectedItalyExploded"
-            :columns="columnsItalyExploded"
-            :filter="filterItalyExploded"
-            :pagination.sync="paginationItalyExploded"
-            row-key="name"
-          >
-            <template v-slot:top-right>
-              <q-input
-                dense
-                borderless
-                debounce="300"
-                v-model="filterItalyExploded"
-                placeholder="Ricerca..."
-              />
-            </template>
+      <q-table
+        title="In italia"
+        :data="totalInfectedItalyExploded"
+        :columns="columnsItalyExploded"
+        :filter="filterItalyExploded"
+        :pagination.sync="paginationItalyExploded"
+        row-key="name"
+      >
+        <template v-slot:top-right>
+          <q-input
+            dense
+            borderless
+            debounce="300"
+            v-model="filterItalyExploded"
+            placeholder="Ricerca..."
+          />
+        </template>
 
-            <template v-slot:bottom>
-              Totale
-              <div class="text-body1 q-ml-lg">
-                <b>
-                  {{
-                    totalInfectedItalyExploded.reduce((a, b) => {
-                      return Number(a) + Number(b.total);
-                    }, 0)
-                  }}
-                </b>
-              </div>
-              <q-btn
-                v-if="!showSource"
-                @click.stop="showSource = !showSource"
-                label="Visualizza fonte"
-                flat
-                color="red-9"
-              />
-              <q-btn
-                v-if="showSource"
-                @click.stop="showSource = !showSource"
-                label="Nascondi fonte"
-                flat
-                color="red-9"
-              />
-            </template>
-          </q-table>
-        </div>
-      </q-card>
+        <template v-slot:bottom>
+          Totale
+          <div class="text-body1 q-ml-lg">
+            <b>
+              {{
+                totalInfectedItalyExploded.reduce((a, b) => {
+                  return Number(a) + Number(b.total);
+                }, 0)
+              }}
+            </b>
+          </div>
+          <q-btn
+            v-if="!showSource"
+            @click.stop="showSource = !showSource"
+            label="Visualizza fonte"
+            flat
+            color="red-9"
+          />
+          <q-btn
+            v-if="showSource"
+            @click.stop="showSource = !showSource"
+            label="Nascondi fonte"
+            flat
+            color="red-9"
+          />
+        </template>
+      </q-table>
     </div>
 
     <div class="q-gutter-md q-pt-md">
@@ -366,19 +362,19 @@ export default {
       ],
       showSource: false,
       sourceTotalInfectedItalyExploded:
-        "https://tg24.sky.it/cronaca/2020/02/26/coronavirus-ultime-notizie-diretta.html",
+        "http://www.rainews.it/dl/rainews/articoli/coronavirus-11-decessi-in-italia-323-i-casi-di-contagio-gallera-stiamo-cercando-paziente-zero-a5055674-09fa-43d8-96ee-e6688c9a2945.html",
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 259
+          total: 258
         },
         {
           region: "Veneto",
-          total: 58
+          total: 71
         },
         {
           region: "Emilia Romagna",
-          total: 26
+          total: 30
         },
         {
           region: "Piemonte",
@@ -401,7 +397,11 @@ export default {
           total: 2
         },
         {
-          region: "Alto Adige",
+          region: "Trentino Alto Adige",
+          total: 1
+        },
+        {
+          region: "Marche",
           total: 1
         }
       ]
