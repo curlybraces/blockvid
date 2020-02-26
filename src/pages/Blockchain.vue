@@ -32,8 +32,8 @@ import { Blockvid } from "./../core/blockchain";
 export default {
   data() {
     return {
+      blockchain: [],
       filter: "",
-      blockchain: Blockvid.createBlockchain(10000),
       pagination: {
         rowsPerPage: 0
       },
@@ -51,7 +51,7 @@ export default {
         {
           name: "data",
           label: "data",
-          field: row => row.data
+          field: row => `lat: ${row.data.lat} - lng: ${row.data.lng}`
         },
         {
           name: "prevHash",
@@ -66,8 +66,8 @@ export default {
       ]
     };
   },
-  mounted() {
-    console.log(this.blockchain);
+  async mounted() {
+    this.blockchain = await Blockvid.createBlockchain(10);
   }
 };
 </script>
