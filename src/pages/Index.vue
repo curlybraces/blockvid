@@ -366,15 +366,15 @@ export default {
       ],
       showSource: false,
       sourceTotalInfectedItalyExploded:
-        "https://www.ilfattoquotidiano.it/2020/02/25/coronavirus-diretta-oltre-280-contagi-ce-il-primo-al-sud-e-donna-bergamasca-in-vacanza-a-palermo-borrelli-conferma-due-casi-in-toscana-positivi-due-studenti-del-medico-contagiato-a-milano/5716419/",
+        "https://tg24.sky.it/cronaca/2020/02/26/coronavirus-ultime-notizie-diretta.html",
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 240
+          total: 259
         },
         {
           region: "Veneto",
-          total: 43
+          total: 58
         },
         {
           region: "Emilia Romagna",
