@@ -220,7 +220,7 @@ export default {
         },
         {
           name: "recovered",
-          label: "Ricoverati",
+          label: "Guariti",
           field: row => row[5],
           // sortable: true,
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
