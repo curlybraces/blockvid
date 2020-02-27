@@ -77,7 +77,7 @@ export default {
       .get("https://matness.it/api/v1/blockvid/news-links")
       .then(response => {
         let newsLinks = [];
-        response.data.map(article => {
+        response.data.data.map(article => {
           newsLinks.push(article);
         });
 

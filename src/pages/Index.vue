@@ -1,174 +1,180 @@
 <template>
-  <q-page class="flex flex-center" padding>
-    <div class="q-gutter-md" id="indexPage" style="max-width: 600px">
-      <div class="q-pt-md">
-        <q-card>
-          <q-parallax
-            src="https://www.comune.otranto.le.it/images/notizie/coronavirus-imagem.jpg"
-            alt="COVID-10"
-            :height="250"
-          />
+  <q-page padding>
+    <div class="q-gutter-md q-pt-md" style="max-width: 600px">
+      <q-card>
+        <q-parallax
+          src="https://www.comune.otranto.le.it/images/notizie/coronavirus-imagem.jpg"
+          alt="COVID-10"
+          :height="250"
+        />
 
-          <q-card-section>
-            <!--  -->
-            <div class="row items-center">
-              <div class="col text-h6 ellipsis">
-                COVID-19
-              </div>
-              <div
-                class="col-auto text-grey text-caption q-pt-md row no-wrap items-center"
-              ></div>
+        <q-card-section>
+          <!--  -->
+          <div class="row items-center">
+            <div class="col text-h6 ellipsis">
+              COVID-19
             </div>
-          </q-card-section>
-        </q-card>
-      </div>
+            <div
+              class="col-auto text-grey text-caption q-pt-md row no-wrap items-center"
+            ></div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </div>
 
-      <div class="q-pt-md">
-        <q-card>
-          <q-card-section class="q-pt-md">
-            <div class="text-subtitle">
-              <b>{{
+    <div class="q-gutter-md q-pt-md" style="max-width: 600px">
+      <q-card>
+        <q-card-section class="q-pt-md">
+          <div class="text-subtitle">
+            <b>{{
+              totalInfectedItalyExploded.reduce((a, b) => {
+                return Number(a) + Number(b.total);
+              }, 0)
+            }}</b>
+            INFETTI IN ITALIA
+          </div>
+          <div class="text-caption text-grey">
+            Il corona virus ha infettato circa
+            <b>{{ totalInfected }}</b> persone nel mondo. <br />
+          </div>
+        </q-card-section>
+
+        <q-card-section>
+          <q-btn
+            v-if="!showSource"
+            @click.stop="$router.push({ name: 'newsList' })"
+            label="Visualizza notizie e aggiornamenti"
+            flat
+            color="red-9"
+          />
+        </q-card-section>
+      </q-card>
+    </div>
+
+    <div class="q-gutter-md q-pt-md" style="max-width: 600px">
+      <q-table
+        title="In italia"
+        :data="totalInfectedItalyExploded"
+        :columns="columnsItalyExploded"
+        :filter="filterItalyExploded"
+        :pagination.sync="paginationItalyExploded"
+        row-key="name"
+      >
+        <template v-slot:top-right>
+          <q-input
+            dense
+            borderless
+            debounce="300"
+            v-model="filterItalyExploded"
+            placeholder="Ricerca..."
+          />
+        </template>
+        <template v-slot:bottom>
+          Totale
+          <div class="text-body1 q-ml-lg">
+            <b>
+              {{
                 totalInfectedItalyExploded.reduce((a, b) => {
                   return Number(a) + Number(b.total);
                 }, 0)
-              }}</b>
-              INFETTI IN ITALIA
-            </div>
-            <div class="text-caption text-grey">
-              Il corona virus ha infettato circa
-              <b>{{ totalInfected }}</b> persone nel mondo. <br />
-            </div>
-          </q-card-section>
-
-          <q-card-section>
+              }}
+            </b>
             <q-btn
-              v-if="!showSource"
-              @click.stop="$router.push({ name: 'newsList' })"
-              label="Visualizza notizie e aggiornamenti"
+              type="a"
+              href="http://www.salute.gov.it/portale/nuovocoronavirus/dettaglioContenutiNuovoCoronavirus.jsp?lingua=italiano&id=5351&area=nuovoCoronavirus&menu=vuoto"
+              target="_blank"
+              label="Visualizza fonte"
               flat
               color="red-9"
             />
-          </q-card-section>
-        </q-card>
-      </div>
-
-      <div class="q-pt-md">
-        <q-table
-          title="In italia"
-          :data="totalInfectedItalyExploded"
-          :columns="columnsItalyExploded"
-          :filter="filterItalyExploded"
-          :pagination.sync="paginationItalyExploded"
-          row-key="name"
-        >
-          <template v-slot:top-right>
-            <q-input
-              dense
-              borderless
-              debounce="300"
-              v-model="filterItalyExploded"
-              placeholder="Ricerca..."
-            />
-          </template>
-          <template v-slot:bottom>
-            Totale
-            <div class="text-body1 q-ml-lg">
-              <b>
-                {{
-                  totalInfectedItalyExploded.reduce((a, b) => {
-                    return Number(a) + Number(b.total);
-                  }, 0)
-                }}
-              </b>
-            </div>
-          </template>
-        </q-table>
-      </div>
-
-      <div class="q-pt-md">
-        <iframe
-          src="https://www.google.com/maps/d/embed?mid=17CmSRmkYLU2Zi0XQ0X1sO3ljqJTGEq0x"
-          height="480"
-          class="full-width"
-        ></iframe>
-      </div>
-
-      <div class="q-pt-md">
-        <q-card>
-          <div class="q-pb-md">
-            <q-table
-              title="Nel mondo"
-              :data="covidData"
-              :columns="columns"
-              :filter="filter"
-              row-key="name"
-            >
-              <template v-slot:top-right>
-                <q-input
-                  dense
-                  borderless
-                  debounce="300"
-                  v-model="filter"
-                  placeholder="Ricerca..."
-                >
-                </q-input>
-              </template>
-            </q-table>
           </div>
+        </template>
+      </q-table>
+    </div>
 
-          <q-card-section class="q-pt-none">
-            <div class="text-caption">
-              I dati sono aggiornati al {{ lastUpdate.format("DD-MM-YYYY") }}
+    <div class="q-gutter-md q-pt-md" style="max-width: 600px">
+      <iframe
+        src="https://www.google.com/maps/d/embed?mid=17CmSRmkYLU2Zi0XQ0X1sO3ljqJTGEq0x"
+        height="480"
+        class="full-width"
+      ></iframe>
+    </div>
+
+    <div class="q-gutter-md q-pt-md" style="max-width: 600px">
+      <q-card>
+        <div class="q-pb-md">
+          <q-table
+            title="Nel mondo"
+            :data="covidData"
+            :columns="columns"
+            :filter="filter"
+            row-key="name"
+          >
+            <template v-slot:top-right>
+              <q-input
+                dense
+                borderless
+                debounce="300"
+                v-model="filter"
+                placeholder="Ricerca..."
+              >
+              </q-input>
+            </template>
+          </q-table>
+        </div>
+
+        <q-card-section class="q-pt-none">
+          <div class="text-caption">
+            I dati sono aggiornati al {{ lastUpdate.format("DD-MM-YYYY") }}
+            <q-btn
+              type="a"
+              :href="endpoint"
+              target="_blank"
+              label="Visualizza report"
+              flat
+              color="red-9"
+            />
+          </div>
+        </q-card-section>
+
+        <q-separator />
+
+        <q-card-actions>
+          <div id="action1" @click="leftDrawerOpen = !leftDrawerOpen">
+            <q-btn flat round icon="book" />
+            <q-btn flat color="primary">Leggi altro</q-btn>
+          </div>
+        </q-card-actions>
+      </q-card>
+    </div>
+
+    <div class="q-gutter-md q-pt-md" style="max-width: 600px">
+      <q-card>
+        <h4
+          class="text-weight-bold text-center q-pt-sm"
+          style="margin-top: 5px; margin-bottom: 15px"
+        >
+          Consigliato per te
+        </h4>
+        <div class="text-h5 q-pa-md">{{ questions[rand].q }}</div>
+        <div class="text-body1 q-pa-md">
+          {{ questions[rand].a }}
+        </div>
+        <div class="q-pt-md">
+          <q-item class="right-align">
+            <div>
               <q-btn
                 type="a"
-                :href="endpoint"
+                href="http://www.salute.gov.it/nuovocoronavirus"
                 target="_blank"
-                label="Visualizza report"
+                label="Ministero della salute"
                 flat
                 color="red-9"
               />
             </div>
-          </q-card-section>
-
-          <q-separator />
-
-          <q-card-actions>
-            <div id="action1" @click="leftDrawerOpen = !leftDrawerOpen">
-              <q-btn flat round icon="book" />
-              <q-btn flat color="primary">Leggi altro</q-btn>
-            </div>
-          </q-card-actions>
-        </q-card>
-      </div>
-
-      <div class="q-pt-md">
-        <q-card>
-          <h4
-            class="text-weight-bold text-center q-pt-sm"
-            style="margin-top: 5px; margin-bottom: 15px"
-          >
-            Consigliato per te
-          </h4>
-          <div class="text-h5 q-pa-md">{{ questions[rand].q }}</div>
-          <div class="text-body1 q-pa-md">
-            {{ questions[rand].a }}
-          </div>
-          <div class="q-pt-md">
-            <q-item class="right-align">
-              <div>
-                <q-btn
-                  type="a"
-                  href="http://www.salute.gov.it/nuovocoronavirus"
-                  target="_blank"
-                  label="Ministero della salute"
-                  flat
-                  color="red-9"
-                />
-              </div>
-            </q-item>
-          </div>
-        </q-card>
-      </div>
+          </q-item>
+        </div>
+      </q-card>
     </div>
   </q-page>
 </template>
@@ -195,7 +201,8 @@ export default {
           field: row => row[1],
           format: (val, row) => `${val}` + (row[0] ? ` [${row[0]}]` : ``),
           // sortable: true,
-          align: "left"
+          align: "left",
+          sort: 1
         },
         // {
         //   name: "province",
@@ -259,15 +266,19 @@ export default {
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 258
+          total: 305
         },
         {
           region: "Veneto",
-          total: 71
+          total: 98
         },
         {
           region: "Emilia Romagna",
-          total: 47
+          total: 97
+        },
+        {
+          region: "Liguria",
+          total: 11
         },
         {
           region: "Piemonte",
@@ -282,11 +293,15 @@ export default {
           total: 3
         },
         {
-          region: "Liguria",
-          total: 11
+          region: "Marche",
+          total: 3
         },
         {
           region: "Toscana",
+          total: 2
+        },
+        {
+          region: "Campania",
           total: 2
         },
         {
@@ -294,7 +309,7 @@ export default {
           total: 1
         },
         {
-          region: "Marche",
+          region: "Abruzzo",
           total: 1
         }
       ]
