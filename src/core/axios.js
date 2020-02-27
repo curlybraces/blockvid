@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const endpoint = "http://matness.it/api/v1/blockvid/";
+const endpoint = "https://matness.it/api/v1/blockvid/";
 
 const axiosClient = axios.create({
     baseURL: endpoint

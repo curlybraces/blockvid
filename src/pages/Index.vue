@@ -37,6 +37,16 @@
             <b>{{ totalInfected }}</b> persone nel mondo. <br />
           </div>
         </q-card-section>
+
+        <q-card-section>
+          <q-btn
+            v-if="!showSource"
+            @click.stop="$router.push({ name: 'newsList' })"
+            label="Visualizza notizie e aggiornamenti"
+            flat
+            color="red-9"
+          />
+        </q-card-section>
       </q-card>
     </div>
 
@@ -69,13 +79,6 @@
               }}
             </b>
           </div>
-          <q-btn
-            v-if="!showSource"
-            @click.stop="$router.push({ name: 'newsList' })"
-            label="Visualizza notizie e aggiornamenti"
-            flat
-            color="red-9"
-          />
         </template>
       </q-table>
     </div>
@@ -261,7 +264,7 @@ export default {
         },
         {
           region: "Emilia Romagna",
-          total: 30
+          total: 47
         },
         {
           region: "Piemonte",
@@ -277,7 +280,7 @@ export default {
         },
         {
           region: "Liguria",
-          total: 2
+          total: 11
         },
         {
           region: "Toscana",
