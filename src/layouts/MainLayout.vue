@@ -26,6 +26,26 @@
       content-class="bg-grey-1"
     >
       <q-list>
+        <q-item to="/index">
+          <q-item-section avatar>
+            <q-icon name="home" />
+          </q-item-section>
+
+          <q-item-section>
+            Home
+          </q-item-section>
+        </q-item>
+
+        <q-item to="/news">
+          <q-item-section avatar>
+            <q-icon name="library_books" />
+          </q-item-section>
+
+          <q-item-section>
+            News
+          </q-item-section>
+        </q-item>
+
         <q-item-label header class="text-grey-8">
           Link utili
         </q-item-label>
@@ -38,7 +58,14 @@
       <q-separator />
       <q-item class="absolute-bottom-right">
         <div>
-          <q-btn type="a" href="https://github.com/mateonunez/blockvid" target="_blank" label="@blockvid" flat color="red-9" />
+          <q-btn
+            type="a"
+            href="https://github.com/mateonunez/blockvid"
+            target="_blank"
+            label="@blockvid"
+            flat
+            color="red-9"
+          />
         </div>
       </q-item>
     </q-drawer>
