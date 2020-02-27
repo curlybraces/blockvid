@@ -261,7 +261,7 @@ export default {
         },
         {
           region: "Emilia Romagna",
-          total: 30
+          total: 47
         },
         {
           region: "Piemonte",
@@ -277,7 +277,7 @@ export default {
         },
         {
           region: "Liguria",
-          total: 2
+          total: 11
         },
         {
           region: "Toscana",
