@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import axiosClient from "src/core/axios";
 
 // import example from './module-example'
 
@@ -38,7 +37,7 @@ export default function(/* { ssrContext } */) {
         state.newsLinks = value;
       },
       setNewsLinksInternational(state, value) {
-        state.newsLinks = value;
+        state.newsLinksInternational = value;
       }
     },
     actions: {
@@ -51,13 +50,11 @@ export default function(/* { ssrContext } */) {
       setTotalInfectedItaly({ commit }, value) {
         commit("setTotalInfectedItaly", value);
       },
-      getNewsLinks({ commit }) {
-        axiosClient.get("/news-links").then(data => {
-          commit("setNewsLinks", data.data);
-        });
+      setNewsLinks({ commit }, value) {
+        commit("setNewsLinks", value);
       },
       setNewsLinksInternational({ commit }, value) {
-        commit("setNewsLinks", value);
+        commit("setNewsLinksInternational", value);
       }
     },
 

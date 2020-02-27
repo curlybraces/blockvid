@@ -1,9 +1,9 @@
 <template>
-  <q-page padding>
-    <div class="q-gutter-md q-pt-md" id="newsLiks">
+  <q-page class="flex flex-center" padding>
+    <div class="q-gutter-md" id="newsLinks" style="max-width: 600px">
       <h5 class="text-h5 text-red-9">Notizie locali per te</h5>
       <template>
-        <q-card v-for="link in links" v-bind:key="link.url">
+        <q-card class="my-card" v-for="link in links" v-bind:key="link.url">
           <link-prevue :url="link.url">
             <template slot-scope="props">
               <q-card class="my-card">
@@ -39,9 +39,19 @@ import moment from "./../boot/moment";
 export default {
   computed: {
     links() {
-      return this.$store.state.newsLinks.concat(
-        this.$store.state.newsLinksInternational
-      );
+      let newsLinks = this.$store.state.newsLinks;
+      let newsLinksInternational = this.$store.state.newsLinksInternational;
+
+      let links = [
+        ...newsLinks.map(el => {
+          return el.url;
+        }),
+        ...newsLinksInternational.map(el => {
+          return el.url;
+        })
+      ];
+
+      return [...newsLinks, ...newsLinksInternational];
     }
   },
   mounted() {
@@ -53,6 +63,7 @@ export default {
       )
       .then(response => {
         let newsLinksInternational = [];
+
         response.data.articles.map(article => {
           newsLinksInternational.push(article);
         });
@@ -62,7 +73,16 @@ export default {
         );
       });
 
-    this.$store.dispatch("getNewsLinks");
+    this.$axios
+      .get("https://matness.it/api/v1/blockvid/news-links")
+      .then(response => {
+        let newsLinks = [];
+        response.data.map(article => {
+          newsLinks.push(article);
+        });
+
+        this.$store.dispatch("setNewsLinks", newsLinks);
+      });
   },
   components: {
     LinkPrevue
