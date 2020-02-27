@@ -1,55 +1,33 @@
 <template>
   <q-page padding>
     <div class="q-gutter-md q-pt-md" style="max-width: 600px">
-      <q-card>
-        <q-parallax
-          src="https://www.comune.otranto.le.it/images/notizie/coronavirus-imagem.jpg"
-          alt="COVID-10"
-          :height="250"
-        />
-
-        <q-card-section>
-          <!--  -->
-          <div class="row items-center">
-            <div class="col text-h6 ellipsis">
-              COVID-19
-            </div>
-            <div
-              class="col-auto text-grey text-caption q-pt-md row no-wrap items-center"
-            ></div>
+      <div class="text-center">
+        <div class="text-h2">block<span class="text-red-9">vid</span></div>
+        <div class="text-overline">insieme per una corretta informazione</div>
+      </div>
+      <div class="text-center">
+        <div class="row text-red-3">
+          <div class="col">
+            <span class="text-h6"
+              ><b>{{
+                totalInfectedItalyExploded.reduce((a, b) => {
+                  return Number(a) + Number(b.total);
+                }, 0)
+              }}</b></span
+            >
+            ITALIA
           </div>
-        </q-card-section>
-      </q-card>
+          <div class="col">
+            <span class="text-h6">
+              <b>{{ totalInfected }}</b></span
+            >
+            MONDO
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="q-gutter-md q-pt-md" style="max-width: 600px">
-      <q-card>
-        <q-card-section class="q-pt-md">
-          <div class="text-subtitle">
-            <b>{{
-              totalInfectedItalyExploded.reduce((a, b) => {
-                return Number(a) + Number(b.total);
-              }, 0)
-            }}</b>
-            INFETTI IN ITALIA
-          </div>
-          <div class="text-caption text-grey">
-            Il corona virus ha infettato circa
-            <b>{{ totalInfected }}</b> persone nel mondo. <br />
-          </div>
-        </q-card-section>
-
-        <q-card-section>
-          <q-btn
-            v-if="!showSource"
-            @click.stop="$router.push({ name: 'newsList' })"
-            label="Visualizza notizie e aggiornamenti"
-            flat
-            color="red-9"
-          />
-        </q-card-section>
-      </q-card>
-    </div>
+    <News />
 
     <div class="q-gutter-md q-pt-md" style="max-width: 600px">
       <q-table
@@ -101,29 +79,25 @@
     </div>
 
     <div class="q-gutter-md q-pt-md" style="max-width: 600px">
-      <q-card>
-        <div class="q-pb-md">
-          <q-table
-            title="Nel mondo"
-            :data="covidData"
-            :columns="columns"
-            :filter="filter"
-            row-key="name"
+      <q-table
+        title="Nel mondo"
+        :data="covidData"
+        :columns="columns"
+        :filter="filter"
+        row-key="name"
+      >
+        <template v-slot:top-right>
+          <q-input
+            dense
+            borderless
+            debounce="300"
+            v-model="filter"
+            placeholder="Ricerca..."
           >
-            <template v-slot:top-right>
-              <q-input
-                dense
-                borderless
-                debounce="300"
-                v-model="filter"
-                placeholder="Ricerca..."
-              >
-              </q-input>
-            </template>
-          </q-table>
-        </div>
+          </q-input>
+        </template>
 
-        <q-card-section class="q-pt-none">
+        <template v-slot:bottom>
           <div class="text-caption">
             I dati sono aggiornati al {{ lastUpdate.format("DD-MM-YYYY") }}
             <q-btn
@@ -135,17 +109,8 @@
               color="red-9"
             />
           </div>
-        </q-card-section>
-
-        <q-separator />
-
-        <q-card-actions>
-          <div id="action1" @click="leftDrawerOpen = !leftDrawerOpen">
-            <q-btn flat round icon="book" />
-            <q-btn flat color="primary">Leggi altro</q-btn>
-          </div>
-        </q-card-actions>
-      </q-card>
+        </template>
+      </q-table>
     </div>
 
     <div class="q-gutter-md q-pt-md" style="max-width: 600px">
@@ -180,11 +145,16 @@
 </template>
 
 <script>
+import News from "./News";
+
 import moment from "./../boot/moment";
 import { questions } from "../misc/questions";
 
 export default {
   name: "PageIndex",
+  components: {
+    News
+  },
   data() {
     return {
       endpoint:
@@ -266,11 +236,11 @@ export default {
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 305
+          total: 403
         },
         {
           region: "Veneto",
-          total: 98
+          total: 111
         },
         {
           region: "Emilia Romagna",
@@ -278,7 +248,11 @@ export default {
         },
         {
           region: "Liguria",
-          total: 11
+          total: 19
+        },
+        {
+          region: "Sicilia",
+          total: 4
         },
         {
           region: "Piemonte",
@@ -286,10 +260,6 @@ export default {
         },
         {
           region: "Lazio",
-          total: 3
-        },
-        {
-          region: "Sicilia",
           total: 3
         },
         {
@@ -310,6 +280,10 @@ export default {
         },
         {
           region: "Abruzzo",
+          total: 1
+        },
+        {
+          region: "Puglia",
           total: 1
         }
       ]
