@@ -21,7 +21,8 @@ export default function(/* { ssrContext } */) {
       leftDrawerOpen: false,
       totalInfected: 0,
       totalInfectedItaly: 0,
-      newsLinks: {}
+      newsLinks: [],
+      newsLinksInternational: []
     },
     mutations: {
       leftDrawerOpen(state, value) {
@@ -34,6 +35,9 @@ export default function(/* { ssrContext } */) {
         state.totalInfectedItaly = value;
       },
       setNewsLinks(state, value) {
+        state.newsLinks = value;
+      },
+      setNewsLinksInternational(state, value) {
         state.newsLinks = value;
       }
     },
@@ -48,10 +52,12 @@ export default function(/* { ssrContext } */) {
         commit("setTotalInfectedItaly", value);
       },
       getNewsLinks({ commit }) {
-        axiosClient.get('/news-links')
-          .then(data => {
-            commit('setNewsLinks', data.data)
-          })
+        axiosClient.get("/news-links").then(data => {
+          commit("setNewsLinks", data.data);
+        });
+      },
+      setNewsLinksInternational({ commit }, value) {
+        commit("setNewsLinks", value);
       }
     },
 
