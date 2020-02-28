@@ -1,6 +1,6 @@
 <template>
-  <div class="q-pt-lg" style="max-width: 600px">
-    <div class="text-h6 text-red-9 no-padding">
+  <div class="q-pt-lg full-width" style="max-width: 800px">
+    <div class="text-h6 text-red-9">
       Ultimi aggiornamenti
     </div>
     <q-carousel
@@ -11,7 +11,7 @@
       animated
       infinite
       arrows
-      autoplay="3500"
+      :autoplay="timeout"
       padding
       height="60vh"
       class="bg-negative text-white shadow-1 rounded-borders"
@@ -69,12 +69,12 @@
 <script>
 import LinkPrevue from "link-prevue";
 import moment from "./../boot/moment";
+import axiosClient from "./../core/axiosClient";
 export default {
   data() {
     return {
       slide: "style",
-      lorem:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo."
+      timeout: 5000
     };
   },
   computed: {
@@ -108,8 +108,6 @@ export default {
           moment().format("YYYY-D-MM")
       )
       .then(response => {
-        console.log(response);
-
         let newsLinksInternational = [];
 
         response.data.articles.map(article => {
@@ -121,14 +119,16 @@ export default {
         );
       });
 
-    this.$axios.get(this.$matnessEndpoint + "/news-links").then(response => {
-      let newsLinks = [];
-      response.data.data.map(article => {
-        newsLinks.push(article);
-      });
+    axiosClient
+      .get("https://matness.it/api/v1/blockvid/news-links")
+      .then(response => {
+        let newsLinks = [];
+        response.data.data.map(article => {
+          newsLinks.push(article);
+        });
 
-      this.$store.dispatch("setNewsLinks", newsLinks);
-    });
+        this.$store.dispatch("setNewsLinks", newsLinks);
+      });
   },
   components: {
     LinkPrevue

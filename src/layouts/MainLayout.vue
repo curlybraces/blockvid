@@ -16,7 +16,7 @@
         </q-avatar>
 
         <q-toolbar-title>
-          Blockvid
+          blockvid
         </q-toolbar-title>
 
         <div>v-{{ version }}</div>
@@ -50,7 +50,7 @@
           </q-item-section>
         </q-item>
 
-        <!-- <q-item to="/auth">
+        <q-item to="/auth" v-if="!isLogged">
           <q-item-section avatar>
             <q-icon name="person" />
           </q-item-section>
@@ -58,7 +58,7 @@
           <q-item-section>
             Accedi
           </q-item-section>
-        </q-item> -->
+        </q-item>
 
         <q-item-label header class="text-grey-8">
           Link utili
@@ -86,13 +86,27 @@
 
     <q-page-container>
       <router-view />
+
+      <q-page-scroller expand position="bottom-right" :scroll-offset="150">
+        <q-btn round color="negative" class="animate-pop">
+          <q-icon name="keyboard_arrow_up" />
+        </q-btn>
+      </q-page-scroller>
     </q-page-container>
+
+    <q-footer>
+      <q-toolbar class="bg-red-9">
+        <q-toolbar-title></q-toolbar-title>
+        <div>&copy; {{ year }} - By Community</div>
+      </q-toolbar>
+    </q-footer>
   </q-layout>
 </template>
 
 <script>
 import EssentialLink from "components/EssentialLink";
 import { version } from "../../package.json";
+import moment from "moment";
 
 export default {
   name: "MainLayout",
@@ -102,6 +116,7 @@ export default {
   },
   data() {
     return {
+      year: moment().format("YYYY"),
       version: version,
       essentialLinks: [
         {
@@ -168,6 +183,9 @@ export default {
           !this.$store.state.leftDrawerOpen
         );
       }
+    },
+    isLogged() {
+      return this.$store.state.isLogged;
     }
   }
 };

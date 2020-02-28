@@ -1,6 +1,6 @@
 <template>
-  <q-page padding>
-    <div class="q-gutter-md q-pt-md" style="max-width: 600px">
+  <q-page class="row justify-center items-center" padding>
+    <div class="q-pt-lg full-width" style="max-width: 800px">
       <div class="text-center">
         <div class="text-h2">block<span class="text-red-9">vid</span></div>
         <div class="text-overline">insieme per una corretta informazione</div>
@@ -29,7 +29,86 @@
 
     <News />
 
-    <div class="q-gutter-md q-pt-md" style="max-width: 600px">
+    <div class="q-pt-lg full-width" style="max-width: 800px">
+      <div class="text-h6 text-red-9 no-padding">
+        Mappe interattive
+      </div>
+      <div class="q-pt-md">
+        <iframe
+          src="https://public.flourish.studio/visualisation/1437744/embed"
+          frameborder="0"
+          scrolling="no"
+          height="500"
+          class="full-width"
+          title="Gedi Visual Map"
+          style="margin; 0"
+        ></iframe>
+        <q-btn
+          type="a"
+          href="https://lab.gedidigital.it/gedi-visual/2020/coronavirus-i-contagi-in-italia/"
+          target="_blank"
+          label="Leggi altro"
+          flat
+          color="red-9"
+        />
+      </div>
+      <div class="q-pt-md">
+        <iframe
+          src="https://public.flourish.studio/visualisation/1462461/embed"
+          frameborder="0"
+          scrolling="no"
+          height="500"
+          marginheight="0"
+          class="full-width"
+          style="margin; 0"
+          title="Gedi Visual Map"
+        ></iframe>
+        <q-btn
+          type="a"
+          href="https://lab.gedidigital.it/gedi-visual/2020/coronavirus-i-contagi-in-italia/"
+          target="_blank"
+          label="Leggi altro"
+          flat
+          color="red-9"
+        />
+      </div>
+      <div class="q-pt-md">
+        <iframe
+          src="https://www.google.com/maps/d/embed?mid=17CmSRmkYLU2Zi0XQ0X1sO3ljqJTGEq0x&layer=tc&t=m"
+          height="500"
+          marginheight="0"
+          class="full-width"
+          style="margin; 0"
+          frameborder="0"
+          title="A map of countries with confirmed coronavirus cases, updated daily."
+        ></iframe>
+      </div>
+      <div class="q-pt-md">
+        <iframe
+          src="https://dataviz.nbcnews.com/projects/20200122-coronavirus-world-count/index.html?initialWidth=760&amp;childId=embed-20200122-coronavirus-world-count&amp;parentTitle=Coronavirus%20map%3A%20The%20COVID-19%20virus%20is%20spreading%20across%20the%20world.%20Here%27s%20where%20cases%20have%20been%20confirmed.&amp;parentUrl=https%3A%2F%2Fwww.nbcnews.com%2Fhealth%2Fhealth-news%2Fcoronavirus-map-confirmed-cases-2020-n1120686"
+          scrolling="no"
+          marginheight="0"
+          style="margin; 0"
+          frameborder="0"
+          title="A map of countries with confirmed coronavirus cases, updated daily."
+          height="500"
+          class="full-width"
+        ></iframe>
+        <q-btn
+          type="a"
+          href="https://www.nbcnews.com/health/health-news/coronavirus-map-confirmed-cases-2020-n1120686"
+          target="_blank"
+          label="Leggi altro"
+          flat
+          color="red-9"
+        />
+      </div>
+    </div>
+
+    <div class="q-pt-lg full-width" style="max-width: 800px">
+      <div class="text-h6 text-red-9 no-padding">
+        Dati ufficiali
+      </div>
       <q-table
         title="In italia"
         :data="totalInfectedItalyExploded"
@@ -62,7 +141,7 @@
               type="a"
               href="http://www.salute.gov.it/portale/nuovocoronavirus/dettaglioContenutiNuovoCoronavirus.jsp?lingua=italiano&id=5351&area=nuovoCoronavirus&menu=vuoto"
               target="_blank"
-              label="Visualizza fonte"
+              label="Leggi altro"
               flat
               color="red-9"
             />
@@ -71,54 +150,7 @@
       </q-table>
     </div>
 
-    <div class="q-gutter-md q-pt-md" style="max-width: 600px">
-      <div class="text-h6 text-red-9 no-padding">
-        Mappe
-      </div>
-      <iframe
-        src="https://public.flourish.studio/visualisation/1437744/embed"
-        frameborder="0"
-        scrolling="no"
-        height="500"
-        class="full-width"
-        title="Gedi Visual Map"
-        style="margin; 0"
-      ></iframe>
-
-      <iframe
-        src="https://public.flourish.studio/visualisation/1462461/embed"
-        frameborder="0"
-        scrolling="no"
-        height="500"
-        marginheight="0"
-        class="full-width"
-        style="margin; 0"
-        title="Gedi Visual Map"
-      ></iframe>
-
-      <iframe
-        src="https://www.google.com/maps/d/embed?mid=17CmSRmkYLU2Zi0XQ0X1sO3ljqJTGEq0x&layer=tc&t=m"
-        height="500"
-        marginheight="0"
-        class="full-width"
-        style="margin; 0"
-        frameborder="0"
-        title="A map of countries with confirmed coronavirus cases, updated daily."
-      ></iframe>
-
-      <iframe
-        src="https://dataviz.nbcnews.com/projects/20200122-coronavirus-world-count/index.html?initialWidth=760&amp;childId=embed-20200122-coronavirus-world-count&amp;parentTitle=Coronavirus%20map%3A%20The%20COVID-19%20virus%20is%20spreading%20across%20the%20world.%20Here%27s%20where%20cases%20have%20been%20confirmed.&amp;parentUrl=https%3A%2F%2Fwww.nbcnews.com%2Fhealth%2Fhealth-news%2Fcoronavirus-map-confirmed-cases-2020-n1120686"
-        scrolling="no"
-        marginheight="0"
-        style="margin; 0"
-        frameborder="0"
-        title="A map of countries with confirmed coronavirus cases, updated daily."
-        height="500"
-        class="full-width"
-      ></iframe>
-    </div>
-
-    <div class="q-gutter-md q-pt-md" style="max-width: 600px">
+    <div class="q-pt-lg full-width" style="max-width: 800px">
       <q-table
         title="Nel mondo"
         :data="covidData"
@@ -142,9 +174,9 @@
             I dati sono aggiornati al {{ lastUpdate.format("DD-MM-YYYY") }}
             <q-btn
               type="a"
-              :href="endpoint"
+              href="https://github.com/CSSEGISandData/COVID-19"
               target="_blank"
-              label="Visualizza report"
+              label="Leggi altro"
               flat
               color="red-9"
             />
@@ -153,7 +185,31 @@
       </q-table>
     </div>
 
-    <div class="q-gutter-md q-pt-md" style="max-width: 600px">
+    <div class="q-pt-lg full-width" style="max-width: 800px">
+      <div class="text-h6 text-red-9 no-padding">
+        Grafici sul contagio
+      </div>
+      <iframe
+        src="https://dataviz.nbcnews.com/projects/20200122-coronavirus-history-count/index.html?initialWidth=760&amp;childId=embed-20200122-coronavirus-history-count&amp;parentTitle=Coronavirus%20map%3A%20The%20COVID-19%20virus%20is%20spreading%20across%20the%20world.%20Here%27s%20where%20cases%20have%20been%20confirmed.&amp;parentUrl=https%3A%2F%2Fwww.nbcnews.com%2Fhealth%2Fhealth-news%2Fcoronavirus-map-confirmed-cases-2020-n1120686"
+        scrolling="no"
+        marginheight="0"
+        frameborder="0"
+        height="3000px"
+        class="full-width"
+        title="Chart: Confirmed coronavirus cases, per country"
+        style="margin: 0;"
+      ></iframe>
+      <q-btn
+        type="a"
+        href="https://www.nbcnews.com/health/health-news/coronavirus-map-confirmed-cases-2020-n1120686"
+        target="_blank"
+        label="Leggi altro"
+        flat
+        color="red-9"
+      />
+    </div>
+
+    <div class="q-pt-lg full-width" style="max-width: 800px">
       <q-card>
         <h4
           class="text-weight-bold text-center q-pt-sm"
