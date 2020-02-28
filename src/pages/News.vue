@@ -1,7 +1,7 @@
 <template>
-  <div class="q-pt-md" style="max-width: 600px">
+  <div class="q-pt-lg" style="max-width: 600px">
     <div class="text-h6 text-red-9 no-padding">
-      Notizie per te
+      Ultimi aggiornamenti
     </div>
     <q-carousel
       v-model="slide"
@@ -11,7 +11,7 @@
       animated
       infinite
       arrows
-      autoplay
+      autoplay="3500"
       padding
       height="60vh"
       class="bg-negative text-white shadow-1 rounded-borders"

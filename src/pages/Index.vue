@@ -36,6 +36,7 @@
         :columns="columnsItalyExploded"
         :filter="filterItalyExploded"
         :pagination.sync="paginationItalyExploded"
+        class="no-padding"
         row-key="name"
       >
         <template v-slot:top-right>
@@ -71,9 +72,48 @@
     </div>
 
     <div class="q-gutter-md q-pt-md" style="max-width: 600px">
+      <div class="text-h6 text-red-9 no-padding">
+        Mappe
+      </div>
       <iframe
-        src="https://www.google.com/maps/d/embed?mid=17CmSRmkYLU2Zi0XQ0X1sO3ljqJTGEq0x"
-        height="480"
+        src="https://public.flourish.studio/visualisation/1437744/embed"
+        frameborder="0"
+        scrolling="no"
+        height="500"
+        class="full-width"
+        title="Gedi Visual Map"
+        style="margin; 0"
+      ></iframe>
+
+      <iframe
+        src="https://public.flourish.studio/visualisation/1462461/embed"
+        frameborder="0"
+        scrolling="no"
+        height="500"
+        marginheight="0"
+        class="full-width"
+        style="margin; 0"
+        title="Gedi Visual Map"
+      ></iframe>
+
+      <iframe
+        src="https://www.google.com/maps/d/embed?mid=17CmSRmkYLU2Zi0XQ0X1sO3ljqJTGEq0x&layer=tc&t=m"
+        height="500"
+        marginheight="0"
+        class="full-width"
+        style="margin; 0"
+        frameborder="0"
+        title="A map of countries with confirmed coronavirus cases, updated daily."
+      ></iframe>
+
+      <iframe
+        src="https://dataviz.nbcnews.com/projects/20200122-coronavirus-world-count/index.html?initialWidth=760&amp;childId=embed-20200122-coronavirus-world-count&amp;parentTitle=Coronavirus%20map%3A%20The%20COVID-19%20virus%20is%20spreading%20across%20the%20world.%20Here%27s%20where%20cases%20have%20been%20confirmed.&amp;parentUrl=https%3A%2F%2Fwww.nbcnews.com%2Fhealth%2Fhealth-news%2Fcoronavirus-map-confirmed-cases-2020-n1120686"
+        scrolling="no"
+        marginheight="0"
+        style="margin; 0"
+        frameborder="0"
+        title="A map of countries with confirmed coronavirus cases, updated daily."
+        height="500"
         class="full-width"
       ></iframe>
     </div>

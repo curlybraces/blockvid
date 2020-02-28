@@ -11,6 +11,10 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
+        <q-avatar color="white">
+          <img src="/statics/app.png" />
+        </q-avatar>
+
         <q-toolbar-title>
           Blockvid
         </q-toolbar-title>
@@ -45,6 +49,16 @@
             News
           </q-item-section>
         </q-item>
+
+        <!-- <q-item to="/auth">
+          <q-item-section avatar>
+            <q-icon name="person" />
+          </q-item-section>
+
+          <q-item-section>
+            Accedi
+          </q-item-section>
+        </q-item> -->
 
         <q-item-label header class="text-grey-8">
           Link utili
