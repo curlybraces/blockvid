@@ -95,12 +95,12 @@ export default {
   data() {
     return {
       slide: "headerLink",
-      timeout: 5000
+      timeout: 10000
     };
   },
   computed: {
     headerLink() {
-      let headerNewsLink = this.$store.state.headerNewsLink;
+      let headerNewsLink = this.$store.state.headerNewsLinkInternational;
       return headerNewsLink;
     },
     newsLinksInternational() {
@@ -131,6 +131,7 @@ export default {
           }
         });
 
+        this.$store.dispatch("setHeaderNewsLinkInternational", headerNewsLink);
         this.$store.dispatch(
           "setNewsLinksInternational",
           newsLinksInternational

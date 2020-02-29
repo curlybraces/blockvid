@@ -4,7 +4,6 @@
       <q-dialog v-model="confirmDeleting" persistent>
         <q-card>
           <q-card-section class="row items-center">
-            <q-avatar icon="signal_wifi_off" color="red-9" text-color="white" />
             <span class="q-ml-sm">Sei sicuro di voler cancellare il link?</span>
           </q-card-section>
 

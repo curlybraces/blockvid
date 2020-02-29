@@ -95,7 +95,7 @@ export default {
   data() {
     return {
       slide: "headerLink",
-      timeout: 10000
+      timeout: 15000
     };
   },
   computed: {
