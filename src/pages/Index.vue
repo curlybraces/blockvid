@@ -38,7 +38,7 @@
           src="https://public.flourish.studio/visualisation/1437744/embed"
           frameborder="0"
           scrolling="no"
-          height="500"
+          height="600"
           class="full-width"
           title="Gedi Visual Map"
           style="margin; 0"
@@ -57,7 +57,7 @@
           src="https://public.flourish.studio/visualisation/1462461/embed"
           frameborder="0"
           scrolling="no"
-          height="500"
+          height="600"
           marginheight="0"
           class="full-width"
           style="margin; 0"
@@ -75,7 +75,7 @@
       <div class="q-pt-md">
         <iframe
           src="https://www.google.com/maps/d/embed?mid=17CmSRmkYLU2Zi0XQ0X1sO3ljqJTGEq0x&layer=tc&t=m"
-          height="500"
+          height="600"
           marginheight="0"
           class="full-width"
           style="margin; 0"
@@ -91,12 +91,32 @@
           style="margin; 0"
           frameborder="0"
           title="A map of countries with confirmed coronavirus cases, updated daily."
-          height="500"
+          height="600"
           class="full-width"
         ></iframe>
         <q-btn
           type="a"
           href="https://www.nbcnews.com/health/health-news/coronavirus-map-confirmed-cases-2020-n1120686"
+          target="_blank"
+          label="Leggi altro"
+          flat
+          color="red-9"
+        />
+      </div>
+      <div class="q-pt-md">
+        <iframe
+          src="https://public.flourish.studio/visualisation/1448957/embed"
+          scrolling="no"
+          marginheight="0"
+          style="margin; 0"
+          frameborder="0"
+          title="A map of countries with confirmed coronavirus cases, updated daily."
+          height="600"
+          class="full-width"
+        ></iframe>
+        <q-btn
+          type="a"
+          href="https://public.flourish.studio/visualisation/1448957/?utm_source=embed&utm_campaign=visualisation/1448957"
           target="_blank"
           label="Leggi altro"
           flat

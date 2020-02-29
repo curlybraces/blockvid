@@ -14,10 +14,10 @@
       :autoplay="timeout"
       padding
       height="30vh"
-      class="bg-negative text-white shadow-1 rounded-borders"
+      class="bg-transparent text-white shadow-1 rounded-borders"
     >
       <q-carousel-slide name="headerLink">
-        <link-prevue :url="headerLink.url">
+        <link-prevue cardWidth="100%" :url="headerLink.url">
           <template slot-scope="props">
             <q-parallax
               class="absolute-top"
@@ -53,7 +53,7 @@
         :name="link.url"
         class="column no-wrap flex-center"
       >
-        <link-prevue :url="link.url">
+        <link-prevue cardWidth="100%" :url="link.url">
           <template slot-scope="props">
             <q-parallax
               class="absolute-top"
