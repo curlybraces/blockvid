@@ -120,7 +120,7 @@ export default {
       });
 
     axiosClient
-      .get("https://matness.it/api/v1/blockvid/news-links")
+      .get(this.$matnessEndpoint + "/v1/blockvid/news-links")
       .then(response => {
         let newsLinks = [];
         response.data.data.map(article => {

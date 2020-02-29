@@ -9,3 +9,4 @@ Vue.prototype.$newsApiEndpoint =
 
 // Matness Backend
 Vue.prototype.$matnessEndpoint = "https://matness.it/api";
+// Vue.prototype.$matnessEndpoint = "http://localhost:8000/api";

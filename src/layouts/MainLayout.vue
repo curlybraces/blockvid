@@ -60,6 +60,14 @@
           </q-item-section>
         </q-item>
 
+        <q-item v-if="isLogged">
+          <q-item-section avatar>
+            <q-icon name="person" />
+          </q-item-section>
+
+          <q-item-section>{{ userProfile.name }}</q-item-section>
+        </q-item>
+
         <q-item-label header class="text-grey-8">
           Link utili
         </q-item-label>
@@ -86,12 +94,6 @@
 
     <q-page-container>
       <router-view />
-
-      <q-page-scroller expand position="bottom-right" :scroll-offset="150">
-        <q-btn round color="negative" class="animate-pop">
-          <q-icon name="keyboard_arrow_up" />
-        </q-btn>
-      </q-page-scroller>
     </q-page-container>
 
     <q-footer>
@@ -107,6 +109,7 @@
 import EssentialLink from "components/EssentialLink";
 import { version } from "../../package.json";
 import moment from "moment";
+import { userHasValidToken, getUserProfile } from "../core/user";
 
 export default {
   name: "MainLayout",
@@ -172,6 +175,11 @@ export default {
       ]
     };
   },
+  mounted() {
+    userHasValidToken().then(() => {
+      getUserProfile();
+    });
+  },
   computed: {
     leftDrawerOpen: {
       get() {
@@ -186,6 +194,14 @@ export default {
     },
     isLogged() {
       return this.$store.state.isLogged;
+    },
+    userProfile() {
+      return this.$store.state.userProfile;
+    },
+    styleUserProfile() {
+      return this.isLogged
+        ? "height: calc(100% - 100px); margin-top: 100px; border-right: 1px solid #ddd"
+        : "height: 100%";
     }
   }
 };

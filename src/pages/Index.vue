@@ -194,8 +194,8 @@
         scrolling="no"
         marginheight="0"
         frameborder="0"
-        height="3000px"
-        class="full-width"
+        height="3500px"
+        class="full-width auto-height"
         title="Chart: Confirmed coronavirus cases, per country"
         style="margin: 0;"
       ></iframe>
@@ -332,26 +332,38 @@ export default {
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 403
+          total: 531
         },
         {
           region: "Veneto",
-          total: 111
+          total: 151
         },
         {
           region: "Emilia Romagna",
-          total: 97
+          total: 145
         },
         {
           region: "Liguria",
           total: 19
         },
         {
-          region: "Sicilia",
+          region: "Piemonte",
+          total: 11
+        },
+        {
+          region: "Toscana",
+          total: 8
+        },
+        {
+          region: "Marche",
+          total: 6
+        },
+        {
+          region: "Campania",
           total: 4
         },
         {
-          region: "Piemonte",
+          region: "Sicilia",
           total: 3
         },
         {
@@ -359,16 +371,12 @@ export default {
           total: 3
         },
         {
-          region: "Marche",
+          region: "Calabria",
           total: 3
         },
         {
-          region: "Toscana",
-          total: 2
-        },
-        {
-          region: "Campania",
-          total: 2
+          region: "Puglia",
+          total: 3
         },
         {
           region: "Trentino Alto Adige",
@@ -376,10 +384,6 @@ export default {
         },
         {
           region: "Abruzzo",
-          total: 1
-        },
-        {
-          region: "Puglia",
           total: 1
         }
       ]
@@ -396,12 +400,24 @@ export default {
         let endpoint = this.endpoint;
         let data = this.today.subtract(1, "days");
 
-        this.prepareData(endpoint, data).then(response => {
-          this.covidData = response;
+        this.prepareData(endpoint, data)
+          .then(response => {
+            this.covidData = response;
 
-          this.formalize(response);
-          this.lastUpdate = data;
-        });
+            this.formalize(response);
+            this.lastUpdate = data;
+          })
+          .catch(error => {
+            let endpoint = this.endpoint;
+            let data = this.today.subtract(2, "days");
+
+            this.prepareData(endpoint, data).then(response => {
+              this.covidData = response;
+
+              this.formalize(response);
+              this.lastUpdate = data;
+            });
+          });
       });
   },
   methods: {

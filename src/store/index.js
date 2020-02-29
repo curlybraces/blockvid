@@ -17,8 +17,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     isLogged: false,
-    isValidToken: null,
+    userProfile: Object,
     leftDrawerOpen: false,
+    isValidToken: null,
     totalInfected: 0,
     totalInfectedItaly: 0,
     newsLinks: [],
@@ -42,6 +43,9 @@ export default new Vuex.Store({
     },
     isLogged(state, value) {
       state.isLogged = value;
+    },
+    setUserProfile(state, value) {
+      state.userProfile = value;
     }
   },
   actions: {
@@ -62,6 +66,9 @@ export default new Vuex.Store({
     },
     isLogged({ commit }, value) {
       commit("isLogged", value);
+    },
+    setUserProfile({ commit }, value) {
+      commit("setUserProfile", value);
     }
   },
 

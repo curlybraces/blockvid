@@ -82,7 +82,7 @@ export default {
       };
 
       axiosClient
-        .post("https://matness.it/api/auth", payloadLogin)
+        .post(this.$matnessEndpoint + "/auth", payloadLogin)
         .then(response => {
           localStorage.setItem("token", response.data.data);
 
