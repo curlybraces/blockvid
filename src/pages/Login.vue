@@ -86,12 +86,12 @@ export default {
         .then(response => {
           localStorage.setItem("token", response.data.data);
 
+          this.$store.dispatch("isLogged", true);
+          
+          this.isExecutingLogin = false;
           this.$router.push({
             name: "index"
           });
-
-          this.$store.dispatch("isLogged", true);
-          this.isExecutingLogin = false;
         })
         .catch(error => {
           this.$q.notify({

@@ -19,6 +19,7 @@ export default new Vuex.Store({
     isLogged: false,
     userProfile: Object,
     leftDrawerOpen: false,
+    confirmDeletingDialogOpen: false,
     isValidToken: null,
     totalInfected: 0,
     totalInfectedItaly: 0,
@@ -46,6 +47,9 @@ export default new Vuex.Store({
     },
     setUserProfile(state, value) {
       state.userProfile = value;
+    },
+    setConfirmDeletingDialogOpen(state, value) {
+      state.confirmDeletingDialogOpen = value;
     }
   },
   actions: {
@@ -69,6 +73,9 @@ export default new Vuex.Store({
     },
     setUserProfile({ commit }, value) {
       commit("setUserProfile", value);
+    },
+    setConfirmDeletingDialogOpen({ commit }, value) {
+      commit("setConfirmDeletingDialogOpen", value);
     }
   },
 
