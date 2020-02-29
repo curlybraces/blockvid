@@ -1,7 +1,7 @@
 <template>
   <div class="q-pt-lg full-width" style="max-width: 800px">
     <div class="text-h6 text-red-9">
-      Ultimi aggiornamenti
+      <q-icon name="library_books" /> Ultimi aggiornamenti
     </div>
     <q-carousel
       v-model="slide"

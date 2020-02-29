@@ -21,6 +21,17 @@ const routes = [
         meta: {
           redirectLogged: "index"
         }
+      },
+      {
+        path: "/admin",
+        component: () => import("layouts/AdminLayout.vue"),
+        children: [
+          {
+            path: "/admin",
+            name: "admin",
+            component: () => import("pages/Admin.vue")
+          }
+        ]
       }
     ]
   }

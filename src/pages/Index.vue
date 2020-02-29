@@ -31,7 +31,7 @@
 
     <div class="q-pt-lg full-width" style="max-width: 800px">
       <div class="text-h6 text-red-9 no-padding">
-        Mappe interattive
+        <q-icon name="map" /> Mappe interattive
       </div>
       <div class="q-pt-md">
         <iframe
@@ -107,7 +107,7 @@
 
     <div class="q-pt-lg full-width" style="max-width: 800px">
       <div class="text-h6 text-red-9 no-padding">
-        Dati ufficiali
+        <q-icon name="done_all" /> Dati ufficiali
       </div>
       <q-table
         title="In italia"
@@ -187,7 +187,7 @@
 
     <div class="q-pt-lg full-width" style="max-width: 800px">
       <div class="text-h6 text-red-9 no-padding">
-        Grafici sul contagio
+        <q-icon name="timeline" /> Grafici sul contagio
       </div>
       <iframe
         src="https://dataviz.nbcnews.com/projects/20200122-coronavirus-history-count/index.html?initialWidth=760&amp;childId=embed-20200122-coronavirus-history-count&amp;parentTitle=Coronavirus%20map%3A%20The%20COVID-19%20virus%20is%20spreading%20across%20the%20world.%20Here%27s%20where%20cases%20have%20been%20confirmed.&amp;parentUrl=https%3A%2F%2Fwww.nbcnews.com%2Fhealth%2Fhealth-news%2Fcoronavirus-map-confirmed-cases-2020-n1120686"

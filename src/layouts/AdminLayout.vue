@@ -16,7 +16,7 @@ import BlockvidFooter from "components/BlockvidFooter";
 import { userHasValidToken, getUserProfile } from "../core/user";
 
 export default {
-  name: "MainLayout",
+  name: "AdminLayout",
   components: {
     BlockvidHeader,
     BlockvidFooter
