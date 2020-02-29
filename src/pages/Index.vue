@@ -1,187 +1,271 @@
 <template>
-  <q-page padding>
-    <div class="q-gutter-md q-pt-md">
-      <q-card>
-        <q-img
-          height="250px"
-          src="https://upload.wikimedia.org/wikipedia/commons/7/72/2019-nCoV-CDC-23312_without_background.png"
-        />
-
-        <q-card-section>
-          <!--  -->
-          <div class="row items-center">
-            <div class="col text-h6 ellipsis">
-              COVID-19
-            </div>
-            <div
-              class="col-auto text-grey text-caption q-pt-md row no-wrap items-center"
-            ></div>
+  <q-page class="row justify-center items-center" padding>
+    <div class="q-pt-lg full-width" style="max-width: 800px">
+      <div class="text-center">
+        <div class="text-h2">block<span class="text-red-9">vid</span></div>
+        <div class="text-overline">insieme per una corretta informazione</div>
+      </div>
+      <div class="text-center">
+        <div class="row text-red-3">
+          <div class="col">
+            <span class="text-h6"
+              ><b>{{
+                totalInfectedItalyExploded.reduce((a, b) => {
+                  return Number(a) + Number(b.total);
+                }, 0)
+              }}</b></span
+            >
+            ITALIA
           </div>
-        </q-card-section>
-      </q-card>
-    </div>
-
-    <div class="q-gutter-md q-pt-md">
-      <q-card>
-        <q-card-section class="q-pt-md">
-          <div class="text-subtitle">
-            <b>{{
-              totalInfectedItalyExploded.reduce((a, b) => {
-                return Number(a) + Number(b.total);
-              }, 0)
-            }}</b>
-            INFETTI IN ITALIA
+          <div class="col">
+            <span class="text-h6">
+              <b>{{ totalInfected }}</b></span
+            >
+            MONDO
           </div>
-          <div class="text-caption text-grey">
-            Il corona virus ha infettato circa
-            <b>{{ totalInfected }}</b> persone nel mondo. <br />
-          </div>
-        </q-card-section>
-      </q-card>
-    </div>
-
-    <div class="q-gutter-md q-pt-md">
-      <q-card>
-        <div class="q-pb-md">
-          <q-table
-            title="In italia"
-            :data="totalInfectedItalyExploded"
-            :columns="columnsItalyExploded"
-            :filter="filterItalyExploded"
-            :pagination.sync="paginationItalyExploded"
-            row-key="name"
-          >
-            <template v-slot:top-right>
-              <q-input
-                dense
-                borderless
-                debounce="300"
-                v-model="filterItalyExploded"
-                placeholder="Ricerca..."
-              />
-            </template>
-
-            <template v-slot:bottom>
-              Totale
-              <div class="text-body1 q-ml-lg">
-                <b>
-                  {{
-                    totalInfectedItalyExploded.reduce((a, b) => {
-                      return Number(a) + Number(b.total);
-                    }, 0)
-                  }}
-                </b>
-              </div>
-              <q-btn
-                v-if="!showSource"
-                @click.stop="showSource = !showSource"
-                label="Visualizza fonte"
-                flat
-                color="red-9"
-              />
-              <q-btn
-                v-if="showSource"
-                @click.stop="showSource = !showSource"
-                label="Nascondi fonte"
-                flat
-                color="red-9"
-              />
-            </template>
-          </q-table>
         </div>
-      </q-card>
+      </div>
     </div>
 
-    <div class="q-gutter-md q-pt-md">
-      <q-card>
-        <div class="q-pb-md" v-if="showSource">
-          <link-prevue :url="sourceTotalInfectedItalyExploded">
-            <template slot-scope="props">
-              <q-card class="my-card">
-                <q-parallax :src="props.img" :alt="props.title" :height="250" />
+    <News />
 
-                <q-card-section>
-                  <div class="text-h6">{{ props.title }}</div>
-                  <div class="text-subtitle2">{{ props.description }}</div>
-                </q-card-section>
-
-                <q-card-section>
-                  <q-btn
-                    type="a"
-                    :href="props.url"
-                    target="_blank"
-                    label="Leggi altro"
-                    flat
-                    color="red-9"
-                  />
-                </q-card-section>
-              </q-card>
-            </template>
-          </link-prevue>
-        </div>
-      </q-card>
-    </div>
-
-    <div class="q-gutter-md q-pt-md">
-      <q-card>
+    <div class="q-pt-lg full-width" style="max-width: 800px">
+      <div class="text-h6 text-red-9 no-padding">
+        <q-icon name="map" /> Mappe interattive
+      </div>
+      <div class="q-pt-md">
         <iframe
-          src="https://www.google.com/maps/d/embed?mid=17CmSRmkYLU2Zi0XQ0X1sO3ljqJTGEq0x"
-          height="480"
+          src="https://public.flourish.studio/visualisation/1437744/embed"
+          frameborder="0"
+          scrolling="no"
+          height="600"
           class="full-width"
-          style="border: 0; margin: 0; padding: 0"
+          title="Gedi Visual Map"
+          style="margin; 0"
         ></iframe>
-      </q-card>
+        <q-btn
+          type="a"
+          href="https://lab.gedidigital.it/gedi-visual/2020/coronavirus-i-contagi-in-italia/"
+          target="_blank"
+          label="Leggi altro"
+          flat
+          color="red-9"
+        />
+      </div>
+      <div class="q-pt-md">
+        <iframe
+          src="https://public.flourish.studio/visualisation/1462461/embed"
+          frameborder="0"
+          scrolling="no"
+          height="600"
+          marginheight="0"
+          class="full-width"
+          style="margin; 0"
+          title="Gedi Visual Map"
+        ></iframe>
+        <q-btn
+          type="a"
+          href="https://lab.gedidigital.it/gedi-visual/2020/coronavirus-i-contagi-in-italia/"
+          target="_blank"
+          label="Leggi altro"
+          flat
+          color="red-9"
+        />
+      </div>
+      <div class="q-pt-md">
+        <iframe
+          src="https://www.google.com/maps/d/embed?mid=17CmSRmkYLU2Zi0XQ0X1sO3ljqJTGEq0x&layer=tc&t=m"
+          height="600"
+          marginheight="0"
+          class="full-width"
+          style="margin; 0"
+          frameborder="0"
+          title="A map of countries with confirmed coronavirus cases, updated daily."
+        ></iframe>
+      </div>
+      <div class="q-pt-md">
+        <iframe
+          src="https://dataviz.nbcnews.com/projects/20200122-coronavirus-world-count/index.html?initialWidth=760&amp;childId=embed-20200122-coronavirus-world-count&amp;parentTitle=Coronavirus%20map%3A%20The%20COVID-19%20virus%20is%20spreading%20across%20the%20world.%20Here%27s%20where%20cases%20have%20been%20confirmed.&amp;parentUrl=https%3A%2F%2Fwww.nbcnews.com%2Fhealth%2Fhealth-news%2Fcoronavirus-map-confirmed-cases-2020-n1120686"
+          scrolling="no"
+          marginheight="0"
+          style="margin; 0"
+          frameborder="0"
+          title="A map of countries with confirmed coronavirus cases, updated daily."
+          height="600"
+          class="full-width"
+        ></iframe>
+        <q-btn
+          type="a"
+          href="https://www.nbcnews.com/health/health-news/coronavirus-map-confirmed-cases-2020-n1120686"
+          target="_blank"
+          label="Leggi altro"
+          flat
+          color="red-9"
+        />
+      </div>
+      <div class="q-pt-md">
+        <iframe
+          src="https://public.flourish.studio/visualisation/1448957/embed"
+          scrolling="no"
+          marginheight="0"
+          style="margin; 0"
+          frameborder="0"
+          title="A map of countries with confirmed coronavirus cases, updated daily."
+          height="600"
+          class="full-width"
+        ></iframe>
+        <q-btn
+          type="a"
+          href="https://public.flourish.studio/visualisation/1448957/?utm_source=embed&utm_campaign=visualisation/1448957"
+          target="_blank"
+          label="Leggi altro"
+          flat
+          color="red-9"
+        />
+      </div>
     </div>
 
-    <div class="q-gutter-md q-pt-md">
-      <q-card>
-        <div class="q-pb-md">
-          <q-table
-            title="Nel mondo"
-            :data="covidData"
-            :columns="columns"
-            :filter="filter"
-            row-key="name"
-          >
-            <template v-slot:top-right>
-              <q-input
-                dense
-                borderless
-                debounce="300"
-                v-model="filter"
-                placeholder="Ricerca..."
-              >
-              </q-input>
-            </template>
-          </q-table>
-        </div>
-
-        <q-card-section class="q-pt-none">
-          <div class="text-caption">
-            I dati sono aggiornati al {{ lastUpdate.format("DD-MM-YYYY") }}
+    <div class="q-pt-lg full-width" style="max-width: 800px">
+      <div class="text-h6 text-red-9 no-padding">
+        <q-icon name="done_all" /> Dati ufficiali
+      </div>
+      <q-table
+        title="In italia"
+        :data="totalInfectedItalyExploded"
+        :columns="columnsItalyExploded"
+        :filter="filterItalyExploded"
+        :pagination.sync="paginationItalyExploded"
+        class="no-padding"
+        row-key="name"
+      >
+        <template v-slot:top-right>
+          <q-input
+            dense
+            borderless
+            debounce="300"
+            v-model="filterItalyExploded"
+            placeholder="Ricerca..."
+          />
+        </template>
+        <template v-slot:bottom>
+          Totale
+          <div class="text-body1 q-ml-lg">
+            <b>
+              {{
+                totalInfectedItalyExploded.reduce((a, b) => {
+                  return Number(a) + Number(b.total);
+                }, 0)
+              }}
+            </b>
             <q-btn
               type="a"
-              :href="endpoint"
+              href="http://www.salute.gov.it/portale/nuovocoronavirus/dettaglioContenutiNuovoCoronavirus.jsp?lingua=italiano&id=5351&area=nuovoCoronavirus&menu=vuoto"
               target="_blank"
-              label="Visualizza report"
+              label="Leggi altro"
               flat
               color="red-9"
             />
           </div>
-        </q-card-section>
-
-        <q-separator />
-
-        <q-card-actions>
-          <div id="action1" @click="leftDrawerOpen = !leftDrawerOpen">
-            <q-btn flat round icon="book" />
-            <q-btn flat color="primary">Leggi altro</q-btn>
-          </div>
-        </q-card-actions>
-      </q-card>
+        </template>
+      </q-table>
     </div>
 
-    <div class="q-gutter-md q-pt-md">
+    <div class="q-pt-lg full-width" style="max-width: 800px">
+      <q-table
+        title="Nel mondo"
+        :data="covidData"
+        :columns="columns"
+        :filter="filter"
+        row-key="name"
+      >
+        <template v-slot:top-right>
+          <q-input
+            dense
+            borderless
+            debounce="300"
+            v-model="filter"
+            placeholder="Ricerca..."
+          >
+          </q-input>
+        </template>
+
+        <template v-slot:bottom>
+          <div class="text-caption">
+            I dati sono aggiornati al {{ lastUpdate.format("DD-MM-YYYY") }}
+            <q-btn
+              type="a"
+              href="https://github.com/CSSEGISandData/COVID-19"
+              target="_blank"
+              label="Leggi altro"
+              flat
+              color="red-9"
+            />
+          </div>
+        </template>
+      </q-table>
+    </div>
+
+    <div class="q-pt-lg full-width" style="max-width: 800px">
+      <div class="text-h6 text-red-9 no-padding">
+        <q-icon name="timeline" /> Grafici sul contagio
+      </div>
+      <iframe
+        src="https://dataviz.nbcnews.com/projects/20200122-coronavirus-history-count/index.html?initialWidth=760&amp;childId=embed-20200122-coronavirus-history-count&amp;parentTitle=Coronavirus%20map%3A%20The%20COVID-19%20virus%20is%20spreading%20across%20the%20world.%20Here%27s%20where%20cases%20have%20been%20confirmed.&amp;parentUrl=https%3A%2F%2Fwww.nbcnews.com%2Fhealth%2Fhealth-news%2Fcoronavirus-map-confirmed-cases-2020-n1120686"
+        scrolling="no"
+        marginheight="0"
+        frameborder="0"
+        height="3500px"
+        class="full-width auto-height"
+        title="Chart: Confirmed coronavirus cases, per country"
+        style="margin: 0;"
+      ></iframe>
+      <q-btn
+        type="a"
+        href="https://www.nbcnews.com/health/health-news/coronavirus-map-confirmed-cases-2020-n1120686"
+        target="_blank"
+        label="Leggi altro"
+        flat
+        color="red-9"
+      />
+    </div>
+
+    <div class="q-pt-lg full-width" style="max-width: 800px">
+      <div class="text-h6 text-red-9 no-padding">
+        <q-icon name="healing" /> Proteggi te stesso e gli altri
+      </div>
+      <div class="row">
+        <q-img
+          src="https://www.who.int/images/default-source/health-topics/coronavirus/social-media-squares/blue-1.png"
+          style="width: 50%"
+        >
+        </q-img>
+        <q-img
+          src="https://www.who.int/images/default-source/health-topics/coronavirus/social-media-squares/blue-2.png"
+          style="width: 50%"
+        >
+        </q-img>
+        <q-img
+          src="https://www.who.int/images/default-source/health-topics/coronavirus/social-media-squares/blue-3.png"
+          style="width: 50%"
+        >
+        </q-img>
+        <q-img
+          src="https://www.who.int/images/default-source/health-topics/coronavirus/social-media-squares/blue-4.png"
+          style="width: 50%"
+        >
+        </q-img>
+        <q-btn
+          type="a"
+          href="https://www.nbcnews.com/health/health-news/coronavirus-map-confirmed-cases-2020-n1120686"
+          target="_blank"
+          label="World Health Organization"
+          flat
+          color="red-9"
+        />
+      </div>
+    </div>
+
+    <div class="q-pt-lg full-width" style="max-width: 800px">
       <q-card>
         <h4
           class="text-weight-bold text-center q-pt-sm"
@@ -213,13 +297,15 @@
 </template>
 
 <script>
+import News from "./../components/News";
+
 import moment from "./../boot/moment";
-import LinkPrevue from "link-prevue";
+import { questions } from "../misc/questions";
 
 export default {
   name: "PageIndex",
   components: {
-    LinkPrevue
+    News
   },
   data() {
     return {
@@ -228,74 +314,7 @@ export default {
       today: moment(),
       covidData: [],
       lastUpdate: moment(),
-      questions: [
-        {
-          q: "Che cos'è un Coronavirus?",
-          a:
-            "I Coronavirus sono una vasta famiglia di virus noti per causare malattie che vanno dal comune raffreddore a malattie più gravi come la Sindrome respiratoria mediorientale (MERS) e la Sindrome respiratoria acuta grave (SARS) " +
-            "Sono virus RNA a filamento positivo, con aspetto simile a una corona al microscopio elettronico. La sottofamiglia Orthocoronavirinae della famiglia Coronaviridae è classificata in quattro generi di coronavirus (CoV): Alpha-, Beta-, Delta-- e Gammacoronavirus. Il genere del betacoronavirus è ulteriormente separato in cinque sottogeneri (tra i quali il Sarbecovirus)." +
-            "I Coronavirus sono stati identificati a metà degli anni '60 e sono noti per infettare l'uomo ed alcuni animali (inclusi uccelli e mammiferi). Le cellule bersaglio primarie sono quelle epiteliali del tratto respiratorio e gastrointestinale." +
-            "Ad oggi, sette Coronavirus hanno dimostrato di essere in grado di infettare l'uomo:" +
-            "Coronavirus umani comuni: HCoV-OC43 e HCoV-HKU1 (Betacoronavirus) e HCoV-229E e HCoV-NL63 (Alphacoronavirus); essi possono causare raffreddori comuni ma anche gravi infezioni del tratto respiratorio inferiore. " +
-            "Altri Coronavirus umani (Betacoronavirus): SARS-CoV, MERS-CoV e 2019-nCoV (ora denominato SARS-CoV-2)"
-        },
-        {
-          q: "Che cos'è un nuovo Coronavirus?",
-          a:
-            "Un nuovo Coronavirus (nCoV) è un nuovo ceppo di coronavirus che non è stato precedentemente mai identificato nell'uomo. In particolare quello denominato SARS-CoV-2 (precedentemente 2019-nCoV), non è mai stato identificato prima di essere segnalato a Wuhan, Cina, a dicembre 2019."
-        },
-        {
-          q: "Cosa è il SARS-Cov-2?",
-          a:
-            "Il virus che causa l'attuale epidemia di coronavirus è stato chiamato \"Sindrome respiratoria acuta grave coronavirus 2\" (SARS-CoV-2). Lo ha comunicato l'International Committee on Taxonomy of Viruses (ICTV) che si occupa della designazione e della denominazione dei virus (ovvero specie, genere, famiglia, ecc.). A indicare il nome un gruppo di esperti appositamente incaricati di studiare il nuovo ceppo di coronavirus. Secondo questo pool di scienziati il nuovo coronavirus virus è fratello di quello che ha provocato la Sars (SARS-CoVs), da qui il nome scelto di SARS-CoV-2."
-        },
-        {
-          q: "Cosa è la COVID-19?",
-          a:
-            'La malattia provocata dal nuovo Coronavirus ha un nome: \“COVID-19\” (dove "CO" sta per corona, "VI" per virus, "D" per disease e "19" indica l\'anno in cui si è manifestata). Lo ha annunciato, l’11 febbraio 2020, nel briefing con la stampa durante una pausa del Forum straordinario dedicato al virus, il Direttore generale dell’Oms Tedros Adhanom Ghebreyesus.'
-        },
-        {
-          q: "Il nuovo Coronavirus è lo stesso della SARS?",
-          a:
-            "No. il nuovo Coronavirus (ora denominato SARS-CoV-2 e già denominato 2019-nCoV) appartiene alla stessa famiglia di virus della Sindrome Respiratoria Acuta Grave (SARS) ma non è lo stesso virus. " +
-            "Il nuovo Coronavirus, responsabile della malattia respiratoria ora denominata COVID-19, è strettamente correlato al SARS-CoV e si classifica geneticamente all'interno del sottogenere Betacoronavirus Sarbecovirus."
-        },
-        {
-          q: "Quali sono i sintomi di una persona infetta da un Coronavirus?",
-          a:
-            "Dipende dal virus, ma i sintomi più comuni includono febbre, tosse, difficoltà respiratorie. Nei casi più gravi, l'infezione può causare polmonite, sindrome respiratoria acuta grave, insufficienza renale e persino la morte. "
-        },
-        {
-          q: "Quanto è pericoloso il nuovo virus?",
-          a:
-            "Come altre malattie respiratorie, l’infezione da nuovo coronavirus può causare sintomi lievi come raffreddore, mal di gola, tosse e febbre, oppure sintomi più severi quali polmonite e difficoltà respiratorie. Raramente può essere fatale." +
-            "Le persone più suscettibili alle forme gravi sono gli anziani e quelle con malattie pre-esistenti, quali diabete e malattie cardiache."
-        },
-        {
-          q:
-            "Qual è la differenza tra i sintomi dell’influenza, di un raffreddore comune e del nuovo Coronavirus?",
-          a:
-            "I sintomi sono simili e consistono in tosse, febbre, raffreddore. Sono tuttavia causati da virus differenti, pertanto, in caso di sospetto di Coronavirus, è necessario effettuare esami di laboratorio per confermare la diagnosi."
-        },
-        {
-          q:
-            "I Coronavirus e il nuovo Coronavirus possono essere trasmessi da persona a persona?",
-          a:
-            "Sì, alcuni Coronavirus possono essere trasmessi da persona a persona, di solito dopo un contatto stretto con un paziente infetto, ad esempio tra familiari o in ambiente sanitario." +
-            "Anche il nuovo Coronavirus responsabile della malattia respiratoria COVID-19 può essere trasmesso da persona a persona tramite un contatto stretto con un caso infetto."
-        },
-        {
-          q: "Come si trasmette il nuovo Coronavirus da persona a persona?",
-          a:
-            "Il nuovo Coronavirus è un virus respiratorio che si diffonde principalmente attraverso il contatto stretto con una persona malata. La via primaria sono le  goccioline del respiro delle persone infette ad esempio tramite: " +
-            "la saliva, tossendo e starnutendo " +
-            "contatti diretti personali" +
-            "le mani, ad esempio toccando con le mani contaminate (non ancora lavate) bocca, naso o occhi" +
-            "In casi rari il contagio può avvenire attraverso contaminazione fecale." +
-            "Normalmente le malattie respiratorie non si tramettono con gli alimenti, che comunque devono essere manipolati rispettando le buone pratiche igieniche ed evitando il contatto fra alimenti crudi e cotti." +
-            "Studi sono in corso per comprendere meglio le modalità di trasmissione del virus."
-        }
-      ],
+      questions: questions,
       rand: Math.floor(Math.random() * 10),
       columns: [
         {
@@ -304,7 +323,8 @@ export default {
           field: row => row[1],
           format: (val, row) => `${val}` + (row[0] ? ` [${row[0]}]` : ``),
           // sortable: true,
-          align: "left"
+          align: "left",
+          sort: 1
         },
         // {
         //   name: "province",
@@ -330,7 +350,7 @@ export default {
         },
         {
           name: "recovered",
-          label: "Ricoverati",
+          label: "Guariti",
           field: row => row[5],
           // sortable: true,
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
@@ -365,43 +385,61 @@ export default {
         }
       ],
       showSource: false,
-      sourceTotalInfectedItalyExploded:
-        "https://www.ilfattoquotidiano.it/2020/02/25/coronavirus-diretta-oltre-280-contagi-ce-il-primo-al-sud-e-donna-bergamasca-in-vacanza-a-palermo-borrelli-conferma-due-casi-in-toscana-positivi-due-studenti-del-medico-contagiato-a-milano/5716419/",
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 240
-        },
-        {
-          region: "Veneto",
-          total: 43
+          total: 552
         },
         {
           region: "Emilia Romagna",
-          total: 26
+          total: 213
+        },
+        {
+          region: "Veneto",
+          total: 189
+        },
+        {
+          region: "Liguria",
+          total: 38
+        },
+        {
+          region: "Campania",
+          total: 13
         },
         {
           region: "Piemonte",
-          total: 3
+          total: 11
+        },
+        {
+          region: "Marche",
+          total: 11
+        },
+        {
+          region: "Toscana",
+          total: 10
         },
         {
           region: "Lazio",
           total: 3
         },
         {
-          region: "Sicilia",
+          region: "Puglia",
           total: 3
         },
         {
-          region: "Liguria",
+          region: "Sicilia",
           total: 2
         },
         {
-          region: "Toscana",
+          region: "Abruzzo",
           total: 2
         },
         {
-          region: "Alto Adige",
+          region: "Calabria",
+          total: 1
+        },
+        {
+          region: "Trentino Alto Adige",
           total: 1
         }
       ]
@@ -418,12 +456,24 @@ export default {
         let endpoint = this.endpoint;
         let data = this.today.subtract(1, "days");
 
-        this.prepareData(endpoint, data).then(response => {
-          this.covidData = response;
+        this.prepareData(endpoint, data)
+          .then(response => {
+            this.covidData = response;
 
-          this.formalize(response);
-          this.lastUpdate = data;
-        });
+            this.formalize(response);
+            this.lastUpdate = data;
+          })
+          .catch(error => {
+            let endpoint = this.endpoint;
+            let data = this.today.subtract(2, "days");
+
+            this.prepareData(endpoint, data).then(response => {
+              this.covidData = response;
+
+              this.formalize(response);
+              this.lastUpdate = data;
+            });
+          });
       });
   },
   methods: {
