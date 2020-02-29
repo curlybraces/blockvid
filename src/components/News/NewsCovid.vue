@@ -116,7 +116,7 @@ export default {
           "&country=it" +
           "&sortBy=published" +
           "&from=" +
-          moment().format("YYYY-D-MM")
+          moment().subtract(1, "days").format("YYYY-DD-MM")
       )
       .then(response => {
         let responseNewsLinks = response.data.articles;
