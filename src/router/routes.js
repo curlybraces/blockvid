@@ -10,11 +10,6 @@ const routes = [
         component: () => import("pages/Index.vue")
       },
       {
-        path: "/news",
-        name: "newsList",
-        component: () => import("pages/News.vue")
-      },
-      {
         path: "/auth",
         name: "login",
         component: () => import("pages/Login.vue"),

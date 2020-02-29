@@ -1,7 +1,7 @@
 <template>
-  <div class="q-pt-lg full-width" style="max-width: 800px">
+  <div class="q-pt-md" id="NewsCovid">
     <div class="text-h6 text-red-9">
-      <q-icon name="library_books" /> Ultimi aggiornamenti
+      <q-icon name="library_books" /> Notizie per te
     </div>
     <q-carousel
       v-model="slide"
@@ -16,7 +16,7 @@
       height="60vh"
       class="bg-negative text-white shadow-1 rounded-borders"
     >
-      <q-carousel-slide name="style">
+      <q-carousel-slide name="headerLink">
         <link-prevue :url="headerLink.url">
           <template slot-scope="props">
             <q-parallax
@@ -27,9 +27,19 @@
             />
             <div class="absolute-bottom custom-caption">
               <q-btn type="a" :href="props.url" target="_blank">
-                <div class="text-h6">{{ props.title.substr(0, 80) }}</div>
+                <div class="text-h6">
+                  {{
+                    props.title.length > 80
+                      ? props.title.substr(0, 80) + "..."
+                      : props.title
+                  }}
+                </div>
                 <div class="text-body2">
-                  {{ props.description.substr(0, 200) }}
+                  {{
+                    props.description.length > 200
+                      ? props.description.substr(0, 200) + "..."
+                      : props.description
+                  }}
                 </div>
               </q-btn>
             </div>
@@ -38,7 +48,7 @@
       </q-carousel-slide>
 
       <q-carousel-slide
-        v-for="link in links"
+        v-for="link in newsLinksInternational"
         v-bind:key="link.url"
         :name="link.url"
         class="column no-wrap flex-center"
@@ -53,9 +63,19 @@
             />
             <div class="absolute-bottom custom-caption">
               <q-btn type="a" :href="props.url" target="_blank">
-                <div class="text-h6">{{ props.title.substr(0, 80) }}</div>
+                <div class="text-h6">
+                  {{
+                    props.title.length > 80
+                      ? props.title.substr(0, 80) + "..."
+                      : props.title
+                  }}
+                </div>
                 <div class="text-body2">
-                  {{ props.description.substr(0, 200) }}
+                  {{
+                    props.description.length > 200
+                      ? props.description.substr(0, 200) + "..."
+                      : props.description
+                  }}
                 </div>
               </q-btn>
             </div>
@@ -68,37 +88,28 @@
 
 <script>
 import LinkPrevue from "link-prevue";
-import moment from "./../boot/moment";
-import axiosClient from "./../core/axiosClient";
+import moment from "moment";
+import axiosClient from "./../../core/axiosClient";
 export default {
+  name: "NewsCovid",
   data() {
     return {
-      slide: "style",
+      slide: "headerLink",
       timeout: 5000
     };
   },
   computed: {
     headerLink() {
-      return this.$store.state.newsLinks[0];
+      let headerNewsLink = this.$store.state.headerNewsLink;
+      return headerNewsLink;
     },
-    links() {
-      let newsLinks = this.$store.state.newsLinks;
+    newsLinksInternational() {
       let newsLinksInternational = this.$store.state.newsLinksInternational;
-
-      let links = [
-        ...newsLinks.map(el => {
-          return el.url;
-        }),
-        ...newsLinksInternational.map(el => {
-          return el.url;
-        })
-      ];
-
-      return [...newsLinksInternational];
+      return newsLinksInternational;
     }
   },
   mounted() {
-    this.$axios
+    axiosClient
       .get(
         this.$newsApiEndpoint +
           "q=coronavirus" +
@@ -108,26 +119,22 @@ export default {
           moment().format("YYYY-D-MM")
       )
       .then(response => {
+        let responseNewsLinks = response.data.articles;
+        let headerNewsLink = Object;
         let newsLinksInternational = [];
 
-        response.data.articles.map(article => {
-          newsLinksInternational.push(article);
+        responseNewsLinks.map((newsLink, index) => {
+          if (index === 0) {
+            headerNewsLink = newsLink;
+          } else {
+            newsLinksInternational.push(newsLink);
+          }
         });
+
         this.$store.dispatch(
           "setNewsLinksInternational",
           newsLinksInternational
         );
-      });
-
-    axiosClient
-      .get(this.$matnessEndpoint + "/v1/blockvid/news-links")
-      .then(response => {
-        let newsLinks = [];
-        response.data.data.map(article => {
-          newsLinks.push(article);
-        });
-
-        this.$store.dispatch("setNewsLinks", newsLinks);
       });
   },
   components: {

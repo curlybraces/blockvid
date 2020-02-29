@@ -63,6 +63,8 @@
 
 <script>
 import axiosClient from "./../core/axiosClient";
+import { getUserProfile } from "./../core/user";
+
 export default {
   name: "Login",
   data() {
@@ -87,10 +89,12 @@ export default {
           localStorage.setItem("token", response.data.data);
 
           this.$store.dispatch("isLogged", true);
-          
-          this.isExecutingLogin = false;
-          this.$router.push({
-            name: "index"
+
+          getUserProfile().then(() => {
+            this.isExecutingLogin = false;
+            this.$router.push({
+              name: "index"
+            });
           });
         })
         .catch(error => {

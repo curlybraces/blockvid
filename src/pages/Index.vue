@@ -241,7 +241,7 @@
 </template>
 
 <script>
-import News from "./News";
+import News from "./../components/News";
 
 import moment from "./../boot/moment";
 import { questions } from "../misc/questions";

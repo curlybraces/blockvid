@@ -23,6 +23,7 @@ export default new Vuex.Store({
     isValidToken: null,
     totalInfected: 0,
     totalInfectedItaly: 0,
+    headerNewsLink: Object,
     newsLinks: [],
     newsLinksInternational: []
   },
@@ -35,6 +36,9 @@ export default new Vuex.Store({
     },
     setTotalInfectedItaly(state, value) {
       state.totalInfectedItaly = value;
+    },
+    setHeaderNewsLink(state, value) {
+      state.headerNewsLink = value;
     },
     setNewsLinks(state, value) {
       state.newsLinks = value;
@@ -61,6 +65,9 @@ export default new Vuex.Store({
     },
     setTotalInfectedItaly({ commit }, value) {
       commit("setTotalInfectedItaly", value);
+    },
+    setHeaderNewsLink({ commit }, value) {
+      commit("setHeaderNewsLink", value);
     },
     setNewsLinks({ commit }, value) {
       commit("setNewsLinks", value);
