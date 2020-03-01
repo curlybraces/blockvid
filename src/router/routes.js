@@ -10,6 +10,11 @@ const routes = [
         component: () => import("pages/Index.vue")
       },
       {
+        path: "/blockchain",
+        name: "blockchain",
+        component: () => import("pages/Blockchain.vue")
+      },
+      {
         path: "/graphs",
         alias: "/",
         name: "graphs",

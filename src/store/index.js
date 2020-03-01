@@ -26,7 +26,10 @@ export default new Vuex.Store({
     headerNewsLink: Object,
     headerNewsLinkInternational: Object,
     newsLinks: [],
-    newsLinksInternational: []
+    newsLinksInternational: [],
+
+    // blockchain storing
+    blockchain: []
   },
   mutations: {
     leftDrawerOpen(state, value) {
@@ -58,6 +61,11 @@ export default new Vuex.Store({
     },
     setConfirmDeletingDialogOpen(state, value) {
       state.confirmDeletingDialogOpen = value;
+    },
+
+    // blockchain storing
+    setBlockchain(state, value) {
+      state.blockchain = value;
     }
   },
   actions: {
@@ -90,6 +98,11 @@ export default new Vuex.Store({
     },
     setConfirmDeletingDialogOpen({ commit }, value) {
       commit("setConfirmDeletingDialogOpen", value);
+    },
+
+    // blockchain storing
+    setBlockchain({ commit }, value) {
+      commit("setBlockchain", value);
     }
   },
 
