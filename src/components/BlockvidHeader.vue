@@ -1,25 +1,32 @@
 <template>
   <div id="BlockvidHeader">
-    <q-header elevated class="bg-red-9">
+    <q-header elevated class="bg-white">
       <q-toolbar>
         <q-btn
           flat
           dense
           round
+          color="black"
           icon="menu"
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
-        <q-avatar color="white">
-          <img src="/statics/app.png" />
-        </q-avatar>
+        <q-item dense to="/index" class="no-padding no-margin">
+          <q-avatar size="55px" color="white">
+            <q-img class="q-ma-sm" src="/statics/app.png" />
+          </q-avatar>
+        </q-item>
 
-        <q-toolbar-title>
-          blockvid
-        </q-toolbar-title>
+        <q-item dense to="/index" class="no-padding no-margin">
+          <q-toolbar-title>
+            <span class="text-black">block</span
+            ><span class="text-red-9">vid</span>
+          </q-toolbar-title>
+        </q-item>
+        <q-toolbar-title></q-toolbar-title>
 
-        <div>v-{{ version }}</div>
+        <div class="text-black absolute-bottom-right">beta~v{{ version }}</div>
       </q-toolbar>
     </q-header>
 
