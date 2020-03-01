@@ -10,6 +10,12 @@ const routes = [
         component: () => import("pages/Index.vue")
       },
       {
+        path: "/graphs",
+        alias: "/",
+        name: "graphs",
+        component: () => import("components/Graphs.vue")
+      },
+      {
         path: "/auth",
         name: "login",
         component: () => import("pages/Login.vue"),

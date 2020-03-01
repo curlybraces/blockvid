@@ -95,12 +95,12 @@ export default {
   data() {
     return {
       slide: "headerLink",
-      timeout: 5000
+      timeout: 10000
     };
   },
   computed: {
     headerLink() {
-      let headerNewsLink = this.$store.state.headerNewsLink;
+      let headerNewsLink = this.$store.state.headerNewsLinkInternational;
       return headerNewsLink;
     },
     newsLinksInternational() {
@@ -116,7 +116,7 @@ export default {
           "&country=it" +
           "&sortBy=published" +
           "&from=" +
-          moment().format("YYYY-D-MM")
+          moment().subtract(1, "days").format("YYYY-DD-MM")
       )
       .then(response => {
         let responseNewsLinks = response.data.articles;
@@ -131,6 +131,7 @@ export default {
           }
         });
 
+        this.$store.dispatch("setHeaderNewsLinkInternational", headerNewsLink);
         this.$store.dispatch(
           "setNewsLinksInternational",
           newsLinksInternational

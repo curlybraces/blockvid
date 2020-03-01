@@ -175,6 +175,42 @@
     </div>
 
     <div class="q-pt-lg full-width" style="max-width: 800px">
+      <div class="text-h6 text-red-9 no-padding">
+        <q-icon name="healing" /> Proteggi te stesso e gli altri
+      </div>
+      <div class="row">
+        <q-img
+          src="https://www.who.int/images/default-source/health-topics/coronavirus/social-media-squares/blue-1.png"
+          style="width: 50%"
+        >
+        </q-img>
+        <q-img
+          src="https://www.who.int/images/default-source/health-topics/coronavirus/social-media-squares/blue-2.png"
+          style="width: 50%"
+        >
+        </q-img>
+        <q-img
+          src="https://www.who.int/images/default-source/health-topics/coronavirus/social-media-squares/blue-3.png"
+          style="width: 50%"
+        >
+        </q-img>
+        <q-img
+          src="https://www.who.int/images/default-source/health-topics/coronavirus/social-media-squares/blue-4.png"
+          style="width: 50%"
+        >
+        </q-img>
+        <q-btn
+          type="a"
+          href="https://www.nbcnews.com/health/health-news/coronavirus-map-confirmed-cases-2020-n1120686"
+          target="_blank"
+          label="World Health Organization"
+          flat
+          color="red-9"
+        />
+      </div>
+    </div>
+
+    <div class="q-pt-lg full-width" style="max-width: 800px">
       <q-card>
         <h4
           class="text-weight-bold text-center q-pt-sm"
@@ -297,46 +333,38 @@ export default {
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 531
-        },
-        {
-          region: "Veneto",
-          total: 151
+          total: 552
         },
         {
           region: "Emilia Romagna",
-          total: 145
+          total: 213
+        },
+        {
+          region: "Veneto",
+          total: 189
         },
         {
           region: "Liguria",
-          total: 19
+          total: 38
+        },
+        {
+          region: "Campania",
+          total: 13
         },
         {
           region: "Piemonte",
           total: 11
         },
         {
-          region: "Toscana",
-          total: 8
-        },
-        {
           region: "Marche",
-          total: 6
+          total: 11
         },
         {
-          region: "Campania",
-          total: 4
-        },
-        {
-          region: "Sicilia",
-          total: 3
+          region: "Toscana",
+          total: 10
         },
         {
           region: "Lazio",
-          total: 3
-        },
-        {
-          region: "Calabria",
           total: 3
         },
         {
@@ -344,11 +372,19 @@ export default {
           total: 3
         },
         {
-          region: "Trentino Alto Adige",
-          total: 1
+          region: "Sicilia",
+          total: 2
         },
         {
           region: "Abruzzo",
+          total: 2
+        },
+        {
+          region: "Calabria",
+          total: 1
+        },
+        {
+          region: "Trentino Alto Adige",
           total: 1
         }
       ]
