@@ -40,6 +40,16 @@
           </q-item-section>
         </q-item>
 
+        <q-item to="/graphs">
+          <q-item-section avatar>
+            <q-icon name="timeline" />
+          </q-item-section>
+
+          <q-item-section>
+            Grafici
+          </q-item-section>
+        </q-item>
+
         <q-item to="/auth" v-if="!isLogged">
           <q-item-section avatar>
             <q-icon name="person" />
