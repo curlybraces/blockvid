@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="it.matness.blockvid" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="it.matness.blockvid" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Blockvid</name>
-    <description>COVID-19 Blockchain</description>
+    <description>COVID-19's blockchain</description>
     <author email="mateonunez95@gmail.com" href="http://matness.it/">
         Mateo Nunez
     </author>
@@ -14,6 +14,9 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-navigation href="https://public.flourish.studio/visualisation/*" />
+    <allow-navigation href="https://www.google.com/maps/*" />
+    <allow-navigation href="https://dataviz.nbcnews.com/*" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
@@ -22,6 +25,10 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <allow-navigation href="about:*" />
+    <plugin name="cordova-plugin-wkwebview-engine" spec="1.2.1" />
+    <BackupWebStorage>Local</BackupWebStorage>
+    <preference name="Orientation" value="portrait" />
     <engine name="android" spec="^8.1.0" />
-    <engine name="ios" spec="^5.1.1" />
+    <engine name="ios" spec="^4.5.5" />
+    <engine name="browser" spec="^5.0.4" />
 </widget>
