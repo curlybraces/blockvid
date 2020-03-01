@@ -15,7 +15,15 @@
                 }, 0)
               }}</b></span
             >
-            ITALIA
+            ITALIA |
+            <span class="text-body1"
+              ><b>{{ totalHealeds }}</b></span
+            >
+            GUARITI |
+            <span class="text-body1"
+              ><b>{{ totalDeads }}</b></span
+            >
+            MORTI
           </div>
           <div class="col">
             <span class="text-h6">
@@ -333,39 +341,43 @@ export default {
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 552
+          total: 984
         },
         {
           region: "Emilia Romagna",
-          total: 213
+          total: 285
         },
         {
           region: "Veneto",
-          total: 189
+          total: 263
         },
         {
           region: "Liguria",
-          total: 38
+          total: 25
         },
         {
           region: "Campania",
-          total: 13
+          total: 17
         },
         {
           region: "Piemonte",
-          total: 11
+          total: 49
         },
         {
           region: "Marche",
-          total: 11
+          total: 25
         },
         {
           region: "Toscana",
-          total: 10
+          total: 13
         },
         {
           region: "Lazio",
-          total: 3
+          total: 6
+        },
+        {
+          region: "Friuli Venezia Giulia",
+          total: 6
         },
         {
           region: "Puglia",
@@ -373,10 +385,14 @@ export default {
         },
         {
           region: "Sicilia",
-          total: 2
+          total: 9
         },
         {
           region: "Abruzzo",
+          total: 5
+        },
+        {
+          region: "Umbria",
           total: 2
         },
         {
@@ -387,7 +403,9 @@ export default {
           region: "Trentino Alto Adige",
           total: 1
         }
-      ]
+      ],
+      totalHealeds: 83,
+      totalDeads: 34
     };
   },
   mounted() {
