@@ -20,7 +20,7 @@ export function calculateHash({ previousHash, timestamp, data, nonce = 1 }) {
 export function createGenesisBlock() {
   const block = {
     timestamp: new Date(),
-    data: "Genesis Block",
+    data: "GENESIS_BLOCK",
     previousHash: 0
   };
 
@@ -92,17 +92,26 @@ export function mineBlock(difficulty, block) {
  * @param {Object} data
  * @returns {Array<Object>}
  */
-export function addBlock(chain, data) {
-  const { hash: previousHash } = chain[chain.length - 1];
-  const block = {
-    timestamp: +new Date(),
-    data,
-    previousHash,
-    nonce: 0
-  };
-  const newBlock = mineBlock(4, block);
+export async function addBlock(chain, data) {
+  let promise = new Promise((resolve, reject) => {
+    let blockchain = JSON.parse(chain);
+    const { data: previousData } = blockchain[blockchain.length - 1];
+    if (JSON.stringify(previousData) !== JSON.stringify(data)) {
+      const { hash: previousHash } = blockchain[blockchain.length - 1];
+      const block = {
+        timestamp: +new Date(),
+        data,
+        previousHash,
+        nonce: 0
+      };
+      const newBlock = mineBlock(3, block);
+      resolve(blockchain.concat(newBlock));
+    } else {
+      resolve(blockchain);
+    }
+  });
 
-  return chain.concat(newBlock);
+  return promise;
 }
 
 /**
@@ -133,6 +142,51 @@ export function validateChain(chain) {
   return tce(chain, chain.length - 1);
 }
 
+export function initBlockchainLocalStorage() {
+  let chain = [this.createGenesisBlock()];
+  this.setBlockchainLocalStorage(chain);
+
+  return this.getBlockchainLocalStorage();
+}
+
+/**
+ * @return {Boolean}
+ */
+export function isBlockchainLocalStorage() {
+  if (
+    this.getBlockchainLocalStorage() === null ||
+    this.getBlockchainLocalStorage() === undefined
+  ) {
+    return false;
+  }
+  return true;
+}
+
+/**
+ * @return {Array<Object>|null}
+ */
+export function getBlockchainLocalStorage() {
+  let blockchain = localStorage.getItem("blockchain");
+
+  return blockchain;
+}
+
+/**
+ * @param {Array<Object>}
+ * @return {Boolean}
+ */
+export function setBlockchainLocalStorage(chain) {
+  try {
+    localStorage.setItem("blockchain", JSON.stringify(chain));
+  } catch (error) {
+    console.error(error);
+
+    return false;
+  }
+
+  return true;
+}
+
 export default {
   calculateHash: calculateHash,
   nextNonce: nextNonce,
@@ -141,5 +195,9 @@ export default {
   createGenesisBlock: createGenesisBlock,
   mineBlock: mineBlock,
   addBlock: addBlock,
-  validateChain: validateChain
+  validateChain: validateChain,
+  initBlockchainLocalStorage: initBlockchainLocalStorage,
+  isBlockchainLocalStorage: isBlockchainLocalStorage,
+  getBlockchainLocalStorage: getBlockchainLocalStorage,
+  setBlockchainLocalStorage: setBlockchainLocalStorage
 };

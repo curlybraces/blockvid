@@ -67,19 +67,27 @@ export default {
     };
   },
   mounted() {
-    let chain = [Blockvid.createGenesisBlock()];
-    // let newChain = [];
-    for (let i = 0; i < 4; i++) {
-      let newBlockData = {
-        lat: "45.586845" + i,
-        lng: "8.9162949" + i
-      };
-      chain = Blockvid.addBlock(chain, newBlockData);
-    }
+    let chain = Blockvid.isBlockchainLocalStorage()
+      ? Blockvid.getBlockchainLocalStorage()
+      : Blockvid.initBlockchainLocalStorage();
 
-    if (Blockvid.validateChain(chain)) {
-      this.blockchain = chain;
-    }
+    navigator.geolocation.getCurrentPosition(position => {
+      console.log(position);
+      const newBlockData = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      Blockvid.addBlock(chain, newBlockData).then(chain => {
+        console.log(chain);
+        if (Blockvid.validateChain(chain)) {
+          Blockvid.setBlockchainLocalStorage(chain);
+          this.blockchain = chain;
+        } else {
+          console.error("Your chain is not valid!");
+        }
+      });
+    });
   }
 };
 </script>
