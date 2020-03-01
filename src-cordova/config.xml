@@ -23,11 +23,14 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
     </platform>
     <allow-navigation href="about:*" />
     <plugin name="cordova-plugin-wkwebview-engine" spec="1.2.1" />
     <BackupWebStorage>Local</BackupWebStorage>
     <preference name="Orientation" value="portrait" />
+    <plugin name="cordova-plugin-splashscreen" spec="^5.0.3" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
     <engine name="android" spec="^8.1.0" />
     <engine name="ios" spec="^4.5.5" />
     <engine name="browser" spec="^5.0.4" />
