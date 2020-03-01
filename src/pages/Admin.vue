@@ -30,7 +30,7 @@
 
     <div class="q-pt-lg full-width" style="max-width: 800px">
       <div class="text-h6 text-red-9 no-padding">
-        <q-icon name="library_books" /> Gestine notizie
+        <q-icon name="library_books" /> Gestione notizie
       </div>
 
       <q-btn
