@@ -1,6 +1,6 @@
 {
   "name": "blockvid",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "COVID-19's blockchain",
   "productName": "Blockvid",
   "cordovaId": "it.matness.blockvid",

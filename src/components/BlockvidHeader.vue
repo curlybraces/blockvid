@@ -76,6 +76,14 @@
           <q-item-section>Admin</q-item-section>
         </q-item>
 
+        <q-item to="/blockchain" v-if="userProfile.role_id == 1">
+          <q-item-section avatar>
+            <q-icon name="blur_circular" />
+          </q-item-section>
+
+          <q-item-section>Blockchain</q-item-section>
+        </q-item>
+
         <q-item-label header class="text-grey-8">
           Link utili
         </q-item-label>
