@@ -94,18 +94,6 @@
         />
       </q-list>
       <q-separator />
-      <q-item class="absolute-bottom-right">
-        <div>
-          <q-btn
-            type="a"
-            href="https://github.com/mateonunez/blockvid"
-            target="_blank"
-            label="@blockvid"
-            flat
-            color="red-9"
-          />
-        </div>
-      </q-item>
     </q-drawer>
   </div>
 </template>
@@ -193,11 +181,6 @@ export default {
     },
     userProfile() {
       return this.$store.state.userProfile;
-    },
-    styleUserProfile() {
-      return this.isLogged
-        ? "height: calc(100% - 100px); margin-top: 100px; border-right: 1px solid #ddd"
-        : "height: 100%";
     }
   }
 };
