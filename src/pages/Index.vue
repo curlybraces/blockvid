@@ -136,9 +136,9 @@
             </b>
             <q-btn
               type="a"
-              href="http://www.salute.gov.it/portale/nuovocoronavirus/dettaglioContenutiNuovoCoronavirus.jsp?lingua=italiano&id=5351&area=nuovoCoronavirus&menu=vuoto"
+              href="http://www.protezionecivile.gov.it/attivita-rischi/rischio-sanitario/emergenze/coronavirus"
               target="_blank"
-              label="Leggi altro"
+              label="Fonte: Protezione Civile"
               flat
               color="red-9"
             />
@@ -341,19 +341,19 @@ export default {
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 984
+          total: 1254
         },
         {
           region: "Emilia Romagna",
-          total: 285
+          total: 335
         },
         {
           region: "Veneto",
-          total: 263
+          total: 273
         },
         {
           region: "Liguria",
-          total: 25
+          total: 22
         },
         {
           region: "Campania",
@@ -361,11 +361,11 @@ export default {
         },
         {
           region: "Piemonte",
-          total: 49
+          total: 51
         },
         {
           region: "Marche",
-          total: 25
+          total: 35
         },
         {
           region: "Toscana",
@@ -373,19 +373,19 @@ export default {
         },
         {
           region: "Lazio",
-          total: 6
+          total: 7
         },
         {
           region: "Friuli Venezia Giulia",
-          total: 6
+          total: 9
         },
         {
           region: "Puglia",
-          total: 3
+          total: 4
         },
         {
           region: "Sicilia",
-          total: 9
+          total: 7
         },
         {
           region: "Abruzzo",
@@ -404,8 +404,8 @@ export default {
           total: 1
         }
       ],
-      totalHealeds: 83,
-      totalDeads: 34
+      totalHealeds: 149,
+      totalDeads: 52
     };
   },
   mounted() {

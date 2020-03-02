@@ -27,14 +27,14 @@
             />
             <div class="absolute-bottom custom-caption">
               <q-btn type="a" :href="props.url" target="_blank">
-                <div class="text-h6">
+                <div class="text-body1">
                   {{
-                    props.title.length > 50
-                      ? props.title.substr(0, 50) + "..."
+                    props.title.length > 80
+                      ? props.title.substr(0, 80) + "..."
                       : props.title
                   }}
                 </div>
-                <div class="text-body2">
+                <div class="text-caption">
                   {{
                     props.description.length > 100
                       ? props.description.substr(0, 100) + "..."
@@ -63,14 +63,14 @@
             />
             <div class="absolute-bottom custom-caption">
               <q-btn type="a" :href="props.url" target="_blank">
-                <div class="text-h6">
+                <div class="text-body1">
                   {{
-                    props.title.length > 50
-                      ? props.title.substr(0, 50) + "..."
+                    props.title.length > 80
+                      ? props.title.substr(0, 80) + "..."
                       : props.title
                   }}
                 </div>
-                <div class="text-body2">
+                <div class="text-caption">
                   {{
                     props.description.length > 100
                       ? props.description.substr(0, 100) + "..."
