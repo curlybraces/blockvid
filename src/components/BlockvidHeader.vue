@@ -26,6 +26,18 @@
         </q-item>
         <q-toolbar-title></q-toolbar-title>
 
+        <div class="absolute-top-right">
+          <q-btn
+            type="a"
+            href="https://github.com/mateonunez/blockvid"
+            target="_blank"
+            label="@github"
+            dense
+            flat
+            color="red-9"
+          />
+        </div>
+
         <div class="text-black absolute-bottom-right">beta~v{{ version }}</div>
       </q-toolbar>
     </q-header>

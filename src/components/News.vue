@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pt-lg full-width" style="max-width: 800px">
+  <div class="q-pt-lg full-width" style="max-width: 1000px">
     <NewsBlockvid />
     <NewsCovid />
   </div>

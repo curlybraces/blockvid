@@ -1,7 +1,7 @@
 <template>
   <div class="q-pt-md" id="NewsBlockvid">
-    <div class="text-h6 text-red-9">
-      <q-icon name="library_books" /> Scelte da noi
+    <div class="text-red-9">
+      <h2 class="text-h6"><q-icon name="library_books" /> Scelte per te</h2>
     </div>
     <q-carousel
       v-model="slide"

@@ -1,9 +1,13 @@
 <template>
   <q-page class="row justify-center items-center" padding>
-    <div class="q-pt-lg full-width" style="max-width: 800px">
+    <div class="q-pt-lg full-width" style="max-width: 1000px">
       <div class="text-center">
-        <div class="text-h2">block<span class="text-red-9">vid</span></div>
-        <div class="text-overline">insieme per una corretta informazione</div>
+        <div class="">
+          <h1 class="text-h2 q-pt-none q-mt-none">block<span class="text-red-9">vid</span></h1>
+        </div>
+        <div>
+          <h2 class="text-overline">insieme per una corretta informazione</h2>
+        </div>
       </div>
       <div class="text-center">
         <div class="row text-red-3">
@@ -37,16 +41,16 @@
 
     <News />
 
-    <div class="q-pt-lg full-width" style="max-width: 800px">
-      <div class="text-h6 text-red-9 no-padding">
-        <q-icon name="map" /> Mappe interattive
+    <div class="q-pt-lg full-width" style="max-width: 1000px">
+      <div class="text-red-9 no-padding">
+        <h2 class="text-h6"><q-icon name="map" /> Mappe interattive</h2>
       </div>
       <div class="q-pt-md">
         <iframe
           src="https://public.flourish.studio/visualisation/1437744/embed"
           frameborder="0"
           scrolling="no"
-          height="600"
+          height="800"
           class="full-width"
           title="Gedi Visual Map"
           style="margin; 0"
@@ -100,11 +104,28 @@
           color="red-9"
         />
       </div>
+
+      <div class="q-pt-lg full-width" style="max-width: 1000px">
+        <div class="text-red-9 no-padding">
+          <h2 class="text-h6"><q-icon name="calendar" /> Giornaliero</h2>
+        </div>
+        <div class="q-pt-md">
+          <iframe
+            src="https://datawrapper.dwcdn.net/ZYjAw/1/"
+            frameborder="0"
+            scrolling="no"
+            height="600"
+            class="full-width"
+            title="Protezione civile"
+            style="margin; 0"
+          ></iframe>
+        </div>
+      </div>
     </div>
 
-    <div class="q-pt-lg full-width" style="max-width: 800px">
-      <div class="text-h6 text-red-9 no-padding">
-        <q-icon name="done_all" /> Dati ufficiali
+    <div class="q-pt-lg full-width" style="max-width: 1000px">
+      <div class="text-red-9 no-padding">
+        <h2 class="text-h6"><q-icon name="done_all" /> Dati ufficiali</h2>
       </div>
       <q-table
         title="In italia"
@@ -147,7 +168,7 @@
       </q-table>
     </div>
 
-    <div class="q-pt-lg full-width" style="max-width: 800px">
+    <div class="q-pt-lg full-width" style="max-width: 1000px">
       <q-table
         title="Nel mondo"
         :data="covidData"
@@ -182,9 +203,11 @@
       </q-table>
     </div>
 
-    <div class="q-pt-lg full-width" style="max-width: 800px">
-      <div class="text-h6 text-red-9 no-padding">
-        <q-icon name="healing" /> Proteggi te stesso e gli altri
+    <div class="q-pt-lg full-width" style="max-width: 1000px">
+      <div class="text-red-9 no-padding">
+        <h2 class="text-h6">
+          <q-icon name="healing" /> Proteggi te stesso e gli altri
+        </h2>
       </div>
       <div class="row">
         <q-img
@@ -218,7 +241,7 @@
       </div>
     </div>
 
-    <div class="q-pt-lg full-width" style="max-width: 800px">
+    <div class="q-pt-lg full-width" style="max-width: 1000px">
       <q-card>
         <h4
           class="text-weight-bold text-center q-pt-sm"
