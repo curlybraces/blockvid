@@ -131,54 +131,36 @@ export default {
       version: version,
       essentialLinks: [
         {
+          title: "World Health Organization",
+          caption: "World Health Organization",
+          icon: "public",
+          link:
+            "https://www.who.int/emergencies/diseases/novel-coronavirus-2019"
+        },
+        {
           title: "Ministero della salute",
           caption: "Nuovo corona virus - Domande e risposte",
           icon: "school",
           link: "http://www.salute.gov.it/nuovocoronavirus"
         },
         {
-          title: "OMS",
-          caption: "Organizzazione Mondiale della Sanità",
-          icon: "code",
+          title: "Protezione Civile",
+          caption: "Protezione Civile",
+          icon: "error_outline",
           link:
-            "https://www.who.int/emergencies/diseases/novel-coronavirus-2019"
+            "http://www.protezionecivile.gov.it/attivita-rischi/rischio-sanitario/emergenze/coronavirus"
         },
         {
-          title: "ECDC",
-          caption: "European Centre for Disease Prevention and Control",
-          icon: "chat",
-          link: "https://www.ecdc.europa.eu/en/novel-coronavirus-china"
-        },
-        {
-          title: "EPICNETRO",
-          caption: "Istituto superiore di sanità",
-          icon: "record_voice_over",
-          link: "https://www.epicentro.iss.it/coronavirus/"
-        },
-        {
-          title: "COVID-19 [REAL-TIME]",
+          title: "Visual Dashboard",
           caption: "Visual Dashboard",
-          icon: "public",
+          icon: "devices",
           link: "https://arcg.is/0fHmTX"
         },
         {
-          title: "COVID-19 [REPOSITORY]",
-          caption: "Data source Github",
-          icon: "device_hub",
-          link: "https://github.com/CSSEGISandData/COVID-19"
-        },
-        {
-          title: "Coronavirus advisory information",
-          caption: "World Health Organization",
-          icon: "error_outline",
-          link:
-            "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"
-        },
-        {
-          title: "Q&A on coronaviruses",
-          caption: "World Health Organization",
-          icon: "format_quote",
-          link: "https://www.who.int/news-room/q-a-detail/q-a-coronaviruses"
+          title: "Github",
+          caption: "View repository on Github",
+          icon: "code ",
+          link: "https://github.com/mateonunez/blockvid"
         }
       ]
     };

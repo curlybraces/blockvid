@@ -29,6 +29,14 @@ const routes = [
         }
       },
       {
+        path: "/cookies",
+        name: "cookies",
+        component: () => import("pages/Cookies.vue"),
+        meta: {
+          redirectLogged: "index"
+        }
+      },
+      {
         path: "/admin",
         component: () => import("layouts/AdminLayout.vue"),
         meta: {

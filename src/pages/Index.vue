@@ -3,7 +3,9 @@
     <div class="q-pt-lg full-width" style="max-width: 1000px">
       <div class="text-center">
         <div class="">
-          <h1 class="text-h2 q-pt-none q-mt-none">block<span class="text-red-9">vid</span></h1>
+          <h1 class="text-h2 q-pt-none q-mt-none">
+            block<span class="text-red-9">vid</span>
+          </h1>
         </div>
         <div>
           <h2 class="text-overline">insieme per una corretta informazione</h2>
@@ -19,7 +21,8 @@
                 }, 0)
               }}</b></span
             >
-            ITALIA |
+            ITALIA
+            <br />
             <span class="text-body1"
               ><b>{{ totalHealeds }}</b></span
             >
@@ -103,23 +106,6 @@
           flat
           color="red-9"
         />
-      </div>
-
-      <div class="q-pt-lg full-width" style="max-width: 1000px">
-        <div class="text-red-9 no-padding">
-          <h2 class="text-h6"><q-icon name="calendar" /> Giornaliero</h2>
-        </div>
-        <div class="q-pt-md">
-          <iframe
-            src="https://datawrapper.dwcdn.net/ZYjAw/1/"
-            frameborder="0"
-            scrolling="no"
-            height="600"
-            class="full-width"
-            title="Protezione civile"
-            style="margin; 0"
-          ></iframe>
-        </div>
       </div>
     </div>
 
@@ -340,7 +326,9 @@ export default {
       ],
       filter: "",
       paginationItalyExploded: {
-        rowsPerPage: 0
+        rowsPerPage: 0,
+        sortBy: "total",
+        descending: true
       },
       filterItalyExploded: "",
       columnsItalyExploded: [
@@ -364,47 +352,47 @@ export default {
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 1254
+          total: 1520
         },
         {
           region: "Emilia Romagna",
-          total: 335
+          total: 420
         },
         {
           region: "Veneto",
-          total: 273
-        },
-        {
-          region: "Liguria",
-          total: 22
-        },
-        {
-          region: "Campania",
-          total: 17
+          total: 307
         },
         {
           region: "Piemonte",
-          total: 51
+          total: 56
+        },
+        {
+          region: "Campania",
+          total: 30
+        },
+        {
+          region: "Liguria",
+          total: 24
         },
         {
           region: "Marche",
-          total: 35
+          total: 61
         },
         {
           region: "Toscana",
-          total: 13
+          total: 19
         },
         {
           region: "Lazio",
-          total: 7
+          total: 14
         },
         {
           region: "Friuli Venezia Giulia",
-          total: 9
+          total: 13
         },
         {
           region: "Puglia",
-          total: 4
+          total: 6
         },
         {
           region: "Sicilia",
@@ -412,11 +400,11 @@ export default {
         },
         {
           region: "Abruzzo",
-          total: 5
+          total: 6
         },
         {
           region: "Umbria",
-          total: 2
+          total: 8
         },
         {
           region: "Calabria",
@@ -424,11 +412,23 @@ export default {
         },
         {
           region: "Trentino Alto Adige",
+          total: 5
+        },
+        {
+          region: "Molise",
+          total: 3
+        },
+        {
+          region: "Basilicata",
+          total: 1
+        },
+        {
+          region: "Sardegna",
           total: 1
         }
       ],
-      totalHealeds: 149,
-      totalDeads: 52
+      totalHealeds: 160,
+      totalDeads: 79
     };
   },
   mounted() {
