@@ -54,7 +54,7 @@ npm install -g @quasar/cli
 quasar dev
 ```
 
-## Contributing (English)
+## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -70,7 +70,7 @@ Contributions are what make the open source community such an amazing place to l
 Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
-## Contact
+## Contacts
 
 Mateo Nunez - [@mateonunez95](https://instagram.com/mateonunez95) - mateonunez95@protonmail.com
 
