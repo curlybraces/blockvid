@@ -11,25 +11,22 @@
 </div>
 
 ## Basic Overview
-Una community creata apposta per mettervi a disposizione ogni tipo di informazione che riguarda il nuovo corononavirus (COVID-19).
+blockvid is a community with the goal of sharing everything that is known about the new Coronavirus (COVID-19) and giving advice to prevent getting infected.
 
-<span style="font-weight: 300;letter-spacing: -0.00833em;"><span style="color:#000!important">block</span><span style="color: #c62828!important">vid</span></span> vuole mettervi a disposizione un'intera gamma di servizi utili per la prevenzione del nuovo virus.
-
-Disponiamo di una blockchain (al momento accessibile soltanto agli account "Contributore") per certificare spostamenti significativi in determinate zone di pericolo.
+We are developing a blockchain (at the moment only available to "contributors" accounts) to anonimously track and verify movements, especially in areas particularly affected by the virus.
 
 <p align="center"><img width=45% src="https://i.ibb.co/XJkVyXL/Capture.png"></p>
 <br>
 
 ## Built With
 
-Abbiamo usato queste tecnologie per lo sviluppo:
 * [VueJS](http://vuejs.org/)
 * [Laravel](https://laravel.com/)
 * [Quasar](https://quasar.dev/)
 
 ## Getting Started
 
-Essendo un progetto open source chiunque puó contribuirne nello sviluppo.
+Being an open source project, everyone can contribute.
 
 ### Prerequisites
 
@@ -40,26 +37,26 @@ npm install npm@latest -g
 
 ### Installation
 
-1. Clona la repository
+1. Clone the repository
 ```sh
 git clone https://github.com/mateonunez/blockvid.git
 ```
-2. Installa i pacchetti NPM
+2. Install NPM packages
 ```sh
 npm install
 ```
-3. Installa Quasar/CLI
+3. Install Quasar/CLI
 ```sh
 npm install -g @quasar/cli
 ```
-4. Debug
+4. Run the project
 ```sh
 quasar dev
 ```
 
 ## Contributing (English)
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
