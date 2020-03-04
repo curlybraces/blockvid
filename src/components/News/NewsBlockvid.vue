@@ -83,6 +83,17 @@
         </link-prevue>
       </q-carousel-slide>
     </q-carousel>
+    <div class="text-red-9">
+      <h2 class="text-h6"><q-icon name="library_books" /> Conferenza stampa in diretta</h2>
+    </div>
+    <iframe
+      class="q-pt-lg full-width"
+      height="315"
+      src="https://www.youtube.com/embed/C7StQDYT51M"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
   </div>
 </template>
 

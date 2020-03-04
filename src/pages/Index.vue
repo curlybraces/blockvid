@@ -30,7 +30,7 @@
             <span class="text-body1"
               ><b>{{ totalDeads }}</b></span
             >
-            MORTI
+            DECEDUTI
           </div>
           <div class="col">
             <span class="text-h6">
@@ -352,59 +352,59 @@ export default {
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 1520
+          total: 1820
         },
         {
           region: "Emilia Romagna",
-          total: 420
+          total: 544
         },
         {
           region: "Veneto",
-          total: 307
+          total: 360
         },
         {
           region: "Piemonte",
-          total: 56
+          total: 82
         },
         {
           region: "Campania",
-          total: 30
+          total: 31
         },
         {
           region: "Liguria",
-          total: 24
+          total: 26
         },
         {
           region: "Marche",
-          total: 61
+          total: 84
         },
         {
           region: "Toscana",
-          total: 19
+          total: 38
         },
         {
           region: "Lazio",
-          total: 14
+          total: 30
         },
         {
           region: "Friuli Venezia Giulia",
-          total: 13
+          total: 18
         },
         {
           region: "Puglia",
-          total: 6
+          total: 9
         },
         {
           region: "Sicilia",
-          total: 7
+          total: 18
         },
         {
           region: "Abruzzo",
-          total: 6
+          total: 7
         },
         {
           region: "Umbria",
-          total: 8
+          total: 9
         },
         {
           region: "Calabria",
@@ -412,7 +412,7 @@ export default {
         },
         {
           region: "Trentino Alto Adige",
-          total: 5
+          total: 6
         },
         {
           region: "Molise",
@@ -424,11 +424,11 @@ export default {
         },
         {
           region: "Sardegna",
-          total: 1
+          total: 2
         }
       ],
-      totalHealeds: 160,
-      totalDeads: 79
+      totalHealeds: 276,
+      totalDeads: 107
     };
   },
   mounted() {
@@ -464,14 +464,14 @@ export default {
   },
   methods: {
     prepareData(endpoint, date) {
-      let finalEndpoint = endpoint + date.format("MM-D-YYYY") + ".csv";
+      let finalEndpoint = endpoint + date.format("MM-DD-YYYY") + ".csv";
       return new Promise((resolve, reject) => {
         this.$axios
           .get(finalEndpoint)
           .then(response => {
             this.endpoint = finalEndpoint;
             let covidData = response.data.split("\n").map(row => {
-              return row.split(",").length > 6
+              return row.split(",").length > 8
                 ? row.split(",").unshift()
                 : row.split(",");
             });
@@ -489,17 +489,17 @@ export default {
       let totalInfectedItaly = 0;
 
       data.forEach(row => {
-        if (row.length == 7) {
+        if (row.length == 9) {
           totalInfected += Number(row[4]);
         }
-        if (row.length == 6) {
+        if (row.length == 8) {
           totalInfected += Number(row[3]);
         }
         if (row[1] == "Italy") {
-          if (row.length == 7) {
+          if (row.length == 9) {
             totalInfectedItaly += Number(row[4]);
           }
-          if (row.length == 6) {
+          if (row.length == 8) {
             totalInfectedItaly += Number(row[3]);
           }
         }
