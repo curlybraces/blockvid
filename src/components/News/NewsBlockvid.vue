@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pt-md" id="NewsBlockvid">
+  <div class="q-pt-sm" id="NewsBlockvid">
     <div class="text-red-9">
       <h2 class="text-h6"><q-icon name="library_books" /> Scelte per te</h2>
     </div>
@@ -13,7 +13,7 @@
       arrows
       :autoplay="timeout"
       padding
-      height="30vh"
+      height="60vh"
       class="bg-transparent text-white shadow-1 rounded-borders"
     >
       <q-carousel-slide name="headerLink">
@@ -23,7 +23,7 @@
               class="absolute-top"
               :src="props.img"
               :alt="props.title"
-              :height="300"
+              :height="600"
             />
             <div class="absolute-bottom custom-caption">
               <q-btn type="a" :href="props.url" target="_blank">
@@ -59,7 +59,7 @@
               class="absolute-top"
               :src="props.img"
               :alt="props.title"
-              :height="300"
+              :height="600"
             />
             <div class="absolute-bottom custom-caption">
               <q-btn type="a" :href="props.url" target="_blank">

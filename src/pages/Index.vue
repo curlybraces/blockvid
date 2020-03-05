@@ -1,6 +1,6 @@
 <template>
   <q-page class="row justify-center items-center" padding>
-    <div class="q-pt-lg full-width" style="max-width: 1000px">
+    <div class="q-pt-md full-width" style="max-width: 1000px">
       <div class="text-center">
         <div class="">
           <h1 class="text-h2 q-pt-none q-mt-none">
@@ -24,11 +24,11 @@
             ITALIA
             <br />
             <span class="text-body1"
-              ><b>{{ totalHealeds }}</b></span
+              ><b>{{ totalHealedsItaly }}</b></span
             >
             GUARITI |
             <span class="text-body1"
-              ><b>{{ totalDeads }}</b></span
+              ><b>{{ totalDeathsItaly }}</b></span
             >
             DECEDUTI
           </div>
@@ -37,6 +37,16 @@
               <b>{{ totalInfected }}</b></span
             >
             MONDO
+             <br />
+            <span class="text-body1"
+              ><b>{{ totalHealeds }}</b></span
+            >
+            GUARITI |
+            <span class="text-body1"
+              ><b>{{ totalDeaths }}</b></span
+            >
+            DECEDUTI
+          </div>
           </div>
         </div>
       </div>
@@ -431,8 +441,8 @@ export default {
           total: 2
         }
       ],
-      totalHealeds: 414,
-      totalDeads: 148
+      totalHealedsItaly: 414,
+      totalDeathsItaly: 148
     };
   },
   mounted() {
@@ -490,27 +500,25 @@ export default {
     },
     formalize(data) {
       let totalInfected = 0;
-      let totalInfectedItaly = 0;
+      let totalHealeds = 0;
+      let totalDeaths = 0;
 
       data.forEach(row => {
         if (row.length == 9) {
           totalInfected += Number(row[4]);
+          totalDeaths += Number(row[5]);
+          totalHealeds += Number(row[6]);
         }
         if (row.length == 8) {
           totalInfected += Number(row[3]);
-        }
-        if (row[1] == "Italy") {
-          if (row.length == 9) {
-            totalInfectedItaly += Number(row[4]);
-          }
-          if (row.length == 8) {
-            totalInfectedItaly += Number(row[3]);
-          }
+          totalDeaths += Number(row[4]);
+          totalHealeds += Number(row[5]);
         }
       });
 
       this.$store.dispatch("setTotalInfected", totalInfected);
-      this.$store.dispatch("setTotalInfectedItaly", totalInfectedItaly);
+      this.$store.dispatch("setTotalHealeds", totalHealeds);
+      this.$store.dispatch("setTotalDeaths", totalDeaths);
     }
   },
   computed: {
@@ -528,9 +536,12 @@ export default {
     totalInfected() {
       return this.$store.state.totalInfected;
     },
-    totalInfectedItaly() {
-      return this.$store.state.totalInfectedItaly;
-    }
+    totalHealeds() {
+      return this.$store.state.totalHealeds;
+    },
+    totalDeaths() {
+      return this.$store.state.totalDeaths;
+    },
   }
 };
 </script>

@@ -22,7 +22,8 @@ export default new Vuex.Store({
     confirmDeletingDialogOpen: false,
     isValidToken: null,
     totalInfected: 0,
-    totalInfectedItaly: 0,
+    totalHealeds: 0,
+    totalDeaths: 0,
     headerNewsLink: Object,
     headerNewsLinkInternational: Object,
     newsLinks: [],
@@ -38,8 +39,11 @@ export default new Vuex.Store({
     setTotalInfected(state, value) {
       state.totalInfected = value;
     },
-    setTotalInfectedItaly(state, value) {
-      state.totalInfectedItaly = value;
+    setTotalHealeds(state, value) {
+      state.totalHealeds = value;
+    },
+    setTotalDeaths(state, value) {
+      state.totalDeaths = value;
     },
     setHeaderNewsLink(state, value) {
       state.headerNewsLink = value;
@@ -75,8 +79,11 @@ export default new Vuex.Store({
     setTotalInfected({ commit }, value) {
       commit("setTotalInfected", value);
     },
-    setTotalInfectedItaly({ commit }, value) {
-      commit("setTotalInfectedItaly", value);
+    setTotalHealeds({ commit }, value) {
+      commit("setTotalHealeds", value);
+    },
+    setTotalDeaths({ commit }, value) {
+      commit("setTotalDeaths", value);
     },
     setHeaderNewsLink({ commit }, value) {
       commit("setHeaderNewsLink", value);
