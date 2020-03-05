@@ -28,6 +28,13 @@
       </div>
     </div>
 
+    <!-- Gestione infetti -->
+
+    <div class="q-pt-lg full-width" style="max-width: 800px">
+      <AdminInfects />
+    </div>
+
+    <!-- Gestione notizie -->
     <div class="q-pt-lg full-width" style="max-width: 800px">
       <div class="text-h6 text-red-9 no-padding">
         <q-icon name="library_books" /> Gestione notizie
@@ -96,11 +103,13 @@
 
 <script>
 import LinkPrevue from "link-prevue";
+import AdminInfects from "./../components/Admin/AdminInfects";
 import axiosClient from "./../core/axiosClient";
 
 export default {
   components: {
-    LinkPrevue
+    LinkPrevue,
+    AdminInfects
   },
   data() {
     return {

@@ -111,6 +111,14 @@
           :key="link.title"
           v-bind="link"
         />
+
+        <q-item>
+          <q-item-section avatar>
+            <q-icon name="phone" />
+          </q-item-section>
+
+          <q-item-section>Numero pubblica utilitá 1500</q-item-section>
+        </q-item>
       </q-list>
       <q-separator />
     </q-drawer>

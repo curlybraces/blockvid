@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axiosClient from "./../core/axiosClient";
 
 // import example from './module-example'
 
@@ -30,7 +31,9 @@ export default new Vuex.Store({
     newsLinksInternational: [],
 
     // blockchain storing
-    blockchain: []
+    blockchain: [],
+
+    infectsNumbers: []
   },
   mutations: {
     leftDrawerOpen(state, value) {
@@ -70,6 +73,10 @@ export default new Vuex.Store({
     // blockchain storing
     setBlockchain(state, value) {
       state.blockchain = value;
+    },
+
+    setInfectsNumbers(state, value) {
+      state.infectsNumbers = value;
     }
   },
   actions: {
@@ -110,6 +117,18 @@ export default new Vuex.Store({
     // blockchain storing
     setBlockchain({ commit }, value) {
       commit("setBlockchain", value);
+    },
+
+    getInfectsNumbers({ commit }) {
+      axiosClient
+        .get(Vue.prototype.$matnessEndpoint + "/v1/blockvid/infects-numbers")
+        .then(response => {
+          commit("setInfectsNumbers", response.data.data);
+        });
+    },
+
+    setInfectsNumbers({ commit }, value) {
+      commit("setInfectsNumbers", value);
     }
   },
 

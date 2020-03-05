@@ -1,7 +1,9 @@
 <template>
   <div class="q-pt-md" id="NewsCovid">
-    <div class="text-red-9">
-      <h2 class="text-h6"><q-icon name="library_books" /> Notizie per te</h2>
+    <div class="text-center">
+      <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-sm">
+        <q-icon name="library_books" /> ULTIME NOTIZIE
+      </h1>
     </div>
     <q-carousel
       v-model="slide"
@@ -13,8 +15,8 @@
       arrows
       :autoplay="timeout"
       padding
-      height="60vh"
-      class="bg-transparent text-white shadow-1 rounded-borders"
+      height="69vh"
+      class="bg-transparent text-white shadow-1 news-slide"
     >
       <q-carousel-slide name="headerLink">
         <link-prevue cardWidth="100%" :url="headerLink.url">
@@ -23,7 +25,7 @@
               class="absolute-top"
               :src="props.img"
               :alt="props.title"
-              :height="600"
+              :height="450"
             />
             <div class="absolute-bottom custom-caption">
               <q-btn type="a" :href="props.url" target="_blank">
@@ -59,7 +61,7 @@
               class="absolute-top"
               :src="props.img"
               :alt="props.title"
-              :height="600"
+              :height="450"
             />
             <div class="absolute-bottom custom-caption">
               <q-btn type="a" :href="props.url" target="_blank">
@@ -144,6 +146,9 @@ export default {
 };
 </script>
 <style lang="sass" scoped>
+.news-slide
+  border-radius: 33px
+
 .custom-caption
   text-align: center
   padding: 12px

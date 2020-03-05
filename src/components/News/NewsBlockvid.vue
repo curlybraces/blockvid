@@ -1,99 +1,108 @@
 <template>
-  <div class="q-pt-sm" id="NewsBlockvid">
-    <div class="text-red-9">
-      <h2 class="text-h6"><q-icon name="library_books" /> Scelte per te</h2>
-    </div>
-    <q-carousel
-      v-model="slide"
-      transition-prev="scale"
-      transition-next="scale"
-      swipeable
-      animated
-      infinite
-      arrows
-      :autoplay="timeout"
-      padding
-      height="60vh"
-      class="bg-transparent text-white shadow-1 rounded-borders"
-    >
-      <q-carousel-slide name="headerLink">
-        <link-prevue cardWidth="100%" :url="headerLink.url">
-          <template slot-scope="props">
-            <q-parallax
-              class="absolute-top"
-              :src="props.img"
-              :alt="props.title"
-              :height="600"
-            />
-            <div class="absolute-bottom custom-caption">
-              <q-btn type="a" :href="props.url" target="_blank">
-                <div class="text-body1">
-                  {{
-                    props.title.length > 80
-                      ? props.title.substr(0, 80) + "..."
-                      : props.title
-                  }}
-                </div>
-                <div class="text-caption">
-                  {{
-                    props.description.length > 100
-                      ? props.description.substr(0, 100) + "..."
-                      : props.description
-                  }}
-                </div>
-              </q-btn>
-            </div>
-          </template>
-        </link-prevue>
-      </q-carousel-slide>
-
-      <q-carousel-slide
-        v-for="link in links"
-        v-bind:key="link.url"
-        :name="link.url"
-        class="column no-wrap flex-center"
+  <div id="NewsBlockvid">
+    <div class="q-pt-md">
+      <div class="text-center">
+        <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-sm">
+          <q-icon name="library_books" /> SCELTE PER TE
+        </h1>
+      </div>
+      <q-carousel
+        v-model="slide"
+        transition-prev="scale"
+        transition-next="scale"
+        swipeable
+        animated
+        infinite
+        arrows
+        :autoplay="timeout"
+        padding
+        height="69vh"
+        class="bg-transparent text-white shadow-1 news-slide q-pt-none q-mt-none"
       >
-        <link-prevue cardWidth="100%" :url="link.url">
-          <template slot-scope="props">
-            <q-parallax
-              class="absolute-top"
-              :src="props.img"
-              :alt="props.title"
-              :height="600"
-            />
-            <div class="absolute-bottom custom-caption">
-              <q-btn type="a" :href="props.url" target="_blank">
-                <div class="text-body1">
-                  {{
-                    props.title.length > 80
-                      ? props.title.substr(0, 80) + "..."
-                      : props.title
-                  }}
-                </div>
-                <div class="text-caption">
-                  {{
-                    props.description.length > 100
-                      ? props.description.substr(0, 100) + "..."
-                      : props.description
-                  }}
-                </div>
-              </q-btn>
-            </div>
-          </template>
-        </link-prevue>
-      </q-carousel-slide>
-    </q-carousel>
-    <div class="text-red-9">
-      <h2 class="text-h6"><q-icon name="library_books" /> Conferenza stampa in diretta</h2>
+        <q-carousel-slide name="headerLink">
+          <link-prevue cardWidth="100%" :url="headerLink.url">
+            <template slot-scope="props">
+              <q-parallax
+                class="absolute-top"
+                :src="props.img"
+                :alt="props.title"
+                :height="600"
+              />
+              <div class="absolute-bottom custom-caption">
+                <q-btn type="a" :href="props.url" target="_blank">
+                  <div class="text-body1">
+                    {{
+                      props.title.length > 80
+                        ? props.title.substr(0, 80) + "..."
+                        : props.title
+                    }}
+                  </div>
+                  <div class="text-caption">
+                    {{
+                      props.description.length > 100
+                        ? props.description.substr(0, 100) + "..."
+                        : props.description
+                    }}
+                  </div>
+                </q-btn>
+              </div>
+            </template>
+          </link-prevue>
+        </q-carousel-slide>
+
+        <q-carousel-slide
+          v-for="link in links"
+          v-bind:key="link.url"
+          :name="link.url"
+          class="column no-wrap flex-center news-slide"
+        >
+          <link-prevue cardWidth="100%" :url="link.url">
+            <template slot-scope="props">
+              <q-parallax
+                class="absolute-top"
+                :src="props.img"
+                :alt="props.title"
+                :height="600"
+              />
+              <div class="absolute-bottom custom-caption">
+                <q-btn type="a" :href="props.url" target="_blank">
+                  <div class="text-body1">
+                    {{
+                      props.title.length > 80
+                        ? props.title.substr(0, 80) + "..."
+                        : props.title
+                    }}
+                  </div>
+                  <div class="text-caption">
+                    {{
+                      props.description.length > 100
+                        ? props.description.substr(0, 100) + "..."
+                        : props.description
+                    }}
+                  </div>
+                </q-btn>
+              </div>
+            </template>
+          </link-prevue>
+        </q-carousel-slide>
+      </q-carousel>
     </div>
-    <iframe
-      class="q-pt-lg full-width"
-      height="315"
-      src="https://www.youtube.com/embed/bzUjSJKXvwk"
-      frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
+    <div class="q-pt-lg">
+      <div class="text-center">
+        <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-none">
+          <q-icon name="devices" /> CONFERENZA IN DIRETTA
+        </h1>
+      </div>
+      <iframe
+        class="q-pt-sm full-width"
+        height="450"
+        src="https://www.youtube.com/embed/bzUjSJKXvwk"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="border-radius: 33px"
+      ></iframe>
+    </div>
   </div>
 </template>
 
@@ -147,6 +156,9 @@ export default {
 };
 </script>
 <style lang="sass" scoped>
+.news-slide
+  border-radius: 33px
+
 .custom-caption
   text-align: center
   padding: 12px

@@ -1,52 +1,73 @@
 <template>
   <q-page class="row justify-center items-center" padding>
-    <div class="q-pt-md full-width" style="max-width: 1000px">
+    <div class="q-pt-lg full-width" style="max-width: 1000px">
       <div class="text-center">
-        <div class="">
-          <h1 class="text-h2 q-pt-none q-mt-none">
-            block<span class="text-red-9">vid</span>
-          </h1>
-        </div>
-        <div>
-          <h2 class="text-overline">insieme per una corretta informazione</h2>
-        </div>
+        <h2 class="text-h2 q-pt-none q-mt-none q-pb-none q-mb-none">
+          block<span class="text-red-9">vid</span>
+        </h2>
+        <h2 class="text-overline q-pt-none q-mt-none">
+          insieme per una corretta informazione
+        </h2>
       </div>
-      <div class="text-center">
+      <div class="text-center q-pt-lg">
         <div class="row text-red-3">
           <div class="col">
-            <span class="text-h6"
-              ><b>{{
-                totalInfectedItalyExploded.reduce((a, b) => {
-                  return Number(a) + Number(b.total);
-                }, 0)
-              }}</b></span
-            >
-            ITALIA
-            <br />
-            <span class="text-body1"
-              ><b>{{ totalHealedsItaly }}</b></span
-            >
-            GUARITI |
-            <span class="text-body1"
-              ><b>{{ totalDeathsItaly }}</b></span
-            >
-            DECEDUTI
+            <q-markup-table class="no-border no-box-shadow" v-model="separator">
+              <thead>
+                <tr>
+                  <th class="text-bold text-right" colspan="2">ITALIA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-bold text-left">CONTAGI</td>
+                  <td class="text-right text-red-9">
+                    <b>{{ totalInfectedItaly }}</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-bold text-left">GUARITI</td>
+                  <td class="text-right text-red-9">
+                    <b>{{ totalHealedsItaly }}</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-bold text-left">DECEDUTI</td>
+                  <td class="text-right text-red-9">
+                    <b>{{ totalDeathsItaly }}</b>
+                  </td>
+                </tr>
+              </tbody>
+            </q-markup-table>
           </div>
           <div class="col">
-            <span class="text-h6">
-              <b>{{ totalInfected }}</b></span
-            >
-            MONDO
-             <br />
-            <span class="text-body1"
-              ><b>{{ totalHealeds }}</b></span
-            >
-            GUARITI |
-            <span class="text-body1"
-              ><b>{{ totalDeaths }}</b></span
-            >
-            DECEDUTI
-          </div>
+            <q-markup-table class="no-border no-box-shadow" v-model="separator">
+              <thead>
+                <tr>
+                  <th class="text-bold text-right" colspan="2">MONDO</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-left"></td>
+                  <td class="text-right text-red-9">
+                    <b>{{ totalInfected }}</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-left"></td>
+                  <td class="text-right text-red-9">
+                    <b>{{ totalHealeds }}</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-left"></td>
+                  <td class="text-right text-red-9">
+                    <b>{{ totalDeaths }}</b>
+                  </td>
+                </tr>
+              </tbody>
+            </q-markup-table>
           </div>
         </div>
       </div>
@@ -54,13 +75,88 @@
 
     <News />
 
-    <div class="q-pt-lg full-width" style="max-width: 1000px">
-      <div class="text-red-9 no-padding">
-        <h2 class="text-h6"><q-icon name="map" /> Mappe interattive</h2>
+    <div class="q-pt-md full-width" style="max-width: 1000px">
+      <div class="text-center">
+        <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-none">
+          <q-icon name="map" /> DATI PER PROVINCIA
+        </h1>
       </div>
-      <div class="q-pt-md">
+      <div>
+        <iframe
+          src="https://datawrapper.dwcdn.net/A5nvy/42/"
+          frameborder="0"
+          scrolling="no"
+          class="full-width"
+          title="Lab24 - Il Sole 24 Ore"
+          style="margin: 0"
+          height="1770"
+        ></iframe>
+      </div>
+      <q-btn
+        type="a"
+        href="https://lab24.ilsole24ore.com/coronavirus/"
+        target="_blank"
+        label="Fonte: Il sole 24 ore"
+        flat
+        color="red-9"
+      />
+    </div>
+
+    <div class="q-pt-md full-width" style="max-width: 1000px">
+      <div class="text-center">
+        <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-none">
+          <q-icon name="done_all" /> DATI PER REGIONE
+        </h1>
+      </div>
+      <q-table
+        title="In italia"
+        :data="totalInfectedItalyExploded"
+        :columns="columnsItalyExploded"
+        :filter="filterItalyExploded"
+        class="no-padding"
+        row-key="name"
+      >
+        <template v-slot:top-right>
+          <q-input
+            dense
+            borderless
+            debounce="300"
+            v-model="filterItalyExploded"
+            placeholder="Ricerca..."
+          />
+        </template>
+      </q-table>
+      <div class="text-body1 q-ml-none">
+        <q-btn
+          type="a"
+          href="http://www.protezionecivile.gov.it/attivita-rischi/rischio-sanitario/emergenze/coronavirus"
+          target="_blank"
+          label="Fonte: Protezione Civile"
+          flat
+          color="red-9"
+        />
+      </div>
+    </div>
+
+    <div class="q-pt-md full-width" style="max-width: 1000px">
+      <div class="text-center">
+        <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-none">
+          <q-icon name="map" /> MAPPE INTERATTIVE
+        </h1>
+      </div>
+      <div class="q-pt-md window-height">
         <iframe
           src="https://public.flourish.studio/visualisation/1437744/embed"
+          frameborder="0"
+          scrolling="no"
+          class="full-height full-width"
+          title="Gedi Visual Map"
+          style="margin; 0"
+        ></iframe>
+      </div>
+      <div class="q-pt-md window-height">
+        <iframe
+          src="https://public.flourish.studio/visualisation/1462461/embed"
           frameborder="0"
           scrolling="no"
           height="800"
@@ -72,12 +168,12 @@
           type="a"
           href="https://lab.gedidigital.it/gedi-visual/2020/coronavirus-i-contagi-in-italia/"
           target="_blank"
-          label="Leggi altro"
+          label="Fonte: La Repubblica"
           flat
           color="red-9"
         />
       </div>
-      <div class="q-pt-md">
+      <!-- <div class="q-pt-md">
         <iframe
           src="https://dataviz.nbcnews.com/projects/20200122-coronavirus-world-count/index.html?initialWidth=760&amp;childId=embed-20200122-coronavirus-world-count&amp;parentTitle=Coronavirus%20map%3A%20The%20COVID-19%20virus%20is%20spreading%20across%20the%20world.%20Here%27s%20where%20cases%20have%20been%20confirmed.&amp;parentUrl=https%3A%2F%2Fwww.nbcnews.com%2Fhealth%2Fhealth-news%2Fcoronavirus-map-confirmed-cases-2020-n1120686"
           scrolling="no"
@@ -96,8 +192,8 @@
           flat
           color="red-9"
         />
-      </div>
-      <div class="q-pt-md">
+      </div> -->
+      <!-- <div class="q-pt-md">
         <iframe
           src="https://public.flourish.studio/visualisation/1448957/embed"
           scrolling="no"
@@ -116,55 +212,10 @@
           flat
           color="red-9"
         />
-      </div>
+      </div> -->
     </div>
 
-    <div class="q-pt-lg full-width" style="max-width: 1000px">
-      <div class="text-red-9 no-padding">
-        <h2 class="text-h6"><q-icon name="done_all" /> Dati ufficiali</h2>
-      </div>
-      <q-table
-        title="In italia"
-        :data="totalInfectedItalyExploded"
-        :columns="columnsItalyExploded"
-        :filter="filterItalyExploded"
-        :pagination.sync="paginationItalyExploded"
-        class="no-padding"
-        row-key="name"
-      >
-        <template v-slot:top-right>
-          <q-input
-            dense
-            borderless
-            debounce="300"
-            v-model="filterItalyExploded"
-            placeholder="Ricerca..."
-          />
-        </template>
-        <template v-slot:bottom>
-          Totale
-          <div class="text-body1 q-ml-lg">
-            <b>
-              {{
-                totalInfectedItalyExploded.reduce((a, b) => {
-                  return Number(a) + Number(b.total);
-                }, 0)
-              }}
-            </b>
-            <q-btn
-              type="a"
-              href="http://www.protezionecivile.gov.it/attivita-rischi/rischio-sanitario/emergenze/coronavirus"
-              target="_blank"
-              label="Fonte: Protezione Civile"
-              flat
-              color="red-9"
-            />
-          </div>
-        </template>
-      </q-table>
-    </div>
-
-    <div class="q-pt-lg full-width" style="max-width: 1000px">
+    <div class="q-pt-md full-width" style="max-width: 1000px">
       <q-table
         title="Nel mondo"
         :data="covidData"
@@ -182,28 +233,24 @@
           >
           </q-input>
         </template>
-
-        <template v-slot:bottom>
-          <div class="text-caption">
-            I dati sono aggiornati al {{ lastUpdate.format("DD-MM-YYYY") }}
-            <q-btn
-              type="a"
-              href="https://github.com/CSSEGISandData/COVID-19"
-              target="_blank"
-              label="Leggi altro"
-              flat
-              color="red-9"
-            />
-          </div>
-        </template>
       </q-table>
+      <div class="text-caption">
+        <q-btn
+          type="a"
+          href="https://github.com/CSSEGISandData/COVID-19"
+          target="_blank"
+          label="@CSSEGISandData"
+          flat
+          color="red-9"
+        />
+      </div>
     </div>
 
-    <div class="q-pt-lg full-width" style="max-width: 1000px">
-      <div class="text-red-9 no-padding">
-        <h2 class="text-h6">
-          <q-icon name="healing" /> Proteggi te stesso e gli altri
-        </h2>
+    <div class="q-pt-md full-width" style="max-width: 1000px">
+      <div class="text-center">
+        <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-none">
+          <q-icon name="healing" /> PROTEGGITI
+        </h1>
       </div>
       <div class="row">
         <q-img
@@ -237,7 +284,7 @@
       </div>
     </div>
 
-    <div class="q-pt-lg full-width" style="max-width: 1000px">
+    <div class="q-pt-md full-width" style="max-width: 1000px">
       <q-card>
         <h4
           class="text-weight-bold text-center q-pt-sm"
@@ -288,6 +335,7 @@ export default {
       lastUpdate: moment(),
       questions: questions,
       rand: Math.floor(Math.random() * 10),
+      separator: "none",
       columns: [
         {
           name: "country",
@@ -336,7 +384,7 @@ export default {
       ],
       filter: "",
       paginationItalyExploded: {
-        rowsPerPage: 0,
+        rowsPerPage: 10,
         sortBy: "total",
         descending: true
       },
@@ -533,6 +581,11 @@ export default {
         );
       }
     },
+    totalInfectedItaly() {
+      return this.totalInfectedItalyExploded.reduce((a, b) => {
+        return Number(a) + Number(b.total);
+      }, 0);
+    },
     totalInfected() {
       return this.$store.state.totalInfected;
     },
@@ -541,7 +594,7 @@ export default {
     },
     totalDeaths() {
       return this.$store.state.totalDeaths;
-    },
+    }
   }
 };
 </script>
