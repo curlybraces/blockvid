@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="it.matness.blockvid" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Blockvid</name>
+<widget id="org.matness.blockvid" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>blockvid</name>
     <description>COVID-19's blockchain</description>
-    <author email="mateonunez95@gmail.com" href="http://matness.it/">
-        Mateo Nunez
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
@@ -14,27 +14,12 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <allow-navigation href="https://public.flourish.studio/visualisation/*" />
-    <allow-navigation href="https://www.google.com/maps/*" />
-    <allow-navigation href="https://dataviz.nbcnews.com/*" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
-    <feature name="Geolocation">
-        <param name="android-package" value="org.apache.cordova.GeoBroker" />
-    </feature>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
     </platform>
     <allow-navigation href="about:*" />
-    <plugin name="cordova-plugin-wkwebview-engine" spec="1.2.1" />
-    <BackupWebStorage>Local</BackupWebStorage>
-    <preference name="Orientation" value="portrait" />
-    <plugin name="cordova-plugin-splashscreen" spec="^5.0.3" />
-    <preference name="ShowSplashScreenSpinner" value="false" />
-    <engine name="android" spec="^8.1.0" />
-    <engine name="ios" spec="^4.5.5" />
-    <engine name="browser" spec="^5.0.4" />
 </widget>

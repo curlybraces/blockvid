@@ -19,6 +19,8 @@ build.cordova.json
 /src-cordova/node_modules
 /src-cordova/platforms
 /src-cordova/plugins
+/src-cordova/res
+/src-cordova/res/screen/ios
 /src-cordova/www
 
 # Capacitor related directories and files

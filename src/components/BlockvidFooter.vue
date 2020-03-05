@@ -17,16 +17,14 @@
         <div>
           <div class="text-red-9">
             <q-btn
-              type="a"
               to="/cookies"
               class="q-pl-none q-pr-none"
-              target="_blank"
               label="Cookies"
               flat
               dense
               color="red-9"
-            /> 
-            -
+            />
+            <!-- -
             <q-btn
               type="a"
               to="/policy"
@@ -36,7 +34,7 @@
               flat
               dense
               color="red-9"
-            />
+            /> -->
           </div>
           <div class="text-black">&copy; {{ year }} - By Community</div>
         </div>

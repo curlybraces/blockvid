@@ -85,9 +85,9 @@ module.exports = function(ctx) {
       workboxPluginMode: "GenerateSW", // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: "Blockvid",
-        short_name: "Blockvid",
-        description: "Coronavirus Blockchain",
+        name: "blockvid",
+        short_name: "blockvid",
+        description: "COVID-19's blockchain",
         display: "standalone",
         orientation: "portrait",
         background_color: "#ffffff",
@@ -125,7 +125,7 @@ module.exports = function(ctx) {
     // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
     cordova: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
-      id: "it.matness.blockvid"
+      id: "org.matness.blockvid"
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor

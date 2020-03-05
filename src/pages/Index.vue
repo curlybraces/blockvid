@@ -352,47 +352,47 @@ export default {
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 1820
+          total: 2251
         },
         {
           region: "Emilia Romagna",
-          total: 544
+          total: 698
         },
         {
           region: "Veneto",
-          total: 360
+          total: 407
         },
         {
           region: "Piemonte",
-          total: 82
+          total: 108
         },
         {
           region: "Campania",
-          total: 31
+          total: 45
         },
         {
           region: "Liguria",
-          total: 26
+          total: 28
         },
         {
           region: "Marche",
-          total: 84
+          total: 124
         },
         {
           region: "Toscana",
-          total: 38
+          total: 61
         },
         {
           region: "Lazio",
-          total: 30
+          total: 44
         },
         {
           region: "Friuli Venezia Giulia",
-          total: 18
+          total: 21
         },
         {
           region: "Puglia",
-          total: 9
+          total: 14
         },
         {
           region: "Sicilia",
@@ -400,7 +400,7 @@ export default {
         },
         {
           region: "Abruzzo",
-          total: 7
+          total: 8
         },
         {
           region: "Umbria",
@@ -408,15 +408,15 @@ export default {
         },
         {
           region: "Calabria",
-          total: 1
+          total: 2
         },
         {
           region: "Trentino Alto Adige",
-          total: 6
+          total: 8
         },
         {
           region: "Molise",
-          total: 3
+          total: 7
         },
         {
           region: "Basilicata",
@@ -425,10 +425,14 @@ export default {
         {
           region: "Sardegna",
           total: 2
+        },
+        {
+          region: "Valle D'Aosta",
+          total: 2
         }
       ],
-      totalHealeds: 276,
-      totalDeads: 107
+      totalHealeds: 414,
+      totalDeads: 148
     };
   },
   mounted() {

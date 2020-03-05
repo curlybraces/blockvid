@@ -71,21 +71,23 @@ export default {
       ? Blockvid.getBlockchainLocalStorage()
       : Blockvid.initBlockchainLocalStorage();
 
-    navigator.geolocation.getCurrentPosition(position => {
-      console.log(position);
-      const newBlockData = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
+    document.addEventListener("deviceready", () => {
+      navigator.geolocation.getCurrentPosition(position => {
+        console.log(position);
+        const newBlockData = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
 
-      Blockvid.addBlock(chain, newBlockData).then(chain => {
-        console.log(chain);
-        if (Blockvid.validateChain(chain)) {
-          Blockvid.setBlockchainLocalStorage(chain);
-          this.blockchain = chain;
-        } else {
-          console.error("Your chain is not valid!");
-        }
+        Blockvid.addBlock(chain, newBlockData).then(chain => {
+          console.log(chain);
+          if (Blockvid.validateChain(chain)) {
+            Blockvid.setBlockchainLocalStorage(chain);
+            this.blockchain = chain;
+          } else {
+            console.error("Your chain is not valid!");
+          }
+        });
       });
     });
   }
