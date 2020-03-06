@@ -80,6 +80,6 @@ export default {
 </script>
 <style>
 .blockchain-map {
-  height: 70vh;
+  height: 80vh;
 }
 </style>

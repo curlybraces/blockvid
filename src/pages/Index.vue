@@ -410,87 +410,87 @@ export default {
       totalInfectedItalyExploded: [
         {
           region: "Lombardia",
-          total: 2251
+          total: 2612
         },
         {
           region: "Emilia Romagna",
-          total: 698
+          total: 870
         },
         {
           region: "Veneto",
-          total: 407
+          total: 488
         },
         {
           region: "Piemonte",
-          total: 108
+          total: 143
         },
         {
           region: "Campania",
-          total: 45
+          total: 57
         },
         {
           region: "Liguria",
-          total: 28
+          total: 32
         },
         {
           region: "Marche",
-          total: 124
+          total: 159
         },
         {
           region: "Toscana",
-          total: 61
+          total: 79
         },
         {
           region: "Lazio",
-          total: 44
+          total: 54
         },
         {
           region: "Friuli Venezia Giulia",
-          total: 21
+          total: 31
         },
         {
           region: "Puglia",
-          total: 14
+          total: 17
         },
         {
           region: "Sicilia",
-          total: 18
+          total: 24
         },
         {
           region: "Abruzzo",
-          total: 8
-        },
-        {
-          region: "Umbria",
           total: 9
         },
         {
+          region: "Umbria",
+          total: 16
+        },
+        {
           region: "Calabria",
-          total: 2
+          total: 4
         },
         {
           region: "Trentino Alto Adige",
-          total: 8
+          total: 14
         },
         {
           region: "Molise",
-          total: 7
+          total: 12
         },
         {
           region: "Basilicata",
-          total: 1
+          total: 3
         },
         {
           region: "Sardegna",
-          total: 2
+          total: 5
         },
         {
           region: "Valle D'Aosta",
-          total: 2
+          total: 7
         }
       ],
-      totalHealedsItaly: 414,
-      totalDeathsItaly: 148
+      totalHealedsItaly: 523, 
+      totalDeathsItaly: 197
     };
   },
   mounted() {
