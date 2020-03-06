@@ -1,38 +1,18 @@
 <template>
   <div>
-    <q-table
-      title="Blockchain"
-      :data="blockchain"
-      :columns="columns"
-      row-key="index"
-      :filter="filter"
-      wrap-cells
-      :pagination.sync="pagination"
-      :rows-per-page-options="[0]"
-    >
-      <template v-slot:top-right>
-        <q-input
-          borderless
-          dense
-          debounce="300"
-          v-model="filter"
-          placeholder="Search"
-        >
-          <template v-slot:append>
-            <q-icon name="search" />
-          </template>
-        </q-input>
-      </template>
-    </q-table>
+    <BlockchainMap :blockchain="blockchain" class="blockchain-map" />
   </div>
 </template>
 
 <script>
 import Blockvid, { addBlock } from "./../core/blockchain";
+import BlockchainMap from "./../components/Maps/BlockchainMap";
 export default {
+  components: {
+    BlockchainMap
+  },
   data() {
     return {
-      blockchain: [],
       filter: "",
       pagination: {
         rowsPerPage: 0
@@ -71,27 +51,35 @@ export default {
       ? Blockvid.getBlockchainLocalStorage()
       : Blockvid.initBlockchainLocalStorage();
 
-    document.addEventListener("deviceready", () => {
-      navigator.geolocation.getCurrentPosition(position => {
-        console.log(position);
-        const newBlockData = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
+    if (this.$q.platform.is.cordova) {
+      console.log("deviceisready bla bla");
+    }
 
-        Blockvid.addBlock(chain, newBlockData).then(chain => {
-          console.log(chain);
-          if (Blockvid.validateChain(chain)) {
-            Blockvid.setBlockchainLocalStorage(chain);
-            this.blockchain = chain;
-          } else {
-            console.error("Your chain is not valid!");
-          }
-        });
+    navigator.geolocation.getCurrentPosition(position => {
+      const newBlockData = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      Blockvid.addBlock(chain, newBlockData).then(chain => {
+        if (Blockvid.validateChain(chain)) {
+          Blockvid.setBlockchainLocalStorage(chain);
+          this.$store.dispatch("setBlockchain", chain);
+        } else {
+          console.error("Your chain is not valid!");
+        }
       });
     });
+  },
+  computed: {
+    blockchain() {
+      return this.$store.state.blockchain;
+    }
   }
 };
 </script>
-
-<style></style>
+<style>
+.blockchain-map {
+  height: 70vh;
+}
+</style>
