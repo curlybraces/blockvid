@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axios from "axios";
 import axiosClient from "./../core/axiosClient";
+import moment from "moment";
 
 // import example from './module-example'
 
@@ -33,7 +35,9 @@ export default new Vuex.Store({
     // blockchain storing
     blockchain: [],
 
-    infectsNumbers: []
+    infectsNumbers: [],
+    infectsItaly: [],
+    infectsProvince: []
   },
   mutations: {
     leftDrawerOpen(state, value) {
@@ -77,6 +81,14 @@ export default new Vuex.Store({
 
     setInfectsNumbers(state, value) {
       state.infectsNumbers = value;
+    },
+
+    setInfectsItaly(state, value) {
+      state.infectsItaly = value;
+    },
+
+    setInfectsProvince(state, value) {
+      state.infectsProvince = value;
     }
   },
   actions: {
@@ -129,6 +141,38 @@ export default new Vuex.Store({
 
     setInfectsNumbers({ commit }, value) {
       commit("setInfectsNumbers", value);
+    },
+
+    getInfectsItaly({ commit }) {
+      axios.get(Vue.prototype.$infectsItaly).then(response => {
+        commit("setInfectsItaly", response.data);
+      });
+    },
+    setInfectsItaly({ commit }, value) {
+      commit("setInfectsItaly", value);
+    },
+
+    getInfectsProvince({ commit }, country) {
+      axios
+        .get(
+          "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province.json"
+        )
+        .then(response => {
+          let lastDate = response.data[response.data.length - 1].data;
+
+          let dataFiltered = response.data.filter(row => {
+            return (
+              moment(row.data).format("YYYY-MM-DD") ==
+              moment(lastDate).format("YYYY-MM-DD")
+            );
+          });
+
+          commit("setInfectsProvince", dataFiltered);
+        });
+    },
+
+    setInfectsProvince({ commit }, value) {
+      commit("setInfectsProvince", value);
     }
   },
 

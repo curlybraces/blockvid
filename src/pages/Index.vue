@@ -22,19 +22,19 @@
                 <tr>
                   <td class="text-bold text-left">CONTAGI</td>
                   <td class="text-right text-red-9">
-                    <b>{{ totalInfectedItaly }}</b>
+                    <b>{{ infectsItaly.totale_casi }}</b>
                   </td>
                 </tr>
                 <tr>
                   <td class="text-bold text-left">GUARITI</td>
                   <td class="text-right text-red-9">
-                    <b>{{ totalHealedsItaly }}</b>
+                    <b>{{ infectsItaly.dimessi_guariti }}</b>
                   </td>
                 </tr>
                 <tr>
                   <td class="text-bold text-left">DECEDUTI</td>
                   <td class="text-right text-red-9">
-                    <b>{{ totalDeathsItaly }}</b>
+                    <b>{{ infectsItaly.deceduti }}</b>
                   </td>
                 </tr>
               </tbody>
@@ -75,68 +75,7 @@
 
     <News />
 
-    <div class="q-pt-md full-width" style="max-width: 1000px">
-      <div class="text-center">
-        <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-none">
-          <q-icon name="map" /> DATI PER PROVINCIA
-        </h1>
-      </div>
-      <div>
-        <iframe
-          src="https://datawrapper.dwcdn.net/A5nvy/42/"
-          frameborder="0"
-          scrolling="no"
-          class="full-width"
-          title="Lab24 - Il Sole 24 Ore"
-          style="margin: 0"
-          height="1770"
-        ></iframe>
-      </div>
-      <q-btn
-        type="a"
-        href="https://lab24.ilsole24ore.com/coronavirus/"
-        target="_blank"
-        label="Fonte: Il sole 24 ore"
-        flat
-        color="red-9"
-      />
-    </div>
-
-    <div class="q-pt-md full-width" style="max-width: 1000px">
-      <div class="text-center">
-        <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-none">
-          <q-icon name="done_all" /> DATI PER REGIONE
-        </h1>
-      </div>
-      <q-table
-        title="In italia"
-        :data="totalInfectedItalyExploded"
-        :columns="columnsItalyExploded"
-        :filter="filterItalyExploded"
-        class="no-padding"
-        row-key="name"
-      >
-        <template v-slot:top-right>
-          <q-input
-            dense
-            borderless
-            debounce="300"
-            v-model="filterItalyExploded"
-            placeholder="Ricerca..."
-          />
-        </template>
-      </q-table>
-      <div class="text-body1 q-ml-none">
-        <q-btn
-          type="a"
-          href="http://www.protezionecivile.gov.it/attivita-rischi/rischio-sanitario/emergenze/coronavirus"
-          target="_blank"
-          label="Fonte: Protezione Civile"
-          flat
-          color="red-9"
-        />
-      </div>
-    </div>
+    <InfectsProvince country="IT" />
 
     <div class="q-pt-md full-width" style="max-width: 1000px">
       <div class="text-center">
@@ -173,46 +112,6 @@
           color="red-9"
         />
       </div>
-      <!-- <div class="q-pt-md">
-        <iframe
-          src="https://dataviz.nbcnews.com/projects/20200122-coronavirus-world-count/index.html?initialWidth=760&amp;childId=embed-20200122-coronavirus-world-count&amp;parentTitle=Coronavirus%20map%3A%20The%20COVID-19%20virus%20is%20spreading%20across%20the%20world.%20Here%27s%20where%20cases%20have%20been%20confirmed.&amp;parentUrl=https%3A%2F%2Fwww.nbcnews.com%2Fhealth%2Fhealth-news%2Fcoronavirus-map-confirmed-cases-2020-n1120686"
-          scrolling="no"
-          marginheight="0"
-          style="margin; 0"
-          frameborder="0"
-          title="A map of countries with confirmed coronavirus cases, updated daily."
-          height="600"
-          class="full-width"
-        ></iframe>
-        <q-btn
-          type="a"
-          href="https://www.nbcnews.com/health/health-news/coronavirus-map-confirmed-cases-2020-n1120686"
-          target="_blank"
-          label="Leggi altro"
-          flat
-          color="red-9"
-        />
-      </div> -->
-      <!-- <div class="q-pt-md">
-        <iframe
-          src="https://public.flourish.studio/visualisation/1448957/embed"
-          scrolling="no"
-          marginheight="0"
-          style="margin; 0"
-          frameborder="0"
-          title="A map of countries with confirmed coronavirus cases, updated daily."
-          height="600"
-          class="full-width"
-        ></iframe>
-        <q-btn
-          type="a"
-          href="https://public.flourish.studio/visualisation/1448957/?utm_source=embed&utm_campaign=visualisation/1448957"
-          target="_blank"
-          label="Leggi altro"
-          flat
-          color="red-9"
-        />
-      </div> -->
     </div>
 
     <div class="q-pt-md full-width" style="max-width: 1000px">
@@ -317,6 +216,7 @@
 
 <script>
 import News from "./../components/News";
+import InfectsProvince from "./../components/InfectsProvince";
 
 import moment from "./../boot/moment";
 import { questions } from "../misc/questions";
@@ -324,7 +224,8 @@ import { questions } from "../misc/questions";
 export default {
   name: "PageIndex",
   components: {
-    News
+    News,
+    InfectsProvince
   },
   data() {
     return {
@@ -406,94 +307,12 @@ export default {
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
         }
       ],
-      showSource: false,
-      totalInfectedItalyExploded: [
-        {
-          region: "Lombardia",
-          total: 2612
-        },
-        {
-          region: "Emilia Romagna",
-          total: 870
-        },
-        {
-          region: "Veneto",
-          total: 488
-        },
-        {
-          region: "Piemonte",
-          total: 143
-        },
-        {
-          region: "Campania",
-          total: 57
-        },
-        {
-          region: "Liguria",
-          total: 32
-        },
-        {
-          region: "Marche",
-          total: 159
-        },
-        {
-          region: "Toscana",
-          total: 79
-        },
-        {
-          region: "Lazio",
-          total: 54
-        },
-        {
-          region: "Friuli Venezia Giulia",
-          total: 31
-        },
-        {
-          region: "Puglia",
-          total: 17
-        },
-        {
-          region: "Sicilia",
-          total: 24
-        },
-        {
-          region: "Abruzzo",
-          total: 9
-        },
-        {
-          region: "Umbria",
-          total: 16
-        },
-        {
-          region: "Calabria",
-          total: 4
-        },
-        {
-          region: "Trentino Alto Adige",
-          total: 14
-        },
-        {
-          region: "Molise",
-          total: 12
-        },
-        {
-          region: "Basilicata",
-          total: 3
-        },
-        {
-          region: "Sardegna",
-          total: 5
-        },
-        {
-          region: "Valle D'Aosta",
-          total: 7
-        }
-      ],
-      totalHealedsItaly: 523, 
-      totalDeathsItaly: 197
+      showSource: false
     };
   },
   mounted() {
+    this.$store.dispatch("getInfectsItaly");
+
     this.prepareData(this.endpoint, this.today)
       .then(response => {
         this.covidData = response;
@@ -523,6 +342,8 @@ export default {
             });
           });
       });
+
+    console.log(this.infectsItaly);
   },
   methods: {
     prepareData(endpoint, date) {
@@ -581,10 +402,16 @@ export default {
         );
       }
     },
-    totalInfectedItaly() {
-      return this.totalInfectedItalyExploded.reduce((a, b) => {
-        return Number(a) + Number(b.total);
-      }, 0);
+    infectsItaly: {
+      get() {
+        let infects = this.$store.state.infectsItaly;
+
+        if (infects.length > 0) {
+          return infects[infects.length - 1];
+        }
+
+        return {};
+      }
     },
     totalInfected() {
       return this.$store.state.totalInfected;
