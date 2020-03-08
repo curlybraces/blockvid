@@ -13,7 +13,6 @@
         :columns="columns"
         :filter="filter"
         :pagination.sync="pagination"
-        class="no-padding"
         row-key="codice_provincia"
       >
         <template v-slot:top-right>
@@ -73,14 +72,6 @@ export default {
           name: "totale_casi",
           label: "Totale casi",
           field: row => row.totale_casi,
-          align: "left",
-          sortable: true
-        },
-        {
-          name: "data",
-          label: "Data",
-          field: row => row.data,
-          format: (val, row) => moment(val).format("YYYY-MM-DD"),
           align: "left",
           sortable: true
         }

@@ -8,6 +8,14 @@
         <h2 class="text-overline q-pt-none q-mt-none">
           insieme per una corretta informazione
         </h2>
+        <q-btn
+          type="a"
+          href="https://play.google.com/store/apps/details?id=org.matness.blockvid"
+          target="_blank"
+          dense
+        >
+          <q-img src="/statics/playstore.png" width="130px" />
+        </q-btn>
       </div>
       <div class="text-center q-pt-lg">
         <div class="row text-red-3">
