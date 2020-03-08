@@ -1,7 +1,7 @@
 {
   "name": "org.matness.blockvid",
   "displayName": "blockvid",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "COVID-19's blockchain",
   "main": "index.js",
   "scripts": {
