@@ -58,6 +58,8 @@ export default {
           name: "denominazione_provincia",
           label: "Provincia",
           field: row => row.denominazione_provincia,
+          format: (val, row) =>
+            val.length > 15 ? val.substr(0, 15) + `...` : val,
           align: "left",
           sortable: true
         },
@@ -65,15 +67,15 @@ export default {
           name: "denominazione_regione",
           label: "Regione",
           field: row => row.denominazione_regione,
-          align: "left",
           sortable: true
         },
         {
           name: "totale_casi",
           label: "Totale casi",
           field: row => row.totale_casi,
-          align: "left",
-          sortable: true
+          format: (val, row) => Number(val),
+          sortable: true,
+          sort: (a, b, rowA, rowB) => parseInt(a, 10) - parseInt(b, 10)
         }
       ],
       pagination: {
