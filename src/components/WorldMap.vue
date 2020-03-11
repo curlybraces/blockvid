@@ -48,15 +48,15 @@ export default {
     imageSeries.mapImages.template.propertyFields.url = "url";
 
     var circle = imageSeries.mapImages.template.createChild(am4core.Circle);
-    circle.radius = 3;
+    circle.radius = 1;
     circle.propertyFields.fill = "color";
 
     var circle2 = imageSeries.mapImages.template.createChild(am4core.Circle);
-    circle2.radius = 3;
+    circle2.radius = 2;
     circle2.propertyFields.fill = "color";
 
     circle2.events.on("inited", function(event) {
-      // that.animateBullet(event.target);
+      that.animateBullet(event.target);
     });
 
     var colorSet = new am4core.ColorSet();
@@ -93,7 +93,7 @@ export default {
       let that = this;
       var animation = circle.animate(
         [
-          { property: "scale", from: 1, to: 5 },
+          { property: "scale", from: 1, to: 3 },
           { property: "opacity", from: 1, to: 0 }
         ],
         1000,
