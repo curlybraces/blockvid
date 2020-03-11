@@ -8,14 +8,6 @@
         <h2 class="text-overline q-pt-none q-mt-none">
           insieme per una corretta informazione
         </h2>
-        <q-btn
-          type="a"
-          href="https://play.google.com/store/apps/details?id=org.matness.blockvid"
-          target="_blank"
-          dense
-        >
-          <q-img src="/statics/playstore.png" width="130px" />
-        </q-btn>
       </div>
       <div class="text-center q-pt-lg">
         <div class="row text-red-3">
@@ -85,42 +77,7 @@
 
     <InfectsProvince country="IT" />
 
-    <div class="q-pt-md full-width" style="max-width: 1000px">
-      <div class="text-center">
-        <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-none">
-          <q-icon name="map" /> MAPPE INTERATTIVE
-        </h1>
-      </div>
-      <div class="q-pt-md window-height">
-        <iframe
-          src="https://public.flourish.studio/visualisation/1437744/embed"
-          frameborder="0"
-          scrolling="no"
-          class="full-height full-width"
-          title="Gedi Visual Map"
-          style="margin; 0"
-        ></iframe>
-      </div>
-      <div class="q-pt-md window-height">
-        <iframe
-          src="https://public.flourish.studio/visualisation/1462461/embed"
-          frameborder="0"
-          scrolling="no"
-          height="800"
-          class="full-width"
-          title="Gedi Visual Map"
-          style="margin; 0"
-        ></iframe>
-        <q-btn
-          type="a"
-          href="https://lab.gedidigital.it/gedi-visual/2020/coronavirus-i-contagi-in-italia/"
-          target="_blank"
-          label="Fonte: La Repubblica"
-          flat
-          color="red-9"
-        />
-      </div>
-    </div>
+    <WorldMap v-if="covidData.length > 0" :covidData="covidData" />
 
     <div class="q-pt-md full-width" style="max-width: 1000px">
       <q-table
@@ -225,6 +182,7 @@
 <script>
 import News from "./../components/News";
 import InfectsProvince from "./../components/InfectsProvince";
+import WorldMap from "./../components/WorldMap";
 
 import moment from "./../boot/moment";
 import { questions } from "../misc/questions";
@@ -233,7 +191,8 @@ export default {
   name: "PageIndex",
   components: {
     News,
-    InfectsProvince
+    InfectsProvince,
+    WorldMap
   },
   data() {
     return {
@@ -324,6 +283,7 @@ export default {
     this.prepareData(this.endpoint, this.today)
       .then(response => {
         this.covidData = response;
+        this.$store.dispatch("setCovidData", response);
         this.formalize(response);
         this.lastUpdate = data;
       })
@@ -334,7 +294,7 @@ export default {
         this.prepareData(endpoint, data)
           .then(response => {
             this.covidData = response;
-
+            this.$store.dispatch("setCovidData", response);
             this.formalize(response);
             this.lastUpdate = data;
           })
@@ -344,7 +304,7 @@ export default {
 
             this.prepareData(endpoint, data).then(response => {
               this.covidData = response;
-
+              this.$store.dispatch("setCovidData", response);
               this.formalize(response);
               this.lastUpdate = data;
             });

@@ -87,22 +87,6 @@
         </q-carousel-slide>
       </q-carousel>
     </div>
-    <div class="q-pt-lg">
-      <div class="text-center">
-        <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-none">
-          <q-icon name="devices" /> CONFERENZA IN DIRETTA
-        </h1>
-      </div>
-      <iframe
-        class="q-pt-sm full-width"
-        height="450"
-        src="https://www.youtube.com/embed/bzUjSJKXvwk"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        style="border-radius: 33px"
-      ></iframe>
-    </div>
   </div>
 </template>
 

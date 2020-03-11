@@ -22,4 +22,5 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <allow-navigation href="about:*" />
+    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyBehl-csR3PzRtPyv4q7SE4L588qBsQR-s" />
 </widget>

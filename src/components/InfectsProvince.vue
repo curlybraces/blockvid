@@ -1,5 +1,4 @@
 <template>
-  <div id="InfectsProvince">
     <div class="q-pt-md full-width" style="max-width: 1000px">
       <div class="text-center">
         <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-none">
@@ -13,7 +12,7 @@
         :columns="columns"
         :filter="filter"
         :pagination.sync="pagination"
-        row-key="codice_provincia"
+        row-key="name"
       >
         <template v-slot:top-right>
           <q-input
@@ -36,7 +35,6 @@
         />
       </div>
     </div>
-  </div>
   <!-- https://github.com/pcm-dpc/COVID-19/blob/master/dati-json/dpc-covid19-ita-province.json -->
 </template>
 
