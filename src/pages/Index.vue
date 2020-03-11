@@ -75,9 +75,10 @@
 
     <News />
 
-    <InfectsProvince country="IT" />
-
     <WorldMap v-if="covidData.length > 0" :covidData="covidData" />
+    <ItalyMap :infectsItaly="infectsItaly" />
+
+    <InfectsProvince country="IT" />
 
     <div class="q-pt-md full-width" style="max-width: 1000px">
       <q-table
@@ -183,6 +184,7 @@
 import News from "./../components/News";
 import InfectsProvince from "./../components/InfectsProvince";
 import WorldMap from "./../components/WorldMap";
+import ItalyMap from "./../components/ItalyMap";
 
 import moment from "./../boot/moment";
 import { questions } from "../misc/questions";
@@ -192,7 +194,8 @@ export default {
   components: {
     News,
     InfectsProvince,
-    WorldMap
+    WorldMap,
+    ItalyMap
   },
   data() {
     return {
@@ -311,7 +314,6 @@ export default {
           });
       });
 
-    console.log(this.infectsItaly);
   },
   methods: {
     prepareData(endpoint, date) {

@@ -13,7 +13,7 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 export default {
   name: "WorldMap",
   props: {
-    covidData: Object
+    covidData: Array
   },
   mounted() {
     let that = this;
@@ -48,11 +48,11 @@ export default {
     imageSeries.mapImages.template.propertyFields.url = "url";
 
     var circle = imageSeries.mapImages.template.createChild(am4core.Circle);
-    circle.radius = 1;
+    circle.radius = 0.333;
     circle.propertyFields.fill = "color";
 
     var circle2 = imageSeries.mapImages.template.createChild(am4core.Circle);
-    circle2.radius = 2;
+    circle2.radius = 1;
     circle2.propertyFields.fill = "color";
 
     circle2.events.on("inited", function(event) {
