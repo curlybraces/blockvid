@@ -1,14 +1,21 @@
 <template>
   <div class="full-width" style="max-width: 1000px">
+    <div class="text-center">
+      <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-sm">
+        <q-icon name="maps" /> NEL MONDO
+      </h1>
+    </div>
     <div class="world-chart" ref="chartdiv"></div>
   </div>
 </template>
 
 <script>
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4maps from "@amcharts/amcharts4/maps";
-import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import {
+  am4core,
+  am4maps,
+  am4geodata_worldLow,
+  am4themes_animated
+} from "./../boot/charts";
 
 export default {
   name: "WorldMap",
@@ -22,7 +29,8 @@ export default {
     let chart = am4core.create(this.$refs.chartdiv, am4maps.MapChart);
 
     chart.geodata = am4geodata_worldLow;
-    chart.projection = new am4maps.projections.Miller();
+    chart.projection = new am4maps.projections.Orthographic();
+    chart.panBehavior = "rotateLongLat";
     let polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
 
     // Exclude Antartica

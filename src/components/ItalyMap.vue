@@ -1,5 +1,10 @@
 <template>
   <div class="full-width" style="max-width: 1000px">
+    <div class="text-center">
+      <h1 class="text-h5 text-bold text-red-9 q-pb-none q-mb-sm">
+        <q-icon name="maps" /> IN ITALIA
+      </h1>
+    </div>
     <div class="italy-chart" ref="italychart"></div>
   </div>
 </template>
@@ -7,10 +12,12 @@
 <script>
 import moment from "moment";
 
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4maps from "@amcharts/amcharts4/maps";
-import am4geodata_italyLow from "@amcharts/amcharts4-geodata/italyLow";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import {
+  am4core,
+  am4maps,
+  am4geodata_italyLow,
+  am4themes_animated
+} from "./../boot/charts";
 
 export default {
   name: "ItalyMap",
