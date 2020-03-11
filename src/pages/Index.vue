@@ -77,7 +77,7 @@
 
     <InfectsProvince country="IT" />
 
-    <WorldMap />
+    <WorldMap v-if="covidData.length > 0" :covidData="covidData" />
 
     <div class="q-pt-md full-width" style="max-width: 1000px">
       <q-table

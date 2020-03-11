@@ -12,6 +12,9 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 export default {
   name: "WorldMap",
+  props: {
+    covidData: Object
+  },
   mounted() {
     let that = this;
     am4core.useTheme(am4themes_animated);
@@ -79,12 +82,12 @@ export default {
       this.chart.dispose();
     }
   },
-  computed: {
-    covidData() {
-      let covidData = this.$store.state.covidData;
-      return covidData;
-    }
-  },
+  // computed: {
+  //   covidData() {
+  //     let covidData = this.$store.state.covidData;
+  //     return covidData;
+  //   }
+  // },
   methods: {
     animateBullet(circle) {
       let that = this;
