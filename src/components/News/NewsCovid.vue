@@ -5,86 +5,39 @@
         <q-icon name="library_books" /> ULTIME NOTIZIE
       </h1>
     </div>
-    <q-carousel
-      v-model="slide"
-      transition-prev="scale"
-      transition-next="scale"
-      swipeable
-      animated
-      infinite
-      arrows
-      :autoplay="timeout"
-      padding
-      height="69vh"
-      class="bg-transparent text-white shadow-1 news-slide"
-    >
-      <q-carousel-slide name="headerLink">
-        <link-prevue cardWidth="100%" :url="headerLink.url">
-          <template slot-scope="props">
-            <q-parallax
-              class="absolute-top"
-              :src="props.img"
-              :alt="props.title"
-              :height="450"
-            />
-            <div class="absolute-bottom custom-caption">
-              <q-btn type="a" :href="props.url" target="_blank">
-                <div class="text-body1">
-                  {{
-                    props.title.length > 80
-                      ? props.title.substr(0, 80) + "..."
-                      : props.title
-                  }}
-                </div>
-                <div class="text-caption">
-                  {{
-                    props.description.length > 200
-                      ? props.description.substr(0, 200) + "..."
-                      : props.description
-                  }}
-                </div>
-              </q-btn>
-            </div>
-          </template>
-        </link-prevue>
-      </q-carousel-slide>
 
-      <q-carousel-slide
+    <q-list padding>
+      <q-item
+        class="full-width q-pa-md shadow-1"
         v-for="link in newsLinksInternational"
-        v-bind:key="link.url"
-        :name="link.url"
-        class="column no-wrap flex-center"
+        :key="link.url"
       >
         <link-prevue cardWidth="100%" :url="link.url">
           <template slot-scope="props">
-            <q-parallax
-              class="absolute-top"
-              :src="props.img"
-              :alt="props.title"
-              :height="450"
-            />
-            <div class="absolute-bottom custom-caption">
-              <q-btn type="a" :href="props.url" target="_blank">
-                <div class="text-body1">
-                  {{
-                    props.title.length > 80
-                      ? props.title.substr(0, 80) + "..."
-                      : props.title
-                  }}
-                </div>
-                <div class="text-caption">
-                  {{
-                    props.description.length > 200
-                      ? props.description.substr(0, 200) + "..."
-                      : props.description
-                  }}
-                </div>
-              </q-btn>
-            </div>
+            <q-item-section top thumbnail class="q-pb-sm">
+              <img :src="props.img" />
+            </q-item-section>
+
+            <q-item-section>
+              <q-item-label>{{ props.title }}</q-item-label>
+              <q-item-label caption>{{ props.description }}</q-item-label>
+            </q-item-section>
+
+            <q-item-section
+              class="q-pt-sm q-pb-sm q-mr-sm absolute-bottom-right"
+              side
+              top
+            >
+              <q-item-label caption>
+                <a class="text-red-9" :href="props.url" target="_blank"
+                  >Leggi altro</a
+                >
+              </q-item-label>
+            </q-item-section>
           </template>
         </link-prevue>
-      </q-carousel-slide>
-    </q-carousel>
+      </q-item>
+    </q-list>
   </div>
 </template>
 
