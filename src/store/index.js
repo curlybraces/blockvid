@@ -37,7 +37,8 @@ export default new Vuex.Store({
 
     infectsNumbers: [],
     infectsItaly: [],
-    infectsProvince: []
+    infectsProvince: [],
+    covidData: []
   },
   mutations: {
     leftDrawerOpen(state, value) {
@@ -89,6 +90,10 @@ export default new Vuex.Store({
 
     setInfectsProvince(state, value) {
       state.infectsProvince = value;
+    },
+
+    setCovidData(state, value) {
+      state.covidData = value;
     }
   },
   actions: {
@@ -173,6 +178,10 @@ export default new Vuex.Store({
 
     setInfectsProvince({ commit }, value) {
       commit("setInfectsProvince", value);
+    },
+
+    setCovidData({ commit }, value) {
+      commit("setCovidData", value);
     }
   },
 

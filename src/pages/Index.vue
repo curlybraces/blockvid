@@ -77,6 +77,8 @@
 
     <InfectsProvince country="IT" />
 
+    <WorldMap />
+
     <div class="q-pt-md full-width" style="max-width: 1000px">
       <q-table
         title="Nel mondo"
@@ -180,6 +182,7 @@
 <script>
 import News from "./../components/News";
 import InfectsProvince from "./../components/InfectsProvince";
+import WorldMap from "./../components/WorldMap";
 
 import moment from "./../boot/moment";
 import { questions } from "../misc/questions";
@@ -188,7 +191,8 @@ export default {
   name: "PageIndex",
   components: {
     News,
-    InfectsProvince
+    InfectsProvince,
+    WorldMap
   },
   data() {
     return {
@@ -279,6 +283,7 @@ export default {
     this.prepareData(this.endpoint, this.today)
       .then(response => {
         this.covidData = response;
+        this.$store.dispatch("setCovidData", response);
         this.formalize(response);
         this.lastUpdate = data;
       })
@@ -289,7 +294,7 @@ export default {
         this.prepareData(endpoint, data)
           .then(response => {
             this.covidData = response;
-
+            this.$store.dispatch("setCovidData", response);
             this.formalize(response);
             this.lastUpdate = data;
           })
@@ -299,7 +304,7 @@ export default {
 
             this.prepareData(endpoint, data).then(response => {
               this.covidData = response;
-
+              this.$store.dispatch("setCovidData", response);
               this.formalize(response);
               this.lastUpdate = data;
             });
