@@ -15,7 +15,7 @@
   "dependencies": {
     "@amcharts/amcharts4": "^4.9.12",
     "@amcharts/amcharts4-geodata": "^4.1.12",
-    "@quasar/extras": "^1.6.0",
+    "@quasar/extras": "^1.6.1",
     "axios": "^0.19.2",
     "echarts": "^4.7.0",
     "google-maps-api-loader": "^1.1.1",
