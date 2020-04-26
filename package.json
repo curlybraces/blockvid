@@ -23,7 +23,7 @@
     "moment": "^2.24.0",
     "quasar": "^1.9.12",
     "sha256": "^0.2.0",
-    "vue-i18n": "^8.16.0"
+    "vue-i18n": "^8.17.4"
   },
   "devDependencies": {
     "@quasar/app": "^1.6.0"
